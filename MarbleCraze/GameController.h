@@ -11,5 +11,6 @@
 @interface GameController : UIViewController
 
 - (IBAction)newGame:(id)sender;
+- (IBAction)aboutGame:(id)sender;
 
 @end

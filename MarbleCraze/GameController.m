@@ -8,6 +8,7 @@
 
 #import "GameController.h"
 #import "MarbleController.h"
+#import "AboutController.h"
 
 @interface GameController ()
 
@@ -22,6 +23,18 @@
         // Custom initialization
     }
     return self;
+}
+
+- (IBAction)aboutGame:(id)sender
+{
+    AboutController *ab;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        ab = [[AboutController alloc] initWithNibName:@"AboutController_iPad" bundle:nil];
+    }
+    else {
+        ab = [[AboutController alloc] initWithNibName:@"AboutController_iPhone" bundle:nil];
+    }
+    [self presentViewController:ab animated:NO completion:nil];
 }
 
 - (IBAction)newGame:(id)sender

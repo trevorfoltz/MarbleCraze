@@ -10,4 +10,9 @@
 
 @interface AboutController : UIViewController
 
+
+@property (nonatomic, retain) NSMutableArray *stars;
+@property (nonatomic, assign) BOOL starToggle;
+@property (nonatomic, assign) NSInteger starIdx;
+
 @end
