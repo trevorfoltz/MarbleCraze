@@ -7,6 +7,7 @@
 //
 
 #import "MarbleController.h"
+#import "HighScoresController.h"
 #import "Marble.h"
 
 @interface MarbleController ()
@@ -18,7 +19,7 @@
 @synthesize columnDict0, columnDict1, columnDict2, columnDict3, columnDict4;
 @synthesize starIdx, stars, starToggle, gridFull;
 @synthesize numRows, hasSwiped, marbleTimer, rowDict;
-@synthesize score0, score1, score2, score3, scoreTotal;
+@synthesize score0, score1, score2, score3, scoreTotal, gameOverCnt;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,7 +32,7 @@
 
 - (int)getRandomMarble
 {
-    return (arc4random() %(6)) + 1;
+    return (arc4random() %(7)) + 1;
 }
 
 - (void)populateColumn:(NSInteger) column withMarbles:(NSInteger) count
@@ -216,6 +217,7 @@
     [self setStarIdx:[self.stars count] - 1];
     [self twinkleStarDim];
 }
+
 
 - (void)setupIphone
 {
@@ -864,6 +866,63 @@
     return retVal;
 }
 
+- (IBAction)showHighScores:(id) sender
+{
+    HighScoresController *hs;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        hs = [[HighScoresController alloc] initWithNibName:@"HighScoresController_iPad" bundle:nil];
+    }
+    else {
+        hs = [[HighScoresController alloc] initWithNibName:@"HighScoresController_iPhone" bundle:nil];
+    }
+    
+    [hs setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    hs.highScores = self.highScores;
+    [self presentViewController:hs animated:YES completion:NULL];
+}
+
+- (BOOL)addHighScore
+{
+    BOOL scoreIsHigher = NO;
+    NSMutableDictionary *newDict = [NSMutableDictionary dictionaryWithCapacity:1];
+    [newDict setObject:[NSString stringWithFormat:@"%d", self.scoreTotal] forKey:@"score"];
+    [self.highScores setObject:newDict forKey:[NSString stringWithFormat:@"%d", [[self.highScores allKeys] count]]];
+    for (int i=[[self.highScores allKeys] count] -1; i>-1; i--) {
+        NSMutableDictionary *tempDict = [NSMutableDictionary dictionaryWithDictionary:[self.highScores objectForKey:[NSString stringWithFormat:@"%d", i]]];
+        NSString *scoreStr = [tempDict objectForKey:@"score"];
+        if (self.scoreTotal > [scoreStr integerValue]) {
+            [self.highScores setObject:tempDict forKey:[NSString stringWithFormat:@"%d", i+1]];
+            [self.highScores setObject:newDict forKey:[NSString stringWithFormat:@"%d", i]];
+            scoreIsHigher = YES;
+        }
+    }
+    if (self.highScores.count < 11) {
+        scoreIsHigher = YES;
+    }
+    else {
+        [self.highScores removeObjectForKey:@"10"];
+    }
+    return scoreIsHigher;
+}
+
+- (void)gameMaybeOver
+{
+    self.gameOverCnt++;
+    if (self.gameOverCnt > 3) {
+        [self.marbleTimer invalidate];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Game Over" message:[NSString stringWithFormat:@"You scored %d!", self.scoreTotal] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        av.delegate = self;
+        [av show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger) buttonIndex
+{
+    if ([self addHighScore]) {
+        [self showHighScores:self];
+    }
+}
+
 - (void)addMarble
 {
     if (!self.hasSwiped) {
@@ -939,6 +998,7 @@
     }
     else if (marbleCount > 49) {
         [self setGridFull:YES];
+        self.marbleTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(gameMaybeOver) userInfo:nil repeats:YES];
     }
     else if (marbleCount > 30) {
         [self setAddFaster:NO];
@@ -946,10 +1006,10 @@
     
     if (!self.gridFull) {
         if (self.addFaster) {
-            [self performSelector:@selector(addMarble) withObject:nil afterDelay:0.75];
+            [self performSelector:@selector(addMarble) withObject:nil afterDelay:0.6];
         }
         else {
-            [self performSelector:@selector(addMarble) withObject:nil afterDelay:1.5];
+            [self performSelector:@selector(addMarble) withObject:nil afterDelay:1.2];
         }
     }
 }
@@ -1060,11 +1120,16 @@
             break;
         default:
             break;
-    }
+    }    
 }
 
 - (void)removeMarblesFromStart:(NSInteger) idx ofLength:(NSInteger) length
 {
+    if (self.gridFull) {
+        [self setGridFull:NO];
+        [self performSelector:@selector(addMarble) withObject:nil afterDelay:1.5];
+    }
+    
     for (int i = idx;i < (idx + length);i++) {
         Marble *aMarble = (Marble *)[self.rowDict objectForKey:[NSString stringWithFormat:@"%d", i]];
         [self invertMarble:aMarble];
@@ -1098,11 +1163,14 @@
     else {
         [self setHasSwiped:NO];
     }
+    if (self.gridFull) {
+        self.marbleTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(gameMaybeOver) userInfo:nil repeats:YES];
+    }
 }
 
 - (void)moveMarbleLeft:(Marble *) marble
 {
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.1 animations:^{
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             marble.center = CGPointMake(marble.center.x - 80, marble.center.y);
         }
@@ -1115,7 +1183,7 @@
 
 - (void)moveMarbleRight:(Marble *) marble
 {
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.1 animations:^{
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             marble.center = CGPointMake(marble.center.x + 80, marble.center.y);
         }
@@ -1128,7 +1196,7 @@
 
 - (void)moveMarbleUp:(Marble *) marble
 {
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.1 animations:^{
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             marble.center = CGPointMake(marble.center.x, marble.center.y - 80);
         }
@@ -1141,7 +1209,7 @@
 
 - (void)moveMarbleDown:(Marble *) marble
 {
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.1 animations:^{
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             marble.center = CGPointMake(marble.center.x, marble.center.y + 80);
         }
@@ -1154,7 +1222,7 @@
 
 - (void)moveMarbleUpAndDown:(Marble *) marble
 {
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.1 animations:^{
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             marble.center = CGPointMake(marble.center.x, marble.center.y - 20);
         }
@@ -1168,7 +1236,7 @@
 
 - (void)moveMarbleDownAndUp:(Marble *) marble
 {
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.1 animations:^{
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             marble.center = CGPointMake(marble.center.x, marble.center.y + 20);
         }
@@ -1182,7 +1250,7 @@
 
 - (void)moveMarbleUpSlightly:(Marble *) marble
 {
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.1 animations:^{
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             marble.center = CGPointMake(marble.center.x, marble.center.y - 20);
         }
@@ -1195,7 +1263,7 @@
 
 - (void)moveMarbleDownSlightly:(Marble *) marble
 {
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.1 animations:^{
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             marble.center = CGPointMake(marble.center.x, marble.center.y + 20);
         }
@@ -1212,6 +1280,9 @@
         return;
     }
     [self setHasSwiped:YES];
+    if (self.marbleTimer && [self.marbleTimer isValid]) {
+        [self.marbleTimer invalidate];
+    }
     CGPoint touchPt = [swipe locationInView:self.view];
     if (touchPt.y > 100 && touchPt.y < 760) {
         NSInteger rowIdx = [self lowestRowKey];
@@ -1237,6 +1308,10 @@
         return;
     }
     [self setHasSwiped:YES];
+    if (self.marbleTimer && [self.marbleTimer isValid]) {
+       [self.marbleTimer invalidate];
+    }
+    
     CGPoint touchPt = [swipe locationInView:self.view];
     if (touchPt.y > 100 && touchPt.y < 760) {
         NSInteger rowIdx = [self highestRowKey];

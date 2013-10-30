@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D007B868182049D800B37631 /* marble7.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B864182049D800B37631 /* marble7.png */; };
+		D007B869182049D800B37631 /* marble7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B865182049D800B37631 /* marble7@2x.png */; };
+		D007B86A182049D800B37631 /* marble7i.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B866182049D800B37631 /* marble7i.png */; };
+		D007B86B182049D800B37631 /* marble7i@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B867182049D800B37631 /* marble7i@2x.png */; };
 		D0A6F71B181D009A00C77FD3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6F71A181D009A00C77FD3 /* UIKit.framework */; };
 		D0A6F71D181D009A00C77FD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6F71C181D009A00C77FD3 /* Foundation.framework */; };
 		D0A6F71F181D009A00C77FD3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6F71E181D009A00C77FD3 /* CoreGraphics.framework */; };
@@ -70,6 +74,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D007B864182049D800B37631 /* marble7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble7.png; sourceTree = "<group>"; };
+		D007B865182049D800B37631 /* marble7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marble7@2x.png"; sourceTree = "<group>"; };
+		D007B866182049D800B37631 /* marble7i.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble7i.png; sourceTree = "<group>"; };
+		D007B867182049D800B37631 /* marble7i@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marble7i@2x.png"; sourceTree = "<group>"; };
 		D0A6F717181D009A00C77FD3 /* MarbleCraze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarbleCraze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A6F71A181D009A00C77FD3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D0A6F71C181D009A00C77FD3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -249,6 +257,10 @@
 		D0A6F75A181D053A00C77FD3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D007B864182049D800B37631 /* marble7.png */,
+				D007B865182049D800B37631 /* marble7@2x.png */,
+				D007B866182049D800B37631 /* marble7i.png */,
+				D007B867182049D800B37631 /* marble7i@2x.png */,
 				D0A6F75B181D05ED00C77FD3 /* marble1.png */,
 				D0A6F75C181D05ED00C77FD3 /* marble1@2x.png */,
 				D0A6F75D181D05ED00C77FD3 /* marble1i.png */,
@@ -382,6 +394,10 @@
 				D0A6F7BA181D780C00C77FD3 /* AboutController_iPhone.xib in Resources */,
 				D0A6F7BF181D783100C77FD3 /* HighScoresController_iPhone.xib in Resources */,
 				D0A6F7C1181D79C900C77FD3 /* StarBackground_iPad.png in Resources */,
+				D007B868182049D800B37631 /* marble7.png in Resources */,
+				D007B869182049D800B37631 /* marble7@2x.png in Resources */,
+				D007B86A182049D800B37631 /* marble7i.png in Resources */,
+				D007B86B182049D800B37631 /* marble7i@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,11 @@
 
 @interface GameController : UIViewController
 
+@property (nonatomic, retain) NSMutableArray *stars;
+@property (nonatomic, assign) BOOL starToggle;
+@property (nonatomic, assign) NSInteger starIdx;
+@property (nonatomic, retain) NSMutableDictionary *highScores;
+
 - (IBAction)newGame:(id)sender;
 - (IBAction)aboutGame:(id)sender;
 
