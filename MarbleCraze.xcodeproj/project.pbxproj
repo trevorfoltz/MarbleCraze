@@ -11,6 +11,23 @@
 		D007B869182049D800B37631 /* marble7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B865182049D800B37631 /* marble7@2x.png */; };
 		D007B86A182049D800B37631 /* marble7i.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B866182049D800B37631 /* marble7i.png */; };
 		D007B86B182049D800B37631 /* marble7i@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B867182049D800B37631 /* marble7i@2x.png */; };
+		D007B8701822C96D00B37631 /* marble8.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B86C1822C96D00B37631 /* marble8.png */; };
+		D007B8711822C96D00B37631 /* marble8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B86D1822C96D00B37631 /* marble8@2x.png */; };
+		D007B8721822C96D00B37631 /* marble8i.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B86E1822C96D00B37631 /* marble8i.png */; };
+		D007B8731822C96D00B37631 /* marble8i@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B86F1822C96D00B37631 /* marble8i@2x.png */; };
+		D007B878182566C000B37631 /* marble3.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B874182566BF00B37631 /* marble3.png */; };
+		D007B879182566C000B37631 /* marble3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B875182566BF00B37631 /* marble3@2x.png */; };
+		D007B87A182566C000B37631 /* marble4.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B876182566BF00B37631 /* marble4.png */; };
+		D007B87B182566C000B37631 /* marble4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B877182566BF00B37631 /* marble4@2x.png */; };
+		D007B87E182568A200B37631 /* marble1.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B87C182568A100B37631 /* marble1.png */; };
+		D007B87F182568A200B37631 /* marble1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B87D182568A100B37631 /* marble1@2x.png */; };
+		D007B88118256DCB00B37631 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B88018256DCB00B37631 /* Default.png */; };
+		D007B88518256DF000B37631 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B88418256DF000B37631 /* Default-568h@2x.png */; };
+		D007B8881825A47B00B37631 /* StarTwinkler.m in Sources */ = {isa = PBXBuildFile; fileRef = D007B8871825A47900B37631 /* StarTwinkler.m */; };
+		D007B88A182760A000B37631 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B889182760A000B37631 /* Default@2x.png */; };
+		D007B88C182D720C00B37631 /* StarBackground_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B88B182D720A00B37631 /* StarBackground_iPad.png */; };
+		D012170E182D741A004E4769 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D012170D182D741A004E4769 /* Default-Portrait~ipad.png */; };
+		D0121710182D7431004E4769 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D012170F182D7431004E4769 /* Default-Portrait@2x~ipad.png */; };
 		D0A6F71B181D009A00C77FD3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6F71A181D009A00C77FD3 /* UIKit.framework */; };
 		D0A6F71D181D009A00C77FD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6F71C181D009A00C77FD3 /* Foundation.framework */; };
 		D0A6F71F181D009A00C77FD3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6F71E181D009A00C77FD3 /* CoreGraphics.framework */; };
@@ -23,27 +40,18 @@
 		D0A6F743181D012E00C77FD3 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6F741181D012E00C77FD3 /* libTestFlight.a */; };
 		D0A6F745181D01C100C77FD3 /* marbles57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F744181D01C100C77FD3 /* marbles57x57.png */; };
 		D0A6F747181D01D100C77FD3 /* marbles114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F746181D01D100C77FD3 /* marbles114x114.png */; };
-		D0A6F749181D01E400C77FD3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F748181D01E400C77FD3 /* Default.png */; };
-		D0A6F74B181D01F500C77FD3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F74A181D01F500C77FD3 /* Default@2x.png */; };
-		D0A6F74D181D020500C77FD3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F74C181D020500C77FD3 /* Default-568h@2x.png */; };
 		D0A6F74F181D022800C77FD3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6F74E181D022800C77FD3 /* libz.dylib */; };
 		D0A6F753181D039A00C77FD3 /* GameController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6F751181D039A00C77FD3 /* GameController.m */; };
 		D0A6F754181D039A00C77FD3 /* GameController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F752181D039A00C77FD3 /* GameController_iPad.xib */; };
 		D0A6F759181D03E000C77FD3 /* GameController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F757181D03DF00C77FD3 /* GameController_iPhone.xib */; };
-		D0A6F777181D05ED00C77FD3 /* marble1.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F75B181D05ED00C77FD3 /* marble1.png */; };
-		D0A6F778181D05ED00C77FD3 /* marble1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F75C181D05ED00C77FD3 /* marble1@2x.png */; };
 		D0A6F779181D05ED00C77FD3 /* marble1i.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F75D181D05ED00C77FD3 /* marble1i.png */; };
 		D0A6F77A181D05ED00C77FD3 /* marble1i@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F75E181D05ED00C77FD3 /* marble1i@2x.png */; };
 		D0A6F77B181D05ED00C77FD3 /* marble2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F75F181D05ED00C77FD3 /* marble2.png */; };
 		D0A6F77C181D05ED00C77FD3 /* marble2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F760181D05ED00C77FD3 /* marble2@2x.png */; };
 		D0A6F77D181D05ED00C77FD3 /* marble2i.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F761181D05ED00C77FD3 /* marble2i.png */; };
 		D0A6F77E181D05ED00C77FD3 /* marble2i@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F762181D05ED00C77FD3 /* marble2i@2x.png */; };
-		D0A6F77F181D05ED00C77FD3 /* marble3.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F763181D05ED00C77FD3 /* marble3.png */; };
-		D0A6F780181D05ED00C77FD3 /* marble3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F764181D05ED00C77FD3 /* marble3@2x.png */; };
 		D0A6F781181D05ED00C77FD3 /* marble3i.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F765181D05ED00C77FD3 /* marble3i.png */; };
 		D0A6F782181D05ED00C77FD3 /* marble3i@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F766181D05ED00C77FD3 /* marble3i@2x.png */; };
-		D0A6F783181D05ED00C77FD3 /* marble4.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F767181D05ED00C77FD3 /* marble4.png */; };
-		D0A6F784181D05ED00C77FD3 /* marble4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F768181D05ED00C77FD3 /* marble4@2x.png */; };
 		D0A6F785181D05ED00C77FD3 /* marble4i.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F769181D05ED00C77FD3 /* marble4i.png */; };
 		D0A6F786181D05ED00C77FD3 /* marble4i@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F76A181D05ED00C77FD3 /* marble4i@2x.png */; };
 		D0A6F787181D05ED00C77FD3 /* marble5.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F76B181D05ED00C77FD3 /* marble5.png */; };
@@ -70,7 +78,6 @@
 		D0A6F7B5181D77E300C77FD3 /* HighScoresController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F7B3181D77E200C77FD3 /* HighScoresController_iPad.xib */; };
 		D0A6F7BA181D780C00C77FD3 /* AboutController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F7B8181D780B00C77FD3 /* AboutController_iPhone.xib */; };
 		D0A6F7BF181D783100C77FD3 /* HighScoresController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F7BD181D783000C77FD3 /* HighScoresController_iPhone.xib */; };
-		D0A6F7C1181D79C900C77FD3 /* StarBackground_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F7C0181D79C900C77FD3 /* StarBackground_iPad.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +85,24 @@
 		D007B865182049D800B37631 /* marble7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marble7@2x.png"; sourceTree = "<group>"; };
 		D007B866182049D800B37631 /* marble7i.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble7i.png; sourceTree = "<group>"; };
 		D007B867182049D800B37631 /* marble7i@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marble7i@2x.png"; sourceTree = "<group>"; };
+		D007B86C1822C96D00B37631 /* marble8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble8.png; sourceTree = "<group>"; };
+		D007B86D1822C96D00B37631 /* marble8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marble8@2x.png"; sourceTree = "<group>"; };
+		D007B86E1822C96D00B37631 /* marble8i.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble8i.png; sourceTree = "<group>"; };
+		D007B86F1822C96D00B37631 /* marble8i@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marble8i@2x.png"; sourceTree = "<group>"; };
+		D007B874182566BF00B37631 /* marble3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble3.png; sourceTree = "<group>"; };
+		D007B875182566BF00B37631 /* marble3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marble3@2x.png"; sourceTree = "<group>"; };
+		D007B876182566BF00B37631 /* marble4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble4.png; sourceTree = "<group>"; };
+		D007B877182566BF00B37631 /* marble4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marble4@2x.png"; sourceTree = "<group>"; };
+		D007B87C182568A100B37631 /* marble1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble1.png; sourceTree = "<group>"; };
+		D007B87D182568A100B37631 /* marble1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marble1@2x.png"; sourceTree = "<group>"; };
+		D007B88018256DCB00B37631 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		D007B88418256DF000B37631 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		D007B8861825A47900B37631 /* StarTwinkler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarTwinkler.h; sourceTree = "<group>"; };
+		D007B8871825A47900B37631 /* StarTwinkler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarTwinkler.m; sourceTree = "<group>"; };
+		D007B889182760A000B37631 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		D007B88B182D720A00B37631 /* StarBackground_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarBackground_iPad.png; sourceTree = "<group>"; };
+		D012170D182D741A004E4769 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		D012170F182D7431004E4769 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		D0A6F717181D009A00C77FD3 /* MarbleCraze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarbleCraze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A6F71A181D009A00C77FD3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D0A6F71C181D009A00C77FD3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -96,28 +121,19 @@
 		D0A6F742181D012E00C77FD3 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		D0A6F744181D01C100C77FD3 /* marbles57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marbles57x57.png; sourceTree = "<group>"; };
 		D0A6F746181D01D100C77FD3 /* marbles114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marbles114x114.png; sourceTree = "<group>"; };
-		D0A6F748181D01E400C77FD3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		D0A6F74A181D01F500C77FD3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		D0A6F74C181D020500C77FD3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D0A6F74E181D022800C77FD3 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D0A6F750181D039A00C77FD3 /* GameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameController.h; sourceTree = "<group>"; };
 		D0A6F751181D039A00C77FD3 /* GameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameController.m; sourceTree = "<group>"; };
 		D0A6F752181D039A00C77FD3 /* GameController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameController_iPad.xib; sourceTree = "<group>"; };
 		D0A6F757181D03DF00C77FD3 /* GameController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameController_iPhone.xib; sourceTree = "<group>"; };
-		D0A6F75B181D05ED00C77FD3 /* marble1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble1.png; sourceTree = "<group>"; };
-		D0A6F75C181D05ED00C77FD3 /* marble1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marble1@2x.png"; sourceTree = "<group>"; };
 		D0A6F75D181D05ED00C77FD3 /* marble1i.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble1i.png; sourceTree = "<group>"; };
 		D0A6F75E181D05ED00C77FD3 /* marble1i@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marble1i@2x.png"; sourceTree = "<group>"; };
 		D0A6F75F181D05ED00C77FD3 /* marble2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble2.png; sourceTree = "<group>"; };
 		D0A6F760181D05ED00C77FD3 /* marble2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marble2@2x.png"; sourceTree = "<group>"; };
 		D0A6F761181D05ED00C77FD3 /* marble2i.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble2i.png; sourceTree = "<group>"; };
 		D0A6F762181D05ED00C77FD3 /* marble2i@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marble2i@2x.png"; sourceTree = "<group>"; };
-		D0A6F763181D05ED00C77FD3 /* marble3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble3.png; sourceTree = "<group>"; };
-		D0A6F764181D05ED00C77FD3 /* marble3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marble3@2x.png"; sourceTree = "<group>"; };
 		D0A6F765181D05ED00C77FD3 /* marble3i.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble3i.png; sourceTree = "<group>"; };
 		D0A6F766181D05ED00C77FD3 /* marble3i@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marble3i@2x.png"; sourceTree = "<group>"; };
-		D0A6F767181D05ED00C77FD3 /* marble4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble4.png; sourceTree = "<group>"; };
-		D0A6F768181D05ED00C77FD3 /* marble4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marble4@2x.png"; sourceTree = "<group>"; };
 		D0A6F769181D05ED00C77FD3 /* marble4i.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble4i.png; sourceTree = "<group>"; };
 		D0A6F76A181D05ED00C77FD3 /* marble4i@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marble4i@2x.png"; sourceTree = "<group>"; };
 		D0A6F76B181D05ED00C77FD3 /* marble5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble5.png; sourceTree = "<group>"; };
@@ -148,7 +164,6 @@
 		D0A6F7B3181D77E200C77FD3 /* HighScoresController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HighScoresController_iPad.xib; sourceTree = "<group>"; };
 		D0A6F7B8181D780B00C77FD3 /* AboutController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutController_iPhone.xib; sourceTree = "<group>"; };
 		D0A6F7BD181D783000C77FD3 /* HighScoresController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HighScoresController_iPhone.xib; sourceTree = "<group>"; };
-		D0A6F7C0181D79C900C77FD3 /* StarBackground_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarBackground_iPad.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,9 +185,11 @@
 		D0A6F70E181D009A00C77FD3 = {
 			isa = PBXGroup;
 			children = (
-				D0A6F74C181D020500C77FD3 /* Default-568h@2x.png */,
-				D0A6F74A181D01F500C77FD3 /* Default@2x.png */,
-				D0A6F748181D01E400C77FD3 /* Default.png */,
+				D012170F182D7431004E4769 /* Default-Portrait@2x~ipad.png */,
+				D012170D182D741A004E4769 /* Default-Portrait~ipad.png */,
+				D007B889182760A000B37631 /* Default@2x.png */,
+				D007B88418256DF000B37631 /* Default-568h@2x.png */,
+				D007B88018256DCB00B37631 /* Default.png */,
 				D0A6F746181D01D100C77FD3 /* marbles114x114.png */,
 				D0A6F744181D01C100C77FD3 /* marbles57x57.png */,
 				D0A6F740181D00E900C77FD3 /* Testflight */,
@@ -229,6 +246,8 @@
 				D0A6F735181D009A00C77FD3 /* ViewController_iPhone.xib */,
 				D0A6F738181D009A00C77FD3 /* ViewController_iPad.xib */,
 				D0A6F721181D009A00C77FD3 /* Supporting Files */,
+				D007B8861825A47900B37631 /* StarTwinkler.h */,
+				D007B8871825A47900B37631 /* StarTwinkler.m */,
 			);
 			path = MarbleCraze;
 			sourceTree = "<group>";
@@ -257,24 +276,21 @@
 		D0A6F75A181D053A00C77FD3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				D007B864182049D800B37631 /* marble7.png */,
-				D007B865182049D800B37631 /* marble7@2x.png */,
-				D007B866182049D800B37631 /* marble7i.png */,
-				D007B867182049D800B37631 /* marble7i@2x.png */,
-				D0A6F75B181D05ED00C77FD3 /* marble1.png */,
-				D0A6F75C181D05ED00C77FD3 /* marble1@2x.png */,
+				D007B88B182D720A00B37631 /* StarBackground_iPad.png */,
+				D007B87C182568A100B37631 /* marble1.png */,
+				D007B87D182568A100B37631 /* marble1@2x.png */,
 				D0A6F75D181D05ED00C77FD3 /* marble1i.png */,
 				D0A6F75E181D05ED00C77FD3 /* marble1i@2x.png */,
 				D0A6F75F181D05ED00C77FD3 /* marble2.png */,
 				D0A6F760181D05ED00C77FD3 /* marble2@2x.png */,
 				D0A6F761181D05ED00C77FD3 /* marble2i.png */,
 				D0A6F762181D05ED00C77FD3 /* marble2i@2x.png */,
-				D0A6F763181D05ED00C77FD3 /* marble3.png */,
-				D0A6F764181D05ED00C77FD3 /* marble3@2x.png */,
+				D007B874182566BF00B37631 /* marble3.png */,
+				D007B875182566BF00B37631 /* marble3@2x.png */,
 				D0A6F765181D05ED00C77FD3 /* marble3i.png */,
 				D0A6F766181D05ED00C77FD3 /* marble3i@2x.png */,
-				D0A6F767181D05ED00C77FD3 /* marble4.png */,
-				D0A6F768181D05ED00C77FD3 /* marble4@2x.png */,
+				D007B876182566BF00B37631 /* marble4.png */,
+				D007B877182566BF00B37631 /* marble4@2x.png */,
 				D0A6F769181D05ED00C77FD3 /* marble4i.png */,
 				D0A6F76A181D05ED00C77FD3 /* marble4i@2x.png */,
 				D0A6F76B181D05ED00C77FD3 /* marble5.png */,
@@ -285,13 +301,20 @@
 				D0A6F770181D05ED00C77FD3 /* marble6@2x.png */,
 				D0A6F771181D05ED00C77FD3 /* marble6i.png */,
 				D0A6F772181D05ED00C77FD3 /* marble6i@2x.png */,
+				D007B864182049D800B37631 /* marble7.png */,
+				D007B865182049D800B37631 /* marble7@2x.png */,
+				D007B866182049D800B37631 /* marble7i.png */,
+				D007B867182049D800B37631 /* marble7i@2x.png */,
+				D007B86C1822C96D00B37631 /* marble8.png */,
+				D007B86D1822C96D00B37631 /* marble8@2x.png */,
+				D007B86E1822C96D00B37631 /* marble8i.png */,
+				D007B86F1822C96D00B37631 /* marble8i@2x.png */,
 				D0A6F773181D05ED00C77FD3 /* NewBlueButton3D.png */,
 				D0A6F774181D05ED00C77FD3 /* NewBlueButton3D@2x.png */,
 				D0A6F7A8181D742600C77FD3 /* RedClearButton.png */,
 				D0A6F7A9181D742600C77FD3 /* RedClearButton@2x.png */,
 				D0A6F775181D05ED00C77FD3 /* StarBackground.png */,
 				D0A6F776181D05ED00C77FD3 /* StarBackground@2x.png */,
-				D0A6F7C0181D79C900C77FD3 /* StarBackground_iPad.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -352,25 +375,16 @@
 				D0A6F73A181D009A00C77FD3 /* ViewController_iPad.xib in Resources */,
 				D0A6F745181D01C100C77FD3 /* marbles57x57.png in Resources */,
 				D0A6F747181D01D100C77FD3 /* marbles114x114.png in Resources */,
-				D0A6F749181D01E400C77FD3 /* Default.png in Resources */,
-				D0A6F74B181D01F500C77FD3 /* Default@2x.png in Resources */,
-				D0A6F74D181D020500C77FD3 /* Default-568h@2x.png in Resources */,
 				D0A6F754181D039A00C77FD3 /* GameController_iPad.xib in Resources */,
 				D0A6F759181D03E000C77FD3 /* GameController_iPhone.xib in Resources */,
-				D0A6F777181D05ED00C77FD3 /* marble1.png in Resources */,
-				D0A6F778181D05ED00C77FD3 /* marble1@2x.png in Resources */,
 				D0A6F779181D05ED00C77FD3 /* marble1i.png in Resources */,
 				D0A6F77A181D05ED00C77FD3 /* marble1i@2x.png in Resources */,
 				D0A6F77B181D05ED00C77FD3 /* marble2.png in Resources */,
 				D0A6F77C181D05ED00C77FD3 /* marble2@2x.png in Resources */,
 				D0A6F77D181D05ED00C77FD3 /* marble2i.png in Resources */,
 				D0A6F77E181D05ED00C77FD3 /* marble2i@2x.png in Resources */,
-				D0A6F77F181D05ED00C77FD3 /* marble3.png in Resources */,
-				D0A6F780181D05ED00C77FD3 /* marble3@2x.png in Resources */,
 				D0A6F781181D05ED00C77FD3 /* marble3i.png in Resources */,
 				D0A6F782181D05ED00C77FD3 /* marble3i@2x.png in Resources */,
-				D0A6F783181D05ED00C77FD3 /* marble4.png in Resources */,
-				D0A6F784181D05ED00C77FD3 /* marble4@2x.png in Resources */,
 				D0A6F785181D05ED00C77FD3 /* marble4i.png in Resources */,
 				D0A6F786181D05ED00C77FD3 /* marble4i@2x.png in Resources */,
 				D0A6F787181D05ED00C77FD3 /* marble5.png in Resources */,
@@ -393,11 +407,26 @@
 				D0A6F7B5181D77E300C77FD3 /* HighScoresController_iPad.xib in Resources */,
 				D0A6F7BA181D780C00C77FD3 /* AboutController_iPhone.xib in Resources */,
 				D0A6F7BF181D783100C77FD3 /* HighScoresController_iPhone.xib in Resources */,
-				D0A6F7C1181D79C900C77FD3 /* StarBackground_iPad.png in Resources */,
 				D007B868182049D800B37631 /* marble7.png in Resources */,
 				D007B869182049D800B37631 /* marble7@2x.png in Resources */,
 				D007B86A182049D800B37631 /* marble7i.png in Resources */,
 				D007B86B182049D800B37631 /* marble7i@2x.png in Resources */,
+				D007B8701822C96D00B37631 /* marble8.png in Resources */,
+				D007B8711822C96D00B37631 /* marble8@2x.png in Resources */,
+				D007B8721822C96D00B37631 /* marble8i.png in Resources */,
+				D007B8731822C96D00B37631 /* marble8i@2x.png in Resources */,
+				D007B878182566C000B37631 /* marble3.png in Resources */,
+				D007B879182566C000B37631 /* marble3@2x.png in Resources */,
+				D007B87A182566C000B37631 /* marble4.png in Resources */,
+				D007B87B182566C000B37631 /* marble4@2x.png in Resources */,
+				D007B87E182568A200B37631 /* marble1.png in Resources */,
+				D007B87F182568A200B37631 /* marble1@2x.png in Resources */,
+				D007B88118256DCB00B37631 /* Default.png in Resources */,
+				D007B88518256DF000B37631 /* Default-568h@2x.png in Resources */,
+				D007B88A182760A000B37631 /* Default@2x.png in Resources */,
+				D007B88C182D720C00B37631 /* StarBackground_iPad.png in Resources */,
+				D012170E182D741A004E4769 /* Default-Portrait~ipad.png in Resources */,
+				D0121710182D7431004E4769 /* Default-Portrait@2x~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +445,7 @@
 				D0A6F79F181D0DA300C77FD3 /* Marble.m in Sources */,
 				D0A6F7AF181D77B600C77FD3 /* AboutController.m in Sources */,
 				D0A6F7B4181D77E300C77FD3 /* HighScoresController.m in Sources */,
+				D007B8881825A47B00B37631 /* StarTwinkler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

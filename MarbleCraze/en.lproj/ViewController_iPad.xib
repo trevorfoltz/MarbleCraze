@@ -41,13 +41,12 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrameSize">{768, 1004}</string>
 						<reference key="NSSuperview" ref="766721923"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">StarBackground_iPad.png</string>
+							<string key="NSResourceName">Default-Portrait~ipad.png</string>
 						</object>
 					</object>
 				</array>
@@ -202,7 +201,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">StarBackground_iPad.png</string>
+			<string key="NS.key.0">Default-Portrait~ipad.png</string>
 			<string key="NS.object.0">{768, 1024}</string>
 		</object>
 		<bool key="IBDocument.UseAutolayout">YES</bool>

@@ -7,6 +7,7 @@
 //
 
 #import "HighScoresController.h"
+#import "StarTwinkler.h"
 
 @interface HighScoresController ()
 
@@ -60,6 +61,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    StarTwinkler *twinkler = [[StarTwinkler alloc] initWithParentView:self.view];
     self.justViewing = YES;
     UIView *separator1 = [[UIView alloc] initWithFrame:CGRectMake(0, 60, 320, 5)];
     separator1.backgroundColor = [UIColor lightGrayColor];
@@ -82,7 +84,7 @@
     
     for (int i = 0; i < [[self.highScores allKeys] count]; i++) {
         NSDictionary *tempDict = (NSDictionary *) [self.highScores objectForKey:[NSString stringWithFormat:@"%d", i]];
-        UILabel *lblPos = [[UILabel alloc] initWithFrame:CGRectMake(40, 30+(i*30), 20, 25)];
+        UILabel *lblPos = [[UILabel alloc] initWithFrame:CGRectMake(25, 30+(i*30), 35, 25)];
         lblPos.backgroundColor = [UIColor clearColor];
         lblPos.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
         lblPos.shadowColor = [UIColor colorWithRed:0.6 green:0.0 blue:0.0 alpha:1.0];
@@ -124,7 +126,7 @@
     }
     
     if (self.score2Edit > 5) {
-        self.shiftView.center = CGPointMake(self.shiftView.center.x, self.shiftView.center.y - 60);
+        self.shiftView.center = CGPointMake(self.shiftView.center.x, self.shiftView.center.y - 140);
     }
     // Do any additional setup after loading the view from its nib.
 }
@@ -144,7 +146,7 @@
     [textField removeFromSuperview];
     [self becomeFirstResponder];
     if (self.score2Edit > 5) {
-        self.shiftView.center = CGPointMake(self.shiftView.center.x, self.shiftView.center.y + 60);
+        self.shiftView.center = CGPointMake(self.shiftView.center.x, self.shiftView.center.y + 140);
     }
 }
 

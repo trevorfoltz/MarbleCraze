@@ -8,12 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GameController : UIViewController
+@interface GameController : UIViewController <UIAlertViewDelegate>
 
-@property (nonatomic, retain) NSMutableArray *stars;
-@property (nonatomic, assign) BOOL starToggle;
-@property (nonatomic, assign) NSInteger starIdx;
-@property (nonatomic, retain) NSMutableDictionary *highScores;
+@property (nonatomic, retain) NSMutableDictionary *highScores, *savedGame;
 
 - (IBAction)newGame:(id)sender;
 - (IBAction)aboutGame:(id)sender;

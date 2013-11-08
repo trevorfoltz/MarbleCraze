@@ -13,12 +13,11 @@
 @property (nonatomic, retain) NSMutableDictionary *columnDict0, *columnDict1, *columnDict2, *columnDict3, *columnDict4, *rowDict;
 @property (nonatomic, assign) int numRows;
 
-@property (nonatomic, retain) NSMutableArray *stars;
-@property (nonatomic, assign) BOOL starToggle, hasSwiped, addFaster, gridFull;
-@property (nonatomic, assign) NSInteger starIdx, scoreTotal, gameOverCnt;
-@property (nonatomic, retain) NSTimer *marbleTimer;
+@property (nonatomic, assign) BOOL hasSwiped, addFaster, gridFull, betweenRounds;
+@property (nonatomic, assign) NSInteger scoreTotal, gameOverCnt, gameCount, gameLevel;
+@property (nonatomic, retain) NSTimer *marbleTimer, *gameTimer;
 @property (nonatomic, retain) IBOutlet UILabel *score0, *score1, *score2, *score3;
-@property (nonatomic, retain) NSMutableDictionary *highScores;
+@property (nonatomic, retain) NSMutableDictionary *highScores, *savedGame;
 
 - (IBAction)back:(id)sender;
 
