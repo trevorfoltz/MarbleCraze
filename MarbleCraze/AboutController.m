@@ -7,13 +7,15 @@
 //
 
 #import "AboutController.h"
-#import "StarTwinkler.h"
+
 
 @interface AboutController ()
 
 @end
 
 @implementation AboutController
+
+@synthesize twinkler;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -38,7 +40,7 @@
     singleTap.numberOfTapsRequired = 1;
     singleTap.numberOfTouchesRequired = 1;
     [self.view addGestureRecognizer:singleTap];
-    StarTwinkler *twinkler = [[StarTwinkler alloc] initWithParentView:self.view];
+    self.twinkler = [StarTwinkler initWithParentView:self.view];
     // Do any additional setup after loading the view from its nib.
 }
 

@@ -57,6 +57,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 260}, {280, 36}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -69,15 +70,12 @@
 							<bytes key="NSWhite">MQA</bytes>
 						</object>
 						<object class="NSColor" key="IBUINormalTitleColor">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MQA</bytes>
-							<object class="NSColorSpace" key="NSCustomColorSpace" id="787587357">
-								<int key="NSID">2</int>
-							</object>
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MSAxIDAuNDkwMTk2MDc4NAA</bytes>
 						</object>
 						<object class="NSColor" key="IBUINormalTitleShadowColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MCAwIDAuMTE2NDk0NDU1NgA</bytes>
+							<bytes key="NSRGB">MCAwLjIgMC42AA</bytes>
 						</object>
 						<object class="NSCustomResource" key="IBUINormalBackgroundImage" id="955769878">
 							<string key="NSClassName">NSImage</string>
@@ -110,13 +108,12 @@
 						<string key="IBUINormalTitle">High Scores</string>
 						<reference key="IBUIHighlightedTitleColor" ref="725326336"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MQA</bytes>
-							<reference key="NSCustomColorSpace" ref="787587357"/>
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MSAxIDAuNDkwMTk2MDc4NAA</bytes>
 						</object>
 						<object class="NSColor" key="IBUINormalTitleShadowColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MCAwIDAuMTE2NDk0NDU1NgA</bytes>
+							<bytes key="NSRGB">MCAwLjIgMC42AA</bytes>
 						</object>
 						<reference key="IBUINormalBackgroundImage" ref="955769878"/>
 						<reference key="IBUIFontDescription" ref="270125608"/>
@@ -134,16 +131,15 @@
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<string key="IBUITitleShadowOffset">{1, 1}</string>
-						<string key="IBUINormalTitle">New Game</string>
+						<string key="IBUINormalTitle">Play Marble Craze</string>
 						<reference key="IBUIHighlightedTitleColor" ref="725326336"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MQA</bytes>
-							<reference key="NSCustomColorSpace" ref="787587357"/>
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MSAxIDAuNDkwMTk2MDc4NAA</bytes>
 						</object>
 						<object class="NSColor" key="IBUINormalTitleShadowColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MCAwIDAuMTE2NDk0NDU1NgA</bytes>
+							<bytes key="NSRGB">MCAwLjIgMC42AA</bytes>
 						</object>
 						<reference key="IBUINormalBackgroundImage" ref="955769878"/>
 						<reference key="IBUIFontDescription" ref="270125608"/>
@@ -164,15 +160,12 @@
 						<string key="IBUIText">Marble Craze</string>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MSAxIDEAA</bytes>
-							<object class="NSColorSpace" key="NSCustomColorSpace">
-								<int key="NSID">1</int>
-							</object>
+							<bytes key="NSRGB">MSAxIDAuNDkwMTk2MDc4NAA</bytes>
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<object class="NSColor" key="IBUIShadowColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC42IDAgMAA</bytes>
+							<bytes key="NSRGB">MC4yOTUzNzgwNjEyIDAuMjUzMDI2MzU2OSAxAA</bytes>
 						</object>
 						<string key="IBUIShadowOffset">{2, 2}</string>
 						<int key="IBUIBaselineAdjustment">0</int>

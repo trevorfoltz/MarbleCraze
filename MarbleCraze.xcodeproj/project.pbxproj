@@ -21,13 +21,20 @@
 		D007B87B182566C000B37631 /* marble4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B877182566BF00B37631 /* marble4@2x.png */; };
 		D007B87E182568A200B37631 /* marble1.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B87C182568A100B37631 /* marble1.png */; };
 		D007B87F182568A200B37631 /* marble1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B87D182568A100B37631 /* marble1@2x.png */; };
-		D007B88118256DCB00B37631 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B88018256DCB00B37631 /* Default.png */; };
 		D007B88518256DF000B37631 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B88418256DF000B37631 /* Default-568h@2x.png */; };
 		D007B8881825A47B00B37631 /* StarTwinkler.m in Sources */ = {isa = PBXBuildFile; fileRef = D007B8871825A47900B37631 /* StarTwinkler.m */; };
-		D007B88A182760A000B37631 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B889182760A000B37631 /* Default@2x.png */; };
-		D007B88C182D720C00B37631 /* StarBackground_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B88B182D720A00B37631 /* StarBackground_iPad.png */; };
+		D00D377C182EE73D00167C8B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B88018256DCB00B37631 /* Default.png */; };
+		D00D377D182EE74A00167C8B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D007B889182760A000B37631 /* Default@2x.png */; };
+		D00D37881832595200167C8B /* RedButton3DNew.png in Resources */ = {isa = PBXBuildFile; fileRef = D00D37861832595200167C8B /* RedButton3DNew.png */; };
+		D00D37891832595200167C8B /* RedButton3DNew@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D00D37871832595200167C8B /* RedButton3DNew@2x.png */; };
 		D012170E182D741A004E4769 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D012170D182D741A004E4769 /* Default-Portrait~ipad.png */; };
 		D0121710182D7431004E4769 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D012170F182D7431004E4769 /* Default-Portrait@2x~ipad.png */; };
+		D0121712182EB4A5004E4769 /* StarBackground_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = D0121711182EB4A5004E4769 /* StarBackground_iPad.png */; };
+		D0121714182EBA99004E4769 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0121713182EBA99004E4769 /* AVFoundation.framework */; };
+		D012171D182EBCC0004E4769 /* fireEffect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D0121719182EBCC0004E4769 /* fireEffect.mp3 */; };
+		D012171E182EBCC0004E4769 /* GameOver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D012171A182EBCC0004E4769 /* GameOver.mp3 */; };
+		D012171F182EBCC0004E4769 /* LevelComplete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D012171B182EBCC0004E4769 /* LevelComplete.mp3 */; };
+		D0121720182EBCC0004E4769 /* loop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D012171C182EBCC0004E4769 /* loop.mp3 */; };
 		D0A6F71B181D009A00C77FD3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6F71A181D009A00C77FD3 /* UIKit.framework */; };
 		D0A6F71D181D009A00C77FD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6F71C181D009A00C77FD3 /* Foundation.framework */; };
 		D0A6F71F181D009A00C77FD3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6F71E181D009A00C77FD3 /* CoreGraphics.framework */; };
@@ -100,9 +107,16 @@
 		D007B8861825A47900B37631 /* StarTwinkler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarTwinkler.h; sourceTree = "<group>"; };
 		D007B8871825A47900B37631 /* StarTwinkler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarTwinkler.m; sourceTree = "<group>"; };
 		D007B889182760A000B37631 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		D007B88B182D720A00B37631 /* StarBackground_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarBackground_iPad.png; sourceTree = "<group>"; };
+		D00D37861832595200167C8B /* RedButton3DNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedButton3DNew.png; sourceTree = "<group>"; };
+		D00D37871832595200167C8B /* RedButton3DNew@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RedButton3DNew@2x.png"; sourceTree = "<group>"; };
 		D012170D182D741A004E4769 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		D012170F182D7431004E4769 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		D0121711182EB4A5004E4769 /* StarBackground_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarBackground_iPad.png; sourceTree = "<group>"; };
+		D0121713182EBA99004E4769 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D0121719182EBCC0004E4769 /* fireEffect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fireEffect.mp3; sourceTree = "<group>"; };
+		D012171A182EBCC0004E4769 /* GameOver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GameOver.mp3; sourceTree = "<group>"; };
+		D012171B182EBCC0004E4769 /* LevelComplete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LevelComplete.mp3; sourceTree = "<group>"; };
+		D012171C182EBCC0004E4769 /* loop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = loop.mp3; sourceTree = "<group>"; };
 		D0A6F717181D009A00C77FD3 /* MarbleCraze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarbleCraze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A6F71A181D009A00C77FD3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D0A6F71C181D009A00C77FD3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -171,6 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0121714182EBA99004E4769 /* AVFoundation.framework in Frameworks */,
 				D0A6F74F181D022800C77FD3 /* libz.dylib in Frameworks */,
 				D0A6F71B181D009A00C77FD3 /* UIKit.framework in Frameworks */,
 				D0A6F71D181D009A00C77FD3 /* Foundation.framework in Frameworks */,
@@ -211,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				D0A6F74E181D022800C77FD3 /* libz.dylib */,
+				D0121713182EBA99004E4769 /* AVFoundation.framework */,
 				D0A6F71A181D009A00C77FD3 /* UIKit.framework */,
 				D0A6F71C181D009A00C77FD3 /* Foundation.framework */,
 				D0A6F71E181D009A00C77FD3 /* CoreGraphics.framework */,
@@ -255,6 +271,10 @@
 		D0A6F721181D009A00C77FD3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D0121719182EBCC0004E4769 /* fireEffect.mp3 */,
+				D012171A182EBCC0004E4769 /* GameOver.mp3 */,
+				D012171B182EBCC0004E4769 /* LevelComplete.mp3 */,
+				D012171C182EBCC0004E4769 /* loop.mp3 */,
 				D0A6F75A181D053A00C77FD3 /* Images */,
 				D0A6F722181D009A00C77FD3 /* MarbleCraze-Info.plist */,
 				D0A6F723181D009A00C77FD3 /* InfoPlist.strings */,
@@ -276,7 +296,9 @@
 		D0A6F75A181D053A00C77FD3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				D007B88B182D720A00B37631 /* StarBackground_iPad.png */,
+				D00D37861832595200167C8B /* RedButton3DNew.png */,
+				D00D37871832595200167C8B /* RedButton3DNew@2x.png */,
+				D0121711182EB4A5004E4769 /* StarBackground_iPad.png */,
 				D007B87C182568A100B37631 /* marble1.png */,
 				D007B87D182568A100B37631 /* marble1@2x.png */,
 				D0A6F75D181D05ED00C77FD3 /* marble1i.png */,
@@ -421,12 +443,18 @@
 				D007B87B182566C000B37631 /* marble4@2x.png in Resources */,
 				D007B87E182568A200B37631 /* marble1.png in Resources */,
 				D007B87F182568A200B37631 /* marble1@2x.png in Resources */,
-				D007B88118256DCB00B37631 /* Default.png in Resources */,
 				D007B88518256DF000B37631 /* Default-568h@2x.png in Resources */,
-				D007B88A182760A000B37631 /* Default@2x.png in Resources */,
-				D007B88C182D720C00B37631 /* StarBackground_iPad.png in Resources */,
 				D012170E182D741A004E4769 /* Default-Portrait~ipad.png in Resources */,
 				D0121710182D7431004E4769 /* Default-Portrait@2x~ipad.png in Resources */,
+				D0121712182EB4A5004E4769 /* StarBackground_iPad.png in Resources */,
+				D012171D182EBCC0004E4769 /* fireEffect.mp3 in Resources */,
+				D012171E182EBCC0004E4769 /* GameOver.mp3 in Resources */,
+				D012171F182EBCC0004E4769 /* LevelComplete.mp3 in Resources */,
+				D0121720182EBCC0004E4769 /* loop.mp3 in Resources */,
+				D00D377C182EE73D00167C8B /* Default.png in Resources */,
+				D00D377D182EE74A00167C8B /* Default@2x.png in Resources */,
+				D00D37881832595200167C8B /* RedButton3DNew.png in Resources */,
+				D00D37891832595200167C8B /* RedButton3DNew@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

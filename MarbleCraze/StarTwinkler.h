@@ -17,5 +17,6 @@
 
 
 - (id)initWithParentView:(UIView *) parent;
++ (id)initWithParentView:(UIView *) parent;
 
 @end

@@ -10,7 +10,7 @@
 #import "MarbleController.h"
 #import "AboutController.h"
 #import "HighScoresController.h"
-#import "StarTwinkler.h"
+
 
 @interface GameController ()
 
@@ -18,7 +18,7 @@
 
 @implementation GameController
 
-@synthesize highScores, savedGame;
+@synthesize highScores, savedGame, twinkler;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -73,7 +73,7 @@
     if ([[self.savedGame allKeys] count] > 0) {
         NSInteger level = [[self.savedGame objectForKey:@"level"] integerValue];
         if (level >= 0) {
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"New Game" message:@"Continue saved game or start a new game?" delegate:self cancelButtonTitle:@"Continue" otherButtonTitles:@"New Game", nil];
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Play Marble Craze" message:@"Continue saved game or start a new game?" delegate:self cancelButtonTitle:@"Continue" otherButtonTitles:@"New Game", nil];
             [av show];
             return;
         }
@@ -107,16 +107,21 @@
     self.highScores = [NSMutableDictionary dictionaryWithDictionary:[defaults dictionaryForKey:@"MarbleCrazeHighScores"]];
 }
 
+- (void)updateSavedGame
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.savedGame = [NSMutableDictionary dictionaryWithDictionary:[defaults dictionaryForKey:@"MarbleCrazeSavedGame"]];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    StarTwinkler *twinkler = [[StarTwinkler alloc] initWithParentView:self.view];
+    self.twinkler = [StarTwinkler initWithParentView:self.view];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.savedGame = [NSMutableDictionary dictionaryWithDictionary:[defaults dictionaryForKey:@"MarbleCrazeSavedGame"]];
-    
+    [self updateSavedGame];
     [self updateHighScores];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateHighScores) name:@"UpdateHighScoresNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSavedGame) name:@"UpdateSavedGameNotification" object:nil];
     // Do any additional setup after loading the view from its nib.
 }
 

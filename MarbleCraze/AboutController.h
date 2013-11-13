@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StarTwinkler.h"
 
 @interface AboutController : UIViewController
 
+@property (nonatomic, retain) StarTwinkler *twinkler;
 
 @end

@@ -12,6 +12,12 @@
 
 @synthesize parentView, starIdx, stars, starToggle;
 
++ (id)initWithParentView:(UIView *) parent
+{
+    StarTwinkler *twinkler = [[StarTwinkler alloc] initWithParentView:parent];
+    return twinkler;
+}
+
 - (id)initWithParentView:(UIView *) parent
 {
     self = [super init];
@@ -134,13 +140,10 @@
         CGPoint origin = [self newStarLocation];
         CGFloat size = 3.0;
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            size = 5.0;
+            size = 4.0;
         }
         if (!self.starToggle) {
             size = 2.0;
-            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-                size = 3.0;
-            }
             [self setStarToggle:YES];
         }
         else {
