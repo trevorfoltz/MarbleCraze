@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "StarTwinkler.h"
 
 @interface MarbleController : UIViewController <UIAlertViewDelegate, AVAudioPlayerDelegate>
 
@@ -20,6 +21,8 @@
 @property (nonatomic, retain) IBOutlet UILabel *score0, *score1, *score2, *score3;
 @property (nonatomic, retain) NSMutableDictionary *highScores, *savedGame;
 @property (nonatomic, retain) AVAudioPlayer *firePlayer, *gameOverPlayer, *roundOverPlayer, *loopPlayer;
+
+@property (nonatomic, retain) StarTwinkler *twinkler;
 
 @property (nonatomic, retain) IBOutlet UIButton *pauseButton;
 

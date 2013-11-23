@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "StarTwinkler.h"
 
 @interface HighScoresController : UIViewController <UITextFieldDelegate>
 
@@ -23,5 +24,7 @@
 @property (nonatomic, retain) CALayer *theLayer;
 
 @property (nonatomic, retain) UIView *shiftView;
+
+@property (nonatomic, retain) StarTwinkler *twinkler;
 
 @end

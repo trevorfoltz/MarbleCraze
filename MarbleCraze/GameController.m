@@ -29,6 +29,14 @@
     return self;
 }
 
+- (BOOL)shouldAutorotate
+{
+    if (self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
+        return YES;
+    }
+    return NO;
+}
+
 - (IBAction)aboutGame:(id)sender
 {
     AboutController *ab;
@@ -62,6 +70,11 @@
     if (buttonIndex > 0) {
         [self.savedGame setObject:[NSNumber numberWithInteger:0] forKey:@"level"];
         [self.savedGame setObject:[NSNumber numberWithInteger:0] forKey:@"score"];
+        [self.savedGame removeObjectForKey:@"col0"];
+        [self.savedGame removeObjectForKey:@"col1"];
+        [self.savedGame removeObjectForKey:@"col2"];
+        [self.savedGame removeObjectForKey:@"col3"];
+        [self.savedGame removeObjectForKey:@"col4"];
         [[NSUserDefaults standardUserDefaults] setObject:[NSDictionary dictionaryWithDictionary:self.savedGame] forKey:@"MarbleCrazeSavedGame"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }

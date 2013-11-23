@@ -7,7 +7,6 @@
 //
 
 #import "HighScoresController.h"
-#import "StarTwinkler.h"
 
 @interface HighScoresController ()
 
@@ -16,7 +15,7 @@
 @implementation HighScoresController
 
 @synthesize highScores, newHighScore, justViewing, txtPlayer, touchCount, shiftView;
-@synthesize score2Edit;
+@synthesize score2Edit, twinkler;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -59,7 +58,7 @@
 - (void)setupIpad
 {
     UIView *separator1 = [[UIView alloc] initWithFrame:CGRectMake(0, 100, 768, 10)];
-    separator1.backgroundColor = [UIColor blueColor];
+    separator1.backgroundColor = [UIColor redColor];
     [self.view addSubview:separator1];
     UIView *separator2 = [[UIView alloc] initWithFrame:CGRectMake(0, 103, 768, 7)];
     separator2.backgroundColor = [UIColor darkGrayColor];
@@ -97,6 +96,7 @@
             self.txtPlayer.delegate = self;
             self.txtPlayer.backgroundColor = [UIColor clearColor];
             self.txtPlayer.textColor = [UIColor lightGrayColor];
+            self.txtPlayer.autocapitalizationType = UITextAutocapitalizationTypeWords;
             self.txtPlayer.font = [UIFont fontWithName:@"MarkerFelt-Wide" size:44];
             [self.shiftView addSubview:self.txtPlayer];
             [self.txtPlayer becomeFirstResponder];
@@ -132,7 +132,7 @@
 - (void)setupIphone
 {
     UIView *separator1 = [[UIView alloc] initWithFrame:CGRectMake(0, 60, 320, 5)];
-    separator1.backgroundColor = [UIColor lightGrayColor];
+    separator1.backgroundColor = [UIColor redColor];
     [self.view addSubview:separator1];
     UIView *separator2 = [[UIView alloc] initWithFrame:CGRectMake(0, 61, 320, 4)];
     separator2.backgroundColor = [UIColor darkGrayColor];
@@ -166,6 +166,7 @@
         if (player.length == 0) {
             self.score2Edit = i;
             self.txtPlayer = [[UITextField alloc] initWithFrame:CGRectMake(70, 30+(i*30), 160, 25)];
+            self.txtPlayer.autocapitalizationType = UITextAutocapitalizationTypeWords;
             self.txtPlayer.delegate = self;
             self.txtPlayer.backgroundColor = [UIColor clearColor];
             self.txtPlayer.textColor = [UIColor lightGrayColor];
@@ -205,7 +206,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    StarTwinkler *twinkler = [[StarTwinkler alloc] initWithParentView:self.view];
+    self.twinkler = [StarTwinkler initWithParentView:self.view];
     self.justViewing = YES;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {

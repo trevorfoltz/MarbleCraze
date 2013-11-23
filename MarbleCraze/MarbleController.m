@@ -9,7 +9,6 @@
 #import "MarbleController.h"
 #import "HighScoresController.h"
 #import "Marble.h"
-#import "StarTwinkler.h"
 
 @interface MarbleController ()
 
@@ -23,7 +22,7 @@
 @synthesize score0, score1, score2, score3, scoreTotal;
 @synthesize gameOverCnt, gameTimer, gameCount;
 @synthesize firePlayer, gameOverPlayer, roundOverPlayer, loopPlayer;
-@synthesize pauseButton;
+@synthesize pauseButton, twinkler;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,6 +31,14 @@
         // Custom initialization
     }
     return self;
+}
+
+- (BOOL)shouldAutorotate
+{
+    if (self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
+        return YES;
+    }
+    return NO;
 }
 
 - (int)getRandomMarble
@@ -195,16 +202,20 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     self.gameCount = 0;
+    [self setGridFull:NO];
+    NSInteger mc = [self countMarbles];
     if (self.loopPlayer != nil) {
         [self.loopPlayer prepareToPlay];
         [self.loopPlayer play];
     }
+    [self setIsPaused:NO];
     
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self.loopPlayer stop];
+    [self setIsPaused:YES];
     
 }
 
@@ -226,11 +237,42 @@
         [self setupIphone];
     }
     //  Populate columnDicts...
-    [self populateColumn:0 withMarbles:self.numRows];
-    [self populateColumn:1 withMarbles:self.numRows];
-    [self populateColumn:2 withMarbles:self.numRows];
-    [self populateColumn:3 withMarbles:self.numRows];
-    [self populateColumn:4 withMarbles:self.numRows];
+    if (!self.betweenRounds && [[self.savedGame allKeys] containsObject:@"col0"]) {
+        NSNumber *colCount = (NSNumber *)[self.savedGame objectForKey:@"col0"];
+        [self populateColumn:0 withMarbles:[colCount integerValue] + 1];
+    }
+    else {
+        [self populateColumn:0 withMarbles:self.numRows];
+    }
+    
+    if (!self.betweenRounds && [[self.savedGame allKeys] containsObject:@"col1"]) {
+        NSNumber *colCount = (NSNumber *)[self.savedGame objectForKey:@"col1"];
+        [self populateColumn:1 withMarbles:[colCount integerValue] + 1];
+    }
+    else {
+        [self populateColumn:1 withMarbles:self.numRows];
+    }
+    if (!self.betweenRounds && [[self.savedGame allKeys] containsObject:@"col2"]) {
+        NSNumber *colCount = (NSNumber *)[self.savedGame objectForKey:@"col2"];
+        [self populateColumn:2 withMarbles:[colCount integerValue] + 1];
+    }
+    else {
+        [self populateColumn:2 withMarbles:self.numRows];
+    }
+    if (!self.betweenRounds && [[self.savedGame allKeys] containsObject:@"col3"]) {
+        NSNumber *colCount = (NSNumber *)[self.savedGame objectForKey:@"col3"];
+        [self populateColumn:3 withMarbles:[colCount integerValue] + 1];
+    }
+    else {
+        [self populateColumn:3 withMarbles:self.numRows];
+    }
+    if (!self.betweenRounds && [[self.savedGame allKeys] containsObject:@"col4"]) {
+        NSNumber *colCount = (NSNumber *)[self.savedGame objectForKey:@"col4"];
+        [self populateColumn:4 withMarbles:[colCount integerValue] + 1];
+    }
+    else {
+        [self populateColumn:4 withMarbles:self.numRows];
+    }
     
     for (int i = -3; i<8; i++) {
         int marbleIdx = [self getRandomMarble];
@@ -240,6 +282,7 @@
         [self.view addSubview:aMarble];
         [self.rowDict setObject:aMarble forKey:[NSString stringWithFormat:@"%d", i]];
     }
+    [self setBetweenRounds:NO];
 }
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
@@ -253,7 +296,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    StarTwinkler *twinkler = [[StarTwinkler alloc] initWithParentView:self.view];
+    self.twinkler = [StarTwinkler initWithParentView:self.view];
     
     NSURL *roundOverURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"LevelComplete" ofType:@"mp3"]];
 	NSError *error;
@@ -319,7 +362,6 @@
     [self.view addGestureRecognizer:swipeUp];
     
     [self performSelector:@selector(addMarble) withObject:nil afterDelay:1.5];
-    self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateGameTime) userInfo:nil repeats:YES];
 }
 
 //  Determines how many marbles are above the middle row for a column.
@@ -695,6 +737,121 @@
     
 }
 
+
+- (NSInteger)getShortestColumnAbove
+{
+    NSInteger retVal = 0;
+    NSInteger tempInt = 10;
+    NSInteger colCount = 0;
+    for (NSString *key in [self.columnDict0 allKeys]) {
+        if ([key integerValue] < 0) {
+            colCount++;
+        }
+    }
+    if (colCount < tempInt) {
+        tempInt = colCount;
+        retVal = 0;
+    }
+    colCount = 0;
+    for (NSString *key in [self.columnDict1 allKeys]) {
+        if ([key integerValue] < 0) {
+            colCount++;
+        }
+    }
+    if (colCount < tempInt) {
+        tempInt = colCount;
+        retVal = 1;
+    }
+    colCount = 0;
+    for (NSString *key in [self.columnDict2 allKeys]) {
+        if ([key integerValue] < 0) {
+            colCount++;
+        }
+    }
+    if (colCount < tempInt) {
+        tempInt = colCount;
+        retVal = 2;
+    }
+    colCount = 0;
+    for (NSString *key in [self.columnDict3 allKeys]) {
+        if ([key integerValue] < 0) {
+            colCount++;
+        }
+    }
+    if (colCount < tempInt) {
+        tempInt = colCount;
+        retVal = 3;
+    }
+    colCount = 0;
+    for (NSString *key in [self.columnDict4 allKeys]) {
+        if ([key integerValue] < 0) {
+            colCount++;
+        }
+    }
+    if (colCount < tempInt) {
+        tempInt = colCount;
+        retVal = 4;
+    }
+    return retVal;
+}
+
+- (NSInteger)getShortestColumnBelow
+{
+    NSInteger retVal = 0;
+    NSInteger tempInt = 10;
+    NSInteger colCount = 0;
+    for (NSString *key in [self.columnDict0 allKeys]) {
+        if ([key integerValue] > 0) {
+            colCount++;
+        }
+    }
+    if (colCount < tempInt) {
+        tempInt = colCount;
+        retVal = 0;
+    }
+    colCount = 0;
+    for (NSString *key in [self.columnDict1 allKeys]) {
+        if ([key integerValue] > 0) {
+            colCount++;
+        }
+    }
+    if (colCount < tempInt) {
+        tempInt = colCount;
+        retVal = 1;
+    }
+    colCount = 0;
+    for (NSString *key in [self.columnDict2 allKeys]) {
+        if ([key integerValue] > 0) {
+            colCount++;
+        }
+    }
+    if (colCount < tempInt) {
+        tempInt = colCount;
+        retVal = 2;
+    }
+    colCount = 0;
+    for (NSString *key in [self.columnDict3 allKeys]) {
+        if ([key integerValue] > 0) {
+            colCount++;
+        }
+    }
+    if (colCount < tempInt) {
+        tempInt = colCount;
+        retVal = 3;
+    }
+    colCount = 0;
+    for (NSString *key in [self.columnDict4 allKeys]) {
+        if ([key integerValue] > 0) {
+            colCount++;
+        }
+    }
+    if (colCount < tempInt) {
+        tempInt = colCount;
+        retVal = 4;
+    }
+    return retVal;
+}
+
 - (int)getShortColumn
 {
     int defaultColumn = [self getRandomColumn];
@@ -883,6 +1040,36 @@
     self.savedGame = [NSMutableDictionary dictionaryWithCapacity:1];
     [self.savedGame setObject:[NSNumber numberWithInteger:level] forKey:@"level"];
     [self.savedGame setObject:[NSNumber numberWithInteger:score] forKey:@"score"];
+    if ([self.columnDict0 count] / 2 > 0) {
+        [self.savedGame setObject:[NSNumber numberWithInteger:[self.columnDict0 count] / 2] forKey:@"col0"];
+    }
+    else {
+        [self.savedGame setObject:[NSNumber numberWithInteger:1] forKey:@"col0"];
+    }
+    if ([self.columnDict1 count] / 2 > 0) {
+        [self.savedGame setObject:[NSNumber numberWithInteger:[self.columnDict1 count] / 2] forKey:@"col1"];
+    }
+    else {
+        [self.savedGame setObject:[NSNumber numberWithInteger:1] forKey:@"col1"];
+    }
+    if ([self.columnDict2 count] / 2 > 0) {
+        [self.savedGame setObject:[NSNumber numberWithInteger:[self.columnDict2 count] / 2] forKey:@"col2"];
+    }
+    else {
+        [self.savedGame setObject:[NSNumber numberWithInteger:1] forKey:@"col2"];
+    }
+    if ([self.columnDict3 count] / 2 > 0) {
+        [self.savedGame setObject:[NSNumber numberWithInteger:[self.columnDict3 count] / 2] forKey:@"col3"];
+    }
+    else {
+        [self.savedGame setObject:[NSNumber numberWithInteger:1] forKey:@"col3"];
+    }
+    if ([self.columnDict4 count] / 2 > 0) {
+        [self.savedGame setObject:[NSNumber numberWithInteger:[self.columnDict4 count] / 2] forKey:@"col4"];
+    }
+    else {
+        [self.savedGame setObject:[NSNumber numberWithInteger:1] forKey:@"col4"];
+    }
     [[NSUserDefaults standardUserDefaults] setObject:[NSDictionary dictionaryWithDictionary:self.savedGame] forKey:@"MarbleCrazeSavedGame"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateSavedGameNotification" object:nil];
@@ -894,10 +1081,9 @@
         if (buttonIndex == 0) {  // Continue.
             [self clearMarbles];
             self.scoreTotal = 0;
-            [self setBetweenRounds:NO];
             [self setAddFaster:NO];
             [self setGameCount:0];
-            [self performSelector:@selector(addMarble) withObject:nil afterDelay:1.5];
+            [self performSelector:@selector(addMarble) withObject:nil afterDelay:3.0];
         }
         else {  //  Save
             [self saveGame:self.gameLevel andScore:self.scoreTotal];
@@ -914,85 +1100,147 @@
     }
 }
 
+
+- (void)addMarbles
+{
+    NSInteger loCol;
+    NSInteger hiCol;
+    NSInteger hiColumnKey, loColumnKey;
+    hiCol = [self getShortestColumnBelow];
+    loCol = [self getShortestColumnAbove];
+    switch (hiCol) {
+        case 0:
+            hiColumnKey = [self highestColumnKey:self.columnDict0] + 1;
+            [self addRandomMarbleToColumn:0 withKey:hiColumnKey];
+            break;
+        case 1:
+            hiColumnKey = [self highestColumnKey:self.columnDict1] + 1;
+            [self addRandomMarbleToColumn:1 withKey:hiColumnKey];
+            break;
+        case 2:
+            hiColumnKey = [self highestColumnKey:self.columnDict2] + 1;
+            [self addRandomMarbleToColumn:2 withKey:hiColumnKey];
+            break;
+        case 3:
+            hiColumnKey = [self highestColumnKey:self.columnDict3] + 1;
+            [self addRandomMarbleToColumn:3 withKey:hiColumnKey];
+            break;
+        case 4:
+            hiColumnKey = [self highestColumnKey:self.columnDict4] + 1;
+            [self addRandomMarbleToColumn:4 withKey:hiColumnKey];
+            break;
+    }
+    
+    switch (loCol) {
+        case 0:
+            loColumnKey = [self lowestColumnKey:self.columnDict0] - 1;
+            [self addRandomMarbleToColumn:0 withKey:loColumnKey];
+            break;
+        case 1:
+            loColumnKey = [self lowestColumnKey:self.columnDict1] - 1;
+            [self addRandomMarbleToColumn:1 withKey:loColumnKey];
+            break;
+        case 2:
+            loColumnKey = [self lowestColumnKey:self.columnDict2] - 1;
+            [self addRandomMarbleToColumn:2 withKey:loColumnKey];
+            break;
+        case 3:
+            loColumnKey = [self lowestColumnKey:self.columnDict3] - 1;
+            [self addRandomMarbleToColumn:3 withKey:loColumnKey];
+            break;
+        case 4:
+            loColumnKey = [self lowestColumnKey:self.columnDict4] - 1;
+            [self addRandomMarbleToColumn:4 withKey:loColumnKey];
+            break;
+    }
+}
+
+
 - (void)addMarble
 {
-    if (!self.hasSwiped && !self.betweenRounds) {
+    if (!self.hasSwiped && !self.betweenRounds && !self.isPaused && !self.gridFull) {
         int shortColumn = [self getShortColumn];
         NSInteger columnKey;
         NSInteger marblesAbove;
         NSInteger marblesBelow;
         
-        switch (shortColumn) {
-            case 0:
-                marblesAbove = [self marblesAboveForColumn:self.columnDict0];
-                marblesBelow = [self marblesBelowForColumn:self.columnDict0];
-                
-                if ([self marblesBelowForColumn:self.columnDict0] < [self marblesAboveForColumn:self.columnDict0]) {
-                    columnKey = [self highestColumnKey:self.columnDict0] + 1;
-                }
-                else {
-                    columnKey = [self lowestColumnKey:self.columnDict0] - 1;
-                }
-                [self addRandomMarbleToColumn:0 withKey:columnKey];
-                break;
-            case 1:
-                marblesAbove = [self marblesAboveForColumn:self.columnDict1];
-                marblesBelow = [self marblesBelowForColumn:self.columnDict1];
-                if ([self marblesBelowForColumn:self.columnDict1] < [self marblesAboveForColumn:self.columnDict1]) {
-                    columnKey = [self highestColumnKey:self.columnDict1] + 1;
-                }
-                else {
-                    columnKey = [self lowestColumnKey:self.columnDict1] - 1;
-                }
-                [self addRandomMarbleToColumn:1 withKey:columnKey];
-                break;
-            case 2:
-                marblesAbove = [self marblesAboveForColumn:self.columnDict2];
-                marblesBelow = [self marblesBelowForColumn:self.columnDict2];
-                if ([self marblesBelowForColumn:self.columnDict2] < [self marblesAboveForColumn:self.columnDict2]) {
-                    columnKey = [self highestColumnKey:self.columnDict2] + 1;
-                }
-                else {
-                    columnKey = [self lowestColumnKey:self.columnDict2] - 1;
-                }
-                [self addRandomMarbleToColumn:2 withKey:columnKey];
-                break;
-            case 3:
-                marblesAbove = [self marblesAboveForColumn:self.columnDict3];
-                marblesBelow = [self marblesBelowForColumn:self.columnDict3];
-                if ([self marblesBelowForColumn:self.columnDict3] < [self marblesAboveForColumn:self.columnDict3]) {
-                    columnKey = [self highestColumnKey:self.columnDict3] + 1;
-                }
-                else {
-                    columnKey = [self lowestColumnKey:self.columnDict3] - 1;
-                }
-                [self addRandomMarbleToColumn:3 withKey:columnKey];
-                break;
-            case 4:
-                marblesAbove = [self marblesAboveForColumn:self.columnDict4];
-                marblesBelow = [self marblesBelowForColumn:self.columnDict4];
-                if ([self marblesBelowForColumn:self.columnDict4] < [self marblesAboveForColumn:self.columnDict4]) {
-                    columnKey = [self highestColumnKey:self.columnDict4] + 1;
-                }
-                else {
-                    columnKey = [self lowestColumnKey:self.columnDict4] - 1;
-                }
-                [self addRandomMarbleToColumn:4 withKey:columnKey];
-                break;
+        if (self.addFaster) {
+            [self addMarbles];
+        }
+        else {
+            switch (shortColumn) {
+                case 0:
+                    marblesAbove = [self marblesAboveForColumn:self.columnDict0];
+                    marblesBelow = [self marblesBelowForColumn:self.columnDict0];
+                    
+                    if ([self marblesBelowForColumn:self.columnDict0] < [self marblesAboveForColumn:self.columnDict0]) {
+                        columnKey = [self highestColumnKey:self.columnDict0] + 1;
+                    }
+                    else {
+                        columnKey = [self lowestColumnKey:self.columnDict0] - 1;
+                    }
+                    [self addRandomMarbleToColumn:0 withKey:columnKey];
+                    break;
+                case 1:
+                    marblesAbove = [self marblesAboveForColumn:self.columnDict1];
+                    marblesBelow = [self marblesBelowForColumn:self.columnDict1];
+                    if ([self marblesBelowForColumn:self.columnDict1] < [self marblesAboveForColumn:self.columnDict1]) {
+                        columnKey = [self highestColumnKey:self.columnDict1] + 1;
+                    }
+                    else {
+                        columnKey = [self lowestColumnKey:self.columnDict1] - 1;
+                    }
+                    [self addRandomMarbleToColumn:1 withKey:columnKey];
+                    break;
+                case 2:
+                    marblesAbove = [self marblesAboveForColumn:self.columnDict2];
+                    marblesBelow = [self marblesBelowForColumn:self.columnDict2];
+                    if ([self marblesBelowForColumn:self.columnDict2] < [self marblesAboveForColumn:self.columnDict2]) {
+                        columnKey = [self highestColumnKey:self.columnDict2] + 1;
+                    }
+                    else {
+                        columnKey = [self lowestColumnKey:self.columnDict2] - 1;
+                    }
+                    [self addRandomMarbleToColumn:2 withKey:columnKey];
+                    break;
+                case 3:
+                    marblesAbove = [self marblesAboveForColumn:self.columnDict3];
+                    marblesBelow = [self marblesBelowForColumn:self.columnDict3];
+                    if ([self marblesBelowForColumn:self.columnDict3] < [self marblesAboveForColumn:self.columnDict3]) {
+                        columnKey = [self highestColumnKey:self.columnDict3] + 1;
+                    }
+                    else {
+                        columnKey = [self lowestColumnKey:self.columnDict3] - 1;
+                    }
+                    [self addRandomMarbleToColumn:3 withKey:columnKey];
+                    break;
+                case 4:
+                    marblesAbove = [self marblesAboveForColumn:self.columnDict4];
+                    marblesBelow = [self marblesBelowForColumn:self.columnDict4];
+                    if ([self marblesBelowForColumn:self.columnDict4] < [self marblesAboveForColumn:self.columnDict4]) {
+                        columnKey = [self highestColumnKey:self.columnDict4] + 1;
+                    }
+                    else {
+                        columnKey = [self lowestColumnKey:self.columnDict4] - 1;
+                    }
+                    [self addRandomMarbleToColumn:4 withKey:columnKey];
+                    break;
+            }
         }
     }
     
     NSInteger marbleCount = [self countMarbles];
     
-    if (marbleCount < 20) {
+    if (marbleCount < 25) {
         [self setAddFaster:YES];
     }
-    else if (marbleCount > 49) {
+    else if (marbleCount > 35) {
+        [self setAddFaster:NO];
+    }
+    
+    if (marbleCount > 49) {
         [self setGridFull:YES];
         self.marbleTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(gameMaybeOver) userInfo:nil repeats:YES];
-    }
-    else if (marbleCount > 30) {
-        [self setAddFaster:NO];
     }
     
     if (!self.gridFull && !self.betweenRounds && !self.isPaused) {
@@ -1117,39 +1365,55 @@
     }    
 }
 
+- (void)moveMarbleToCenter:(Marble *) marble
+{
+    [UIView animateWithDuration:2.0 animations:^{
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            marble.center = CGPointMake(400, 540);
+        }
+        else {
+            marble.center = CGPointMake(160, 230);
+        }
+    } completion:^(BOOL completed){
+        [marble removeFromSuperview];
+    }];
+}
+
+
 - (void)clearMarbles
 {
     for (NSString *key0 in [self.columnDict0 allKeys]) {
         Marble *aMarble = (Marble *)[self.columnDict0 objectForKey:key0];
-        [aMarble removeFromSuperview];
+        [self moveMarbleToCenter:aMarble];
     }
     for (NSString *key1 in [self.columnDict1 allKeys]) {
         Marble *bMarble = (Marble *)[self.columnDict1 objectForKey:key1];
-        [bMarble removeFromSuperview];
+        [self moveMarbleToCenter:bMarble];
     }
     for (NSString *key2 in [self.columnDict2 allKeys]) {
         Marble *cMarble = (Marble *)[self.columnDict2 objectForKey:key2];
-        [cMarble removeFromSuperview];
+        [self moveMarbleToCenter:cMarble];
+
     }
     for (NSString *key3 in [self.columnDict3 allKeys]) {
         Marble *dMarble = (Marble *)[self.columnDict3 objectForKey:key3];
-        [dMarble removeFromSuperview];
+        [self moveMarbleToCenter:dMarble];
     }
     for (NSString *key4 in [self.columnDict4 allKeys]) {
         Marble *eMarble = (Marble *)[self.columnDict4 objectForKey:key4];
-        [eMarble removeFromSuperview];
+        [self moveMarbleToCenter:eMarble];
     }
     for (NSString *rowKey in [self.rowDict allKeys]) {
         Marble *rowMarble = (Marble *)[self.rowDict objectForKey:rowKey];
-        [rowMarble removeFromSuperview];
+        [self moveMarbleToCenter:rowMarble];
     }
-    [self.columnDict0 performSelector:@selector(removeAllObjects) withObject:nil afterDelay:0.4];
-    [self.columnDict1 performSelector:@selector(removeAllObjects) withObject:nil afterDelay:0.4];
-    [self.columnDict2 performSelector:@selector(removeAllObjects) withObject:nil afterDelay:0.4];
-    [self.columnDict3 performSelector:@selector(removeAllObjects) withObject:nil afterDelay:0.4];
-    [self.columnDict4 performSelector:@selector(removeAllObjects) withObject:nil afterDelay:0.4];
-    [self.rowDict performSelector:@selector(removeAllObjects) withObject:nil afterDelay:0.4];
-    [self performSelector:@selector(populateMarbles) withObject:nil afterDelay:1.0];
+    [self.columnDict0 performSelector:@selector(removeAllObjects) withObject:nil afterDelay:2.4];
+    [self.columnDict1 performSelector:@selector(removeAllObjects) withObject:nil afterDelay:2.4];
+    [self.columnDict2 performSelector:@selector(removeAllObjects) withObject:nil afterDelay:2.4];
+    [self.columnDict3 performSelector:@selector(removeAllObjects) withObject:nil afterDelay:2.4];
+    [self.columnDict4 performSelector:@selector(removeAllObjects) withObject:nil afterDelay:2.4];
+    [self.rowDict performSelector:@selector(removeAllObjects) withObject:nil afterDelay:2.4];
+    [self performSelector:@selector(populateMarbles) withObject:nil afterDelay:2.5];
 }
 
 - (void)removeMarblesFromStart:(NSInteger) idx ofLength:(NSInteger) length
@@ -1168,9 +1432,11 @@
     }
     [self performSelector:@selector(replaceMarbles) withObject:nil afterDelay:0.5];
     self.scoreTotal += length;
+    self.gameCount += length;
     [self updateScoreLabel];
     
-    if (self.scoreTotal >= 200) {
+    if (self.gameCount >= 200) {
+        [self setGameCount:0];
         self.gameLevel++;
         self.scoreTotal -= 200;
         [self.marbleTimer invalidate];

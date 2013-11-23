@@ -15,6 +15,14 @@
 
 @implementation ViewController
 
+- (BOOL)shouldAutorotate
+{
+    if (self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
+        return YES;
+    }
+    return NO;
+}
+
 - (void)showGameController
 {
     GameController *gc;
