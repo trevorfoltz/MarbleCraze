@@ -85,6 +85,39 @@
 		D0A6F7B5181D77E300C77FD3 /* HighScoresController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F7B3181D77E200C77FD3 /* HighScoresController_iPad.xib */; };
 		D0A6F7BA181D780C00C77FD3 /* AboutController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F7B8181D780B00C77FD3 /* AboutController_iPhone.xib */; };
 		D0A6F7BF181D783100C77FD3 /* HighScoresController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F7BD181D783000C77FD3 /* HighScoresController_iPhone.xib */; };
+		D0C5339D1843BEC3003AF9B6 /* BigGradient768x104.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C5339C1843BEC3003AF9B6 /* BigGradient768x104.png */; };
+		D0C533AC1847BEAA003AF9B6 /* marblea1.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C5339E1847BEAA003AF9B6 /* marblea1.png */; };
+		D0C533AD1847BEAA003AF9B6 /* marblea1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C5339F1847BEAA003AF9B6 /* marblea1@2x.png */; };
+		D0C533B21847BEAA003AF9B6 /* marblea4.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533A41847BEAA003AF9B6 /* marblea4.png */; };
+		D0C533B31847BEAA003AF9B6 /* marblea4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533A51847BEAA003AF9B6 /* marblea4@2x.png */; };
+		D0C533B41847BEAA003AF9B6 /* marblea5.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533A61847BEAA003AF9B6 /* marblea5.png */; };
+		D0C533B51847BEAA003AF9B6 /* marblea5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533A71847BEAA003AF9B6 /* marblea5@2x.png */; };
+		D0C533B61847BEAA003AF9B6 /* marblea6.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533A81847BEAA003AF9B6 /* marblea6.png */; };
+		D0C533B71847BEAA003AF9B6 /* marblea6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533A91847BEAA003AF9B6 /* marblea6@2x.png */; };
+		D0C533B81847BEAA003AF9B6 /* marblea7.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533AA1847BEAA003AF9B6 /* marblea7.png */; };
+		D0C533B91847BEAA003AF9B6 /* marblea7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533AB1847BEAA003AF9B6 /* marblea7@2x.png */; };
+		D0C533CC1847C40C003AF9B6 /* marblea1i.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533BA1847C40B003AF9B6 /* marblea1i.png */; };
+		D0C533CD1847C40C003AF9B6 /* marblea1i@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533BB1847C40B003AF9B6 /* marblea1i@2x.png */; };
+		D0C533CE1847C40C003AF9B6 /* marblea2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533BC1847C40B003AF9B6 /* marblea2.png */; };
+		D0C533CF1847C40C003AF9B6 /* marblea2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533BD1847C40B003AF9B6 /* marblea2@2x.png */; };
+		D0C533D01847C40C003AF9B6 /* marblea2i.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533BE1847C40B003AF9B6 /* marblea2i.png */; };
+		D0C533D11847C40C003AF9B6 /* marblea2i@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533BF1847C40B003AF9B6 /* marblea2i@2x.png */; };
+		D0C533D41847C40C003AF9B6 /* marblea4i.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533C21847C40B003AF9B6 /* marblea4i.png */; };
+		D0C533D51847C40C003AF9B6 /* marblea4i@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533C31847C40B003AF9B6 /* marblea4i@2x.png */; };
+		D0C533D61847C40C003AF9B6 /* marblea5i.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533C41847C40B003AF9B6 /* marblea5i.png */; };
+		D0C533D71847C40C003AF9B6 /* marblea5i@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533C51847C40B003AF9B6 /* marblea5i@2x.png */; };
+		D0C533D81847C40C003AF9B6 /* marblea6i.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533C61847C40B003AF9B6 /* marblea6i.png */; };
+		D0C533D91847C40C003AF9B6 /* marblea6i@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533C71847C40B003AF9B6 /* marblea6i@2x.png */; };
+		D0C533DA1847C40C003AF9B6 /* marblea7i.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533C81847C40C003AF9B6 /* marblea7i.png */; };
+		D0C533DB1847C40C003AF9B6 /* marblea7i@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533C91847C40C003AF9B6 /* marblea7i@2x.png */; };
+		D0C533DC1847C40C003AF9B6 /* marblea8i.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533CA1847C40C003AF9B6 /* marblea8i.png */; };
+		D0C533DD1847C40C003AF9B6 /* marblea8i@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533CB1847C40C003AF9B6 /* marblea8i@2x.png */; };
+		D0C533E01847C4B6003AF9B6 /* marblea8.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533DE1847C4B5003AF9B6 /* marblea8.png */; };
+		D0C533E11847C4B6003AF9B6 /* marblea8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C533DF1847C4B5003AF9B6 /* marblea8@2x.png */; };
+		D0DBB52B184A687A00BE4385 /* marblea3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DBB527184A687A00BE4385 /* marblea3@2x.png */; };
+		D0DBB52C184A687A00BE4385 /* marblea3i.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DBB528184A687A00BE4385 /* marblea3i.png */; };
+		D0DBB52D184A687A00BE4385 /* marblea3i@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DBB529184A687A00BE4385 /* marblea3i@2x.png */; };
+		D0DBB52F184A68D900BE4385 /* marblea3.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DBB52E184A68D900BE4385 /* marblea3.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -178,6 +211,39 @@
 		D0A6F7B3181D77E200C77FD3 /* HighScoresController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HighScoresController_iPad.xib; sourceTree = "<group>"; };
 		D0A6F7B8181D780B00C77FD3 /* AboutController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutController_iPhone.xib; sourceTree = "<group>"; };
 		D0A6F7BD181D783000C77FD3 /* HighScoresController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HighScoresController_iPhone.xib; sourceTree = "<group>"; };
+		D0C5339C1843BEC3003AF9B6 /* BigGradient768x104.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigGradient768x104.png; sourceTree = "<group>"; };
+		D0C5339E1847BEAA003AF9B6 /* marblea1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marblea1.png; sourceTree = "<group>"; };
+		D0C5339F1847BEAA003AF9B6 /* marblea1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marblea1@2x.png"; sourceTree = "<group>"; };
+		D0C533A41847BEAA003AF9B6 /* marblea4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marblea4.png; sourceTree = "<group>"; };
+		D0C533A51847BEAA003AF9B6 /* marblea4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marblea4@2x.png"; sourceTree = "<group>"; };
+		D0C533A61847BEAA003AF9B6 /* marblea5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marblea5.png; sourceTree = "<group>"; };
+		D0C533A71847BEAA003AF9B6 /* marblea5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marblea5@2x.png"; sourceTree = "<group>"; };
+		D0C533A81847BEAA003AF9B6 /* marblea6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marblea6.png; sourceTree = "<group>"; };
+		D0C533A91847BEAA003AF9B6 /* marblea6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marblea6@2x.png"; sourceTree = "<group>"; };
+		D0C533AA1847BEAA003AF9B6 /* marblea7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marblea7.png; sourceTree = "<group>"; };
+		D0C533AB1847BEAA003AF9B6 /* marblea7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marblea7@2x.png"; sourceTree = "<group>"; };
+		D0C533BA1847C40B003AF9B6 /* marblea1i.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marblea1i.png; sourceTree = "<group>"; };
+		D0C533BB1847C40B003AF9B6 /* marblea1i@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marblea1i@2x.png"; sourceTree = "<group>"; };
+		D0C533BC1847C40B003AF9B6 /* marblea2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marblea2.png; sourceTree = "<group>"; };
+		D0C533BD1847C40B003AF9B6 /* marblea2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marblea2@2x.png"; sourceTree = "<group>"; };
+		D0C533BE1847C40B003AF9B6 /* marblea2i.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marblea2i.png; sourceTree = "<group>"; };
+		D0C533BF1847C40B003AF9B6 /* marblea2i@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marblea2i@2x.png"; sourceTree = "<group>"; };
+		D0C533C21847C40B003AF9B6 /* marblea4i.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marblea4i.png; sourceTree = "<group>"; };
+		D0C533C31847C40B003AF9B6 /* marblea4i@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marblea4i@2x.png"; sourceTree = "<group>"; };
+		D0C533C41847C40B003AF9B6 /* marblea5i.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marblea5i.png; sourceTree = "<group>"; };
+		D0C533C51847C40B003AF9B6 /* marblea5i@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marblea5i@2x.png"; sourceTree = "<group>"; };
+		D0C533C61847C40B003AF9B6 /* marblea6i.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marblea6i.png; sourceTree = "<group>"; };
+		D0C533C71847C40B003AF9B6 /* marblea6i@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marblea6i@2x.png"; sourceTree = "<group>"; };
+		D0C533C81847C40C003AF9B6 /* marblea7i.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marblea7i.png; sourceTree = "<group>"; };
+		D0C533C91847C40C003AF9B6 /* marblea7i@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marblea7i@2x.png"; sourceTree = "<group>"; };
+		D0C533CA1847C40C003AF9B6 /* marblea8i.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marblea8i.png; sourceTree = "<group>"; };
+		D0C533CB1847C40C003AF9B6 /* marblea8i@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marblea8i@2x.png"; sourceTree = "<group>"; };
+		D0C533DE1847C4B5003AF9B6 /* marblea8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marblea8.png; sourceTree = "<group>"; };
+		D0C533DF1847C4B5003AF9B6 /* marblea8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marblea8@2x.png"; sourceTree = "<group>"; };
+		D0DBB527184A687A00BE4385 /* marblea3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marblea3@2x.png"; sourceTree = "<group>"; };
+		D0DBB528184A687A00BE4385 /* marblea3i.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marblea3i.png; sourceTree = "<group>"; };
+		D0DBB529184A687A00BE4385 /* marblea3i@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marblea3i@2x.png"; sourceTree = "<group>"; };
+		D0DBB52E184A68D900BE4385 /* marblea3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marblea3.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,8 +319,8 @@
 				D0A6F7B2181D77E200C77FD3 /* HighScoresController.m */,
 				D0A6F7BD181D783000C77FD3 /* HighScoresController_iPhone.xib */,
 				D0A6F7B3181D77E200C77FD3 /* HighScoresController_iPad.xib */,
-				D0A6F793181D0BB200C77FD3 /* MarbleController.h */,
 				D0A6F794181D0BB200C77FD3 /* MarbleController.m */,
+				D0A6F793181D0BB200C77FD3 /* MarbleController.h */,
 				D0A6F795181D0BB200C77FD3 /* MarbleController_iPhone.xib */,
 				D0A6F79A181D0C3800C77FD3 /* MarbleController_iPad.xib */,
 				D0A6F732181D009A00C77FD3 /* ViewController.h */,
@@ -271,10 +337,7 @@
 		D0A6F721181D009A00C77FD3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D0121719182EBCC0004E4769 /* fireEffect.mp3 */,
-				D012171A182EBCC0004E4769 /* GameOver.mp3 */,
-				D012171B182EBCC0004E4769 /* LevelComplete.mp3 */,
-				D012171C182EBCC0004E4769 /* loop.mp3 */,
+				D0DBB5251848B5AF00BE4385 /* Sounds */,
 				D0A6F75A181D053A00C77FD3 /* Images */,
 				D0A6F722181D009A00C77FD3 /* MarbleCraze-Info.plist */,
 				D0A6F723181D009A00C77FD3 /* InfoPlist.strings */,
@@ -296,6 +359,39 @@
 		D0A6F75A181D053A00C77FD3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D0C5339E1847BEAA003AF9B6 /* marblea1.png */,
+				D0C5339F1847BEAA003AF9B6 /* marblea1@2x.png */,
+				D0C533BA1847C40B003AF9B6 /* marblea1i.png */,
+				D0C533BB1847C40B003AF9B6 /* marblea1i@2x.png */,
+				D0C533BC1847C40B003AF9B6 /* marblea2.png */,
+				D0C533BD1847C40B003AF9B6 /* marblea2@2x.png */,
+				D0C533BE1847C40B003AF9B6 /* marblea2i.png */,
+				D0C533BF1847C40B003AF9B6 /* marblea2i@2x.png */,
+				D0DBB52E184A68D900BE4385 /* marblea3.png */,
+				D0DBB527184A687A00BE4385 /* marblea3@2x.png */,
+				D0DBB528184A687A00BE4385 /* marblea3i.png */,
+				D0DBB529184A687A00BE4385 /* marblea3i@2x.png */,
+				D0C533A41847BEAA003AF9B6 /* marblea4.png */,
+				D0C533A51847BEAA003AF9B6 /* marblea4@2x.png */,
+				D0C533C21847C40B003AF9B6 /* marblea4i.png */,
+				D0C533C31847C40B003AF9B6 /* marblea4i@2x.png */,
+				D0C533A61847BEAA003AF9B6 /* marblea5.png */,
+				D0C533A71847BEAA003AF9B6 /* marblea5@2x.png */,
+				D0C533C41847C40B003AF9B6 /* marblea5i.png */,
+				D0C533C51847C40B003AF9B6 /* marblea5i@2x.png */,
+				D0C533A81847BEAA003AF9B6 /* marblea6.png */,
+				D0C533A91847BEAA003AF9B6 /* marblea6@2x.png */,
+				D0C533C61847C40B003AF9B6 /* marblea6i.png */,
+				D0C533C71847C40B003AF9B6 /* marblea6i@2x.png */,
+				D0C533C81847C40C003AF9B6 /* marblea7i.png */,
+				D0C533C91847C40C003AF9B6 /* marblea7i@2x.png */,
+				D0C533AA1847BEAA003AF9B6 /* marblea7.png */,
+				D0C533AB1847BEAA003AF9B6 /* marblea7@2x.png */,
+				D0C533DE1847C4B5003AF9B6 /* marblea8.png */,
+				D0C533DF1847C4B5003AF9B6 /* marblea8@2x.png */,
+				D0C533CA1847C40C003AF9B6 /* marblea8i.png */,
+				D0C533CB1847C40C003AF9B6 /* marblea8i@2x.png */,
+				D0C5339C1843BEC3003AF9B6 /* BigGradient768x104.png */,
 				D00D37861832595200167C8B /* RedButton3DNew.png */,
 				D00D37871832595200167C8B /* RedButton3DNew@2x.png */,
 				D0121711182EB4A5004E4769 /* StarBackground_iPad.png */,
@@ -339,6 +435,17 @@
 				D0A6F776181D05ED00C77FD3 /* StarBackground@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		D0DBB5251848B5AF00BE4385 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				D0121719182EBCC0004E4769 /* fireEffect.mp3 */,
+				D012171A182EBCC0004E4769 /* GameOver.mp3 */,
+				D012171B182EBCC0004E4769 /* LevelComplete.mp3 */,
+				D012171C182EBCC0004E4769 /* loop.mp3 */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -455,6 +562,39 @@
 				D00D377D182EE74A00167C8B /* Default@2x.png in Resources */,
 				D00D37881832595200167C8B /* RedButton3DNew.png in Resources */,
 				D00D37891832595200167C8B /* RedButton3DNew@2x.png in Resources */,
+				D0C5339D1843BEC3003AF9B6 /* BigGradient768x104.png in Resources */,
+				D0C533AC1847BEAA003AF9B6 /* marblea1.png in Resources */,
+				D0C533AD1847BEAA003AF9B6 /* marblea1@2x.png in Resources */,
+				D0C533B21847BEAA003AF9B6 /* marblea4.png in Resources */,
+				D0C533B31847BEAA003AF9B6 /* marblea4@2x.png in Resources */,
+				D0C533B41847BEAA003AF9B6 /* marblea5.png in Resources */,
+				D0C533B51847BEAA003AF9B6 /* marblea5@2x.png in Resources */,
+				D0C533B61847BEAA003AF9B6 /* marblea6.png in Resources */,
+				D0C533B71847BEAA003AF9B6 /* marblea6@2x.png in Resources */,
+				D0C533B81847BEAA003AF9B6 /* marblea7.png in Resources */,
+				D0C533B91847BEAA003AF9B6 /* marblea7@2x.png in Resources */,
+				D0C533CC1847C40C003AF9B6 /* marblea1i.png in Resources */,
+				D0C533CD1847C40C003AF9B6 /* marblea1i@2x.png in Resources */,
+				D0C533CE1847C40C003AF9B6 /* marblea2.png in Resources */,
+				D0C533CF1847C40C003AF9B6 /* marblea2@2x.png in Resources */,
+				D0C533D01847C40C003AF9B6 /* marblea2i.png in Resources */,
+				D0C533D11847C40C003AF9B6 /* marblea2i@2x.png in Resources */,
+				D0C533D41847C40C003AF9B6 /* marblea4i.png in Resources */,
+				D0C533D51847C40C003AF9B6 /* marblea4i@2x.png in Resources */,
+				D0C533D61847C40C003AF9B6 /* marblea5i.png in Resources */,
+				D0C533D71847C40C003AF9B6 /* marblea5i@2x.png in Resources */,
+				D0C533D81847C40C003AF9B6 /* marblea6i.png in Resources */,
+				D0C533D91847C40C003AF9B6 /* marblea6i@2x.png in Resources */,
+				D0C533DA1847C40C003AF9B6 /* marblea7i.png in Resources */,
+				D0C533DB1847C40C003AF9B6 /* marblea7i@2x.png in Resources */,
+				D0C533DC1847C40C003AF9B6 /* marblea8i.png in Resources */,
+				D0C533DD1847C40C003AF9B6 /* marblea8i@2x.png in Resources */,
+				D0C533E01847C4B6003AF9B6 /* marblea8.png in Resources */,
+				D0C533E11847C4B6003AF9B6 /* marblea8@2x.png in Resources */,
+				D0DBB52B184A687A00BE4385 /* marblea3@2x.png in Resources */,
+				D0DBB52C184A687A00BE4385 /* marblea3i.png in Resources */,
+				D0DBB52D184A687A00BE4385 /* marblea3i@2x.png in Resources */,
+				D0DBB52F184A68D900BE4385 /* marblea3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -61,12 +61,12 @@
     }
     for (int j = 1; j<count; j++) {
         int marbleIdx = [self getRandomMarble];
-        Marble *aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * cWidth) + startX, startY - (j * cWidth), mWidth, mWidth) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
+        Marble *aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * cWidth) + startX, startY - (j * cWidth), mWidth, mWidth) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
         aMarble.imageIdx = marbleIdx;
         aMarble.alpha = 0.6;
         [self.view addSubview:aMarble];
         marbleIdx = [self getRandomMarble];
-        Marble *bMarble = [[Marble alloc] initWithFrame:CGRectMake((column * cWidth) + startX, (j * cWidth) + startY, mWidth, mWidth) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
+        Marble *bMarble = [[Marble alloc] initWithFrame:CGRectMake((column * cWidth) + startX, (j * cWidth) + startY, mWidth, mWidth) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
         bMarble.imageIdx = marbleIdx;
         bMarble.alpha = 0.6;
         [self.view addSubview:bMarble];
@@ -145,16 +145,28 @@
 
 - (void)setupIpad
 {
+    
+    // Left and right borders
     UIView *hView = [[UIView alloc] initWithFrame:CGRectMake(196, 92, 2, 886)];
     hView.backgroundColor = [UIColor redColor];
     hView.alpha = 0.5;
     [self.view addSubview:hView];
-    
     UIView *iView = [[UIView alloc] initWithFrame:CGRectMake(596, 92, 2, 886)];
     iView.backgroundColor = [UIColor redColor];
     iView.alpha = 0.5;
     [self.view addSubview:iView];
     
+    //  Top border
+    UIView *bView = [[UIView alloc] initWithFrame:CGRectMake(0, 80, 768, 10)];
+    bView.backgroundColor = [UIColor redColor];
+    bView.alpha = 0.8;
+    [self.view addSubview:bView];
+    UIView *dView = [[UIView alloc] initWithFrame:CGRectMake(0, 90, 768, 2)];
+    dView.backgroundColor = [UIColor whiteColor];
+    dView.alpha = 0.8;
+    [self.view addSubview:dView];
+    
+    //  Middle row
     UIView *aView = [[UIView alloc] initWithFrame:CGRectMake(0, 496, 768, 80)];
     aView.backgroundColor = [UIColor redColor];
     aView.alpha = 0.3;
@@ -170,40 +182,27 @@
     gView.alpha = 0.8;
     [self.view addSubview:gView];
     
-    UIView *bView = [[UIView alloc] initWithFrame:CGRectMake(0, 80, 768, 10)];
-    bView.backgroundColor = [UIColor redColor];
-    bView.alpha = 0.8;
-    [self.view addSubview:bView];
     
+    //  Bottom border
     UIView *cView = [[UIView alloc] initWithFrame:CGRectMake(0, 980, 768, 10)];
     cView.backgroundColor = [UIColor redColor];
     cView.alpha = 0.8;
     [self.view addSubview:cView];
-    
-    UIView *dView = [[UIView alloc] initWithFrame:CGRectMake(0, 90, 768, 2)];
-    dView.backgroundColor = [UIColor whiteColor];
-    dView.alpha = 0.8;
-    [self.view addSubview:dView];
-    
     UIView *eView = [[UIView alloc] initWithFrame:CGRectMake(0, 978, 768, 2)];
     eView.backgroundColor = [UIColor whiteColor];
     eView.alpha = 0.8;
     [self.view addSubview:eView];
-    
-    
+
 }
 
 - (void)updateGameTime
 {
     self.gameCount++;
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     self.gameCount = 0;
-    [self setGridFull:NO];
-    NSInteger mc = [self countMarbles];
     if (self.loopPlayer != nil) {
         [self.loopPlayer prepareToPlay];
         [self.loopPlayer play];
@@ -237,7 +236,7 @@
         [self setupIphone];
     }
     //  Populate columnDicts...
-    if (!self.betweenRounds && [[self.savedGame allKeys] containsObject:@"col0"]) {
+    if (self.gameLevel >= 0 && !self.betweenRounds && [[self.savedGame allKeys] containsObject:@"col0"]) {
         NSNumber *colCount = (NSNumber *)[self.savedGame objectForKey:@"col0"];
         [self populateColumn:0 withMarbles:[colCount integerValue] + 1];
     }
@@ -245,28 +244,28 @@
         [self populateColumn:0 withMarbles:self.numRows];
     }
     
-    if (!self.betweenRounds && [[self.savedGame allKeys] containsObject:@"col1"]) {
+    if (self.gameLevel >= 0 && !self.betweenRounds && [[self.savedGame allKeys] containsObject:@"col1"]) {
         NSNumber *colCount = (NSNumber *)[self.savedGame objectForKey:@"col1"];
         [self populateColumn:1 withMarbles:[colCount integerValue] + 1];
     }
     else {
         [self populateColumn:1 withMarbles:self.numRows];
     }
-    if (!self.betweenRounds && [[self.savedGame allKeys] containsObject:@"col2"]) {
+    if (self.gameLevel >= 0 && !self.betweenRounds && [[self.savedGame allKeys] containsObject:@"col2"]) {
         NSNumber *colCount = (NSNumber *)[self.savedGame objectForKey:@"col2"];
         [self populateColumn:2 withMarbles:[colCount integerValue] + 1];
     }
     else {
         [self populateColumn:2 withMarbles:self.numRows];
     }
-    if (!self.betweenRounds && [[self.savedGame allKeys] containsObject:@"col3"]) {
+    if (self.gameLevel >= 0 && !self.betweenRounds && [[self.savedGame allKeys] containsObject:@"col3"]) {
         NSNumber *colCount = (NSNumber *)[self.savedGame objectForKey:@"col3"];
         [self populateColumn:3 withMarbles:[colCount integerValue] + 1];
     }
     else {
         [self populateColumn:3 withMarbles:self.numRows];
     }
-    if (!self.betweenRounds && [[self.savedGame allKeys] containsObject:@"col4"]) {
+    if (self.gameLevel >= 0 && !self.betweenRounds && [[self.savedGame allKeys] containsObject:@"col4"]) {
         NSNumber *colCount = (NSNumber *)[self.savedGame objectForKey:@"col4"];
         [self populateColumn:4 withMarbles:[colCount integerValue] + 1];
     }
@@ -276,13 +275,20 @@
     
     for (int i = -3; i<8; i++) {
         int marbleIdx = [self getRandomMarble];
-        Marble *aMarble = [[Marble alloc] initWithFrame:CGRectMake((i * cWidth) + xVal, yVal, mWidth, mWidth) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
+        Marble *aMarble = [[Marble alloc] initWithFrame:CGRectMake((i * cWidth) + xVal, yVal, mWidth, mWidth) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
         aMarble.imageIdx = marbleIdx;
         aMarble.alpha = 1.0;
         [self.view addSubview:aMarble];
         [self.rowDict setObject:aMarble forKey:[NSString stringWithFormat:@"%d", i]];
     }
     [self setBetweenRounds:NO];
+    if (self.gameLevel < 0) {
+        self.gameLevel = 0;
+    }
+    if (self.scoreTotal < 0) {
+        self.scoreTotal = 0;
+    }
+    [self updateScoreLabel];
 }
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
@@ -333,16 +339,13 @@
     
     self.numRows = 4;
     
-    [self populateMarbles];
-    
     if ([[self.savedGame allKeys] count] > 0) {
-        NSInteger score = [[self.savedGame objectForKey:@"score"] integerValue];
-        if (score >= 0) {
-            self.gameLevel = [[self.savedGame objectForKey:@"level"] integerValue];
-            self.scoreTotal = [[self.savedGame objectForKey:@"score"] integerValue];
-        }
+        self.gameLevel = [[self.savedGame objectForKey:@"level"] integerValue];
+        self.scoreTotal = [[self.savedGame objectForKey:@"score"] integerValue];
     }
     [self updateScoreLabel];
+    
+    [self populateMarbles];
     
     UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedLeft:)];
     swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
@@ -477,10 +480,10 @@
     Marble *aMarble;
     int marbleIdx = [self getRandomMarble];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        aMarble = [[Marble alloc] initWithFrame:CGRectMake((key * 80) + 200, 500, 72, 72) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
+        aMarble = [[Marble alloc] initWithFrame:CGRectMake((key * 80) + 200, 500, 72, 72) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
     }
     else {
-        aMarble = [[Marble alloc] initWithFrame:CGRectMake((key * 40) + 60, 210, 36, 36) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
+        aMarble = [[Marble alloc] initWithFrame:CGRectMake((key * 40) + 60, 210, 36, 36) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
     }
     
     aMarble.imageIdx = marbleIdx;
@@ -737,7 +740,6 @@
     
 }
 
-
 - (NSInteger)getShortestColumnAbove
 {
     NSInteger retVal = 0;
@@ -926,18 +928,18 @@
     Marble *aMarble;
     if (key < 0) {
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 80) + 200, 500 - (key * -80), 72, 72) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
+            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 80) + 200, 500 - (key * -80), 72, 72) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
         }
         else {
-            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 40) + 60, 210 - (key * -40), 36, 36) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
+            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 40) + 60, 210 - (key * -40), 36, 36) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
         }
     }
     else {
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 80) + 200, 500 + (key * 80), 72, 72) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
+            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 80) + 200, 500 + (key * 80), 72, 72) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
         }
         else {
-            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 40) + 60, 210 + (key * 40), 36, 36) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
+            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 40) + 60, 210 + (key * 40), 36, 36) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
         }
     }
     aMarble.imageIdx = marbleIdx;
@@ -992,9 +994,7 @@
 
 - (NSInteger)currentScore
 {
-    NSInteger retVal = self.gameLevel * 200;
-    retVal += self.scoreTotal;
-    return retVal;
+    return self.scoreTotal;
 }
 
 - (BOOL)addHighScore
@@ -1038,38 +1038,47 @@
 - (void)saveGame:(NSInteger) level andScore:(NSInteger) score
 {
     self.savedGame = [NSMutableDictionary dictionaryWithCapacity:1];
-    [self.savedGame setObject:[NSNumber numberWithInteger:level] forKey:@"level"];
-    [self.savedGame setObject:[NSNumber numberWithInteger:score] forKey:@"score"];
-    if ([self.columnDict0 count] / 2 > 0) {
-        [self.savedGame setObject:[NSNumber numberWithInteger:[self.columnDict0 count] / 2] forKey:@"col0"];
+    if (self.gridFull) {
+        [self.savedGame setObject:[NSNumber numberWithInteger:-1] forKey:@"level"];
+        [self.savedGame setObject:[NSNumber numberWithInteger:-1] forKey:@"score"];
     }
     else {
-        [self.savedGame setObject:[NSNumber numberWithInteger:1] forKey:@"col0"];
+        [self.savedGame setObject:[NSNumber numberWithInteger:level] forKey:@"level"];
+        [self.savedGame setObject:[NSNumber numberWithInteger:score] forKey:@"score"];
     }
-    if ([self.columnDict1 count] / 2 > 0) {
-        [self.savedGame setObject:[NSNumber numberWithInteger:[self.columnDict1 count] / 2] forKey:@"col1"];
+    if (!self.gridFull) {
+        if ([self.columnDict0 count] / 2 > 0) {
+            [self.savedGame setObject:[NSNumber numberWithInteger:[self.columnDict0 count] / 2] forKey:@"col0"];
+        }
+        else {
+            [self.savedGame setObject:[NSNumber numberWithInteger:1] forKey:@"col0"];
+        }
+        if ([self.columnDict1 count] / 2 > 0) {
+            [self.savedGame setObject:[NSNumber numberWithInteger:[self.columnDict1 count] / 2] forKey:@"col1"];
+        }
+        else {
+            [self.savedGame setObject:[NSNumber numberWithInteger:1] forKey:@"col1"];
+        }
+        if ([self.columnDict2 count] / 2 > 0) {
+            [self.savedGame setObject:[NSNumber numberWithInteger:[self.columnDict2 count] / 2] forKey:@"col2"];
+        }
+        else {
+            [self.savedGame setObject:[NSNumber numberWithInteger:1] forKey:@"col2"];
+        }
+        if ([self.columnDict3 count] / 2 > 0) {
+            [self.savedGame setObject:[NSNumber numberWithInteger:[self.columnDict3 count] / 2] forKey:@"col3"];
+        }
+        else {
+            [self.savedGame setObject:[NSNumber numberWithInteger:1] forKey:@"col3"];
+        }
+        if ([self.columnDict4 count] / 2 > 0) {
+            [self.savedGame setObject:[NSNumber numberWithInteger:[self.columnDict4 count] / 2] forKey:@"col4"];
+        }
+        else {
+            [self.savedGame setObject:[NSNumber numberWithInteger:1] forKey:@"col4"];
+        }
     }
-    else {
-        [self.savedGame setObject:[NSNumber numberWithInteger:1] forKey:@"col1"];
-    }
-    if ([self.columnDict2 count] / 2 > 0) {
-        [self.savedGame setObject:[NSNumber numberWithInteger:[self.columnDict2 count] / 2] forKey:@"col2"];
-    }
-    else {
-        [self.savedGame setObject:[NSNumber numberWithInteger:1] forKey:@"col2"];
-    }
-    if ([self.columnDict3 count] / 2 > 0) {
-        [self.savedGame setObject:[NSNumber numberWithInteger:[self.columnDict3 count] / 2] forKey:@"col3"];
-    }
-    else {
-        [self.savedGame setObject:[NSNumber numberWithInteger:1] forKey:@"col3"];
-    }
-    if ([self.columnDict4 count] / 2 > 0) {
-        [self.savedGame setObject:[NSNumber numberWithInteger:[self.columnDict4 count] / 2] forKey:@"col4"];
-    }
-    else {
-        [self.savedGame setObject:[NSNumber numberWithInteger:1] forKey:@"col4"];
-    }
+    
     [[NSUserDefaults standardUserDefaults] setObject:[NSDictionary dictionaryWithDictionary:self.savedGame] forKey:@"MarbleCrazeSavedGame"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateSavedGameNotification" object:nil];
@@ -1080,26 +1089,28 @@
     if (!self.gridFull) {
         if (buttonIndex == 0) {  // Continue.
             [self clearMarbles];
-            self.scoreTotal = 0;
             [self setAddFaster:NO];
             [self setGameCount:0];
             [self performSelector:@selector(addMarble) withObject:nil afterDelay:3.0];
+            return;
         }
         else {  //  Save
             [self saveGame:self.gameLevel andScore:self.scoreTotal];
             [self dismissViewControllerAnimated:NO completion:nil];
+            return;
         }
     }
-    else if ([self addHighScore]) {
-        [self showHighScores:self];
-        return;
-    }
     else {
-        self.gameLevel = -1;
-        self.scoreTotal = -1;
+        if ([self addHighScore]) {
+            [self showHighScores:self];
+            return;
+        }
+        else {
+            self.gameLevel = -1;
+            self.scoreTotal = -1;
+        }
     }
 }
-
 
 - (void)addMarbles
 {
@@ -1154,7 +1165,6 @@
             break;
     }
 }
-
 
 - (void)addMarble
 {
@@ -1318,7 +1328,7 @@
 - (void)revertMarble:(Marble *) marble
 {
     [UIView animateWithDuration:0.2 animations:^{
-        [marble setImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marble.imageIdx]]];
+        [marble setImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marble.imageIdx]]];
     } completion:^(BOOL finished) {
         
         [marble performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:0.2];
@@ -1328,15 +1338,18 @@
 - (void)invertMarble:(Marble *) marble
 {
     [UIView animateWithDuration:0.2 animations:^{
-        [marble setImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%di.png", marble.imageIdx]]];
+        [marble setImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%di.png", marble.imageIdx]]];
     } completion:^(BOOL finished) {
-        [self performSelector:@selector(revertMarble:) withObject:marble afterDelay:0.3];
+        [self performSelector:@selector(revertMarble:) withObject:marble afterDelay:0.2];
     }];
 }
 
 - (void)updateScoreLabel
 {
-    NSString *scoreStr = [NSString stringWithFormat:@"%d", self.scoreTotal + (self.gameLevel * 200)];
+    if (self.scoreTotal < 0) {
+        self.scoreTotal = 0;
+    }
+    NSString *scoreStr = [NSString stringWithFormat:@"%d", self.scoreTotal];
     NSString *tempStr;
     switch ([scoreStr length]) {
         case 1:
@@ -1378,7 +1391,6 @@
         [marble removeFromSuperview];
     }];
 }
-
 
 - (void)clearMarbles
 {
@@ -1432,13 +1444,11 @@
     }
     [self performSelector:@selector(replaceMarbles) withObject:nil afterDelay:0.5];
     self.scoreTotal += length;
-    self.gameCount += length;
-    [self updateScoreLabel];
+    self.gameCount++;
     
-    if (self.gameCount >= 200) {
+    if (self.gameCount >= 49) {
         [self setGameCount:0];
         self.gameLevel++;
-        self.scoreTotal -= 200;
         [self.marbleTimer invalidate];
         [self setBetweenRounds:YES];
         [self.roundOverPlayer play];
@@ -1446,6 +1456,7 @@
         av.delegate = self;
         [av show];
     }
+    [self updateScoreLabel];
 }
 
 - (void)checkAllMatchedMarbles
@@ -1555,7 +1566,6 @@
     } completion:^(BOOL completed){
     }];
 }
-
 
 - (void)moveMarbleUp:(Marble *) marble
 {
@@ -1668,7 +1678,7 @@
         }
         [self.rowDict removeObjectForKey:[NSString stringWithFormat:@"%d", (rowIdx + 10)]];
     }
-    [self performSelector:@selector(checkAllMatchedMarbles) withObject:nil afterDelay:0.3];
+    [self performSelector:@selector(checkAllMatchedMarbles) withObject:nil afterDelay:0.2];
 }
 
 - (void)swipedRight:(UISwipeGestureRecognizer *) swipe
@@ -1703,9 +1713,8 @@
         }
         [self.rowDict removeObjectForKey:[NSString stringWithFormat:@"%d", (rowIdx - 10)]];
     }
-    [self performSelector:@selector(checkAllMatchedMarbles) withObject:nil afterDelay:0.3];
+    [self performSelector:@selector(checkAllMatchedMarbles) withObject:nil afterDelay:0.2];
 }
-
 
 - (void)swipedDown:(UISwipeGestureRecognizer *) swipe
 {
@@ -2037,7 +2046,7 @@
             }
         }
     }
-    [self performSelector:@selector(checkAllMatchedMarbles) withObject:nil afterDelay:0.3];
+    [self performSelector:@selector(checkAllMatchedMarbles) withObject:nil afterDelay:0.2];
 }
 
 - (void)swipedUp:(UISwipeGestureRecognizer *) swipe
@@ -2335,7 +2344,7 @@
             }
         }
     }
-    [self performSelector:@selector(checkAllMatchedMarbles) withObject:nil afterDelay:0.3];
+    [self performSelector:@selector(checkAllMatchedMarbles) withObject:nil afterDelay:0.2];
 }
 
 - (IBAction)back:(id)sender

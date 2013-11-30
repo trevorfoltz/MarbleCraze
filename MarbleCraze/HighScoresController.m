@@ -26,7 +26,6 @@
     return self;
 }
 
-
 - (void)saveHighScore:(NSString *) player
 {
     for (int i = 0; i < [[self.highScores allKeys] count]; i++) {
@@ -57,12 +56,12 @@
 
 - (void)setupIpad
 {
-    UIView *separator1 = [[UIView alloc] initWithFrame:CGRectMake(0, 100, 768, 10)];
-    separator1.backgroundColor = [UIColor redColor];
-    [self.view addSubview:separator1];
-    UIView *separator2 = [[UIView alloc] initWithFrame:CGRectMake(0, 103, 768, 7)];
-    separator2.backgroundColor = [UIColor darkGrayColor];
-    [self.view addSubview:separator2];
+//    UIView *separator1 = [[UIView alloc] initWithFrame:CGRectMake(0, 100, 768, 10)];
+//    separator1.backgroundColor = [UIColor redColor];
+//    [self.view addSubview:separator1];
+//    UIView *separator2 = [[UIView alloc] initWithFrame:CGRectMake(0, 103, 768, 7)];
+//    separator2.backgroundColor = [UIColor darkGrayColor];
+//    [self.view addSubview:separator2];
     UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(240, 850, 370, 60)];
     label3.font = [UIFont fontWithName:@"MarkerFelt-Wide" size:18];
     label3.backgroundColor = [UIColor clearColor];
@@ -202,7 +201,6 @@
     }
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -244,7 +242,6 @@
         self.shiftView.center = CGPointMake(self.shiftView.center.x, self.shiftView.center.y + 140);
     }
 }
-
 
 - (void)didReceiveMemoryWarning
 {

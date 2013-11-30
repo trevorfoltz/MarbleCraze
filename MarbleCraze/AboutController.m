@@ -32,7 +32,6 @@
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

@@ -46,7 +46,8 @@
     else {
         ab = [[AboutController alloc] initWithNibName:@"AboutController_iPhone" bundle:nil];
     }
-    [self presentViewController:ab animated:NO completion:nil];
+    [ab setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    [self presentViewController:ab animated:YES completion:nil];
 }
 
 - (void)showMarbleController
@@ -60,15 +61,16 @@
     }
     [mb setHighScores:self.highScores];
     [mb setSavedGame:self.savedGame];
+    [mb setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     
-    [self presentViewController:mb animated:NO completion:nil];
+    [self presentViewController:mb animated:YES completion:nil];
     
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger) buttonIndex
 {
     if (buttonIndex > 0) {
-        [self.savedGame setObject:[NSNumber numberWithInteger:0] forKey:@"level"];
+        [self.savedGame setObject:[NSNumber numberWithInteger:-1] forKey:@"level"];
         [self.savedGame setObject:[NSNumber numberWithInteger:0] forKey:@"score"];
         [self.savedGame removeObjectForKey:@"col0"];
         [self.savedGame removeObjectForKey:@"col1"];
@@ -112,7 +114,6 @@
     hs.highScores = self.highScores;
     [self presentViewController:hs animated:YES completion:NULL];
 }
-
 
 - (void)updateHighScores
 {
