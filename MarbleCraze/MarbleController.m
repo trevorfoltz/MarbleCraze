@@ -49,13 +49,13 @@
 - (void)populateColumn:(NSInteger) column withMarbles:(NSInteger) count
 {
     CGFloat cWidth = 40;
-    CGFloat mWidth = 36;
+    CGFloat mWidth = 40;
     CGFloat startY = 210;
     CGFloat startX = 60;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         cWidth = 80;
-        mWidth = 72;
+        mWidth = 80;
         startY = 500;
         startX = 200;
     }
@@ -97,47 +97,51 @@
 
 - (void)setupIphone
 {
-    UIView *hView = [[UIView alloc] initWithFrame:CGRectMake(58, 6, 1, 444)];
+    // Left and right borders
+    UIView *hView = [[UIView alloc] initWithFrame:CGRectMake(60, 6, 1, 444)];
     hView.backgroundColor = [UIColor redColor];
     hView.alpha = 0.5;
     [self.view addSubview:hView];
     
-    UIView *iView = [[UIView alloc] initWithFrame:CGRectMake(258, 6, 1, 443)];
+    UIView *iView = [[UIView alloc] initWithFrame:CGRectMake(260, 6, 1, 443)];
     iView.backgroundColor = [UIColor redColor];
     iView.alpha = 0.5;
     [self.view addSubview:iView];
     
-    UIView *aView = [[UIView alloc] initWithFrame:CGRectMake(0, 208, 320, 40)];
-    aView.backgroundColor = [UIColor redColor];
-    aView.alpha = 0.3;
-    [self.view addSubview:aView];
-    
-    UIView *fView = [[UIView alloc] initWithFrame:CGRectMake(0, 207, 320, 1)];
-    fView.backgroundColor = [UIColor whiteColor];
-    fView.alpha = 0.8;
-    [self.view addSubview:fView];
-    
-    UIView *gView = [[UIView alloc] initWithFrame:CGRectMake(0, 249, 320, 1)];
-    gView.backgroundColor = [UIColor whiteColor];
-    gView.alpha = 0.8;
-    [self.view addSubview:gView];
-    
-    UIView *bView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 5)];
+    //  Top border
+    UIView *bView = [[UIView alloc] initWithFrame:CGRectMake(0, 2, 320, 5)];
     bView.backgroundColor = [UIColor redColor];
     bView.alpha = 0.8;
     [self.view addSubview:bView];
     
-    UIView *cView = [[UIView alloc] initWithFrame:CGRectMake(0, 450, 320, 5)];
-    cView.backgroundColor = [UIColor redColor];
-    cView.alpha = 0.8;
-    [self.view addSubview:cView];
-    
-    UIView *dView = [[UIView alloc] initWithFrame:CGRectMake(0, 5, 320, 1)];
+    UIView *dView = [[UIView alloc] initWithFrame:CGRectMake(0, 7, 320, 1)];
     dView.backgroundColor = [UIColor whiteColor];
     dView.alpha = 0.8;
     [self.view addSubview:dView];
     
-    UIView *eView = [[UIView alloc] initWithFrame:CGRectMake(0, 449, 320, 1)];
+    //  Middle row
+    UIView *aView = [[UIView alloc] initWithFrame:CGRectMake(0, 210, 320, 40)];
+    aView.backgroundColor = [UIColor redColor];
+    aView.alpha = 0.3;
+    [self.view addSubview:aView];
+    
+    UIView *fView = [[UIView alloc] initWithFrame:CGRectMake(0, 209, 320, 1)];
+    fView.backgroundColor = [UIColor whiteColor];
+    fView.alpha = 0.8;
+    [self.view addSubview:fView];
+    
+    UIView *gView = [[UIView alloc] initWithFrame:CGRectMake(0, 251, 320, 1)];
+    gView.backgroundColor = [UIColor whiteColor];
+    gView.alpha = 0.8;
+    [self.view addSubview:gView];
+    
+    //  Bottom border
+    UIView *cView = [[UIView alloc] initWithFrame:CGRectMake(0, 452, 320, 5)];
+    cView.backgroundColor = [UIColor redColor];
+    cView.alpha = 0.8;
+    [self.view addSubview:cView];
+    
+    UIView *eView = [[UIView alloc] initWithFrame:CGRectMake(0, 451, 320, 1)];
     eView.backgroundColor = [UIColor whiteColor];
     eView.alpha = 0.8;
     [self.view addSubview:eView];
@@ -147,48 +151,48 @@
 {
     
     // Left and right borders
-    UIView *hView = [[UIView alloc] initWithFrame:CGRectMake(196, 92, 2, 886)];
+    UIView *hView = [[UIView alloc] initWithFrame:CGRectMake(198, 94, 2, 884)];
     hView.backgroundColor = [UIColor redColor];
     hView.alpha = 0.5;
     [self.view addSubview:hView];
-    UIView *iView = [[UIView alloc] initWithFrame:CGRectMake(596, 92, 2, 886)];
+    UIView *iView = [[UIView alloc] initWithFrame:CGRectMake(598, 94, 2, 884)];
     iView.backgroundColor = [UIColor redColor];
     iView.alpha = 0.5;
     [self.view addSubview:iView];
     
     //  Top border
-    UIView *bView = [[UIView alloc] initWithFrame:CGRectMake(0, 80, 768, 10)];
+    UIView *bView = [[UIView alloc] initWithFrame:CGRectMake(0, 84, 768, 10)];
     bView.backgroundColor = [UIColor redColor];
     bView.alpha = 0.8;
     [self.view addSubview:bView];
-    UIView *dView = [[UIView alloc] initWithFrame:CGRectMake(0, 90, 768, 2)];
+    UIView *dView = [[UIView alloc] initWithFrame:CGRectMake(0, 94, 768, 2)];
     dView.backgroundColor = [UIColor whiteColor];
     dView.alpha = 0.8;
     [self.view addSubview:dView];
     
     //  Middle row
-    UIView *aView = [[UIView alloc] initWithFrame:CGRectMake(0, 496, 768, 80)];
+    UIView *aView = [[UIView alloc] initWithFrame:CGRectMake(0, 500, 768, 80)];
     aView.backgroundColor = [UIColor redColor];
     aView.alpha = 0.3;
     [self.view addSubview:aView];
     
-    UIView *fView = [[UIView alloc] initWithFrame:CGRectMake(0, 494, 768, 2)];
+    UIView *fView = [[UIView alloc] initWithFrame:CGRectMake(0, 498, 768, 2)];
     fView.backgroundColor = [UIColor whiteColor];
     fView.alpha = 0.8;
     [self.view addSubview:fView];
     
-    UIView *gView = [[UIView alloc] initWithFrame:CGRectMake(0, 576, 768, 2)];
+    UIView *gView = [[UIView alloc] initWithFrame:CGRectMake(0, 580, 768, 2)];
     gView.backgroundColor = [UIColor whiteColor];
     gView.alpha = 0.8;
     [self.view addSubview:gView];
     
     
     //  Bottom border
-    UIView *cView = [[UIView alloc] initWithFrame:CGRectMake(0, 980, 768, 10)];
+    UIView *cView = [[UIView alloc] initWithFrame:CGRectMake(0, 982, 768, 10)];
     cView.backgroundColor = [UIColor redColor];
     cView.alpha = 0.8;
     [self.view addSubview:cView];
-    UIView *eView = [[UIView alloc] initWithFrame:CGRectMake(0, 978, 768, 2)];
+    UIView *eView = [[UIView alloc] initWithFrame:CGRectMake(0, 980, 768, 2)];
     eView.backgroundColor = [UIColor whiteColor];
     eView.alpha = 0.8;
     [self.view addSubview:eView];
@@ -221,14 +225,14 @@
 - (void)populateMarbles
 {
     CGFloat cWidth = 40;
-    CGFloat mWidth = 36;
+    CGFloat mWidth = 40;
     CGFloat xVal = 60;
     CGFloat yVal = 210;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         [self setupIpad];
         cWidth = 80;
-        mWidth = 72;
+        mWidth = 80;
         xVal = 200;
         yVal = 500;
     }
@@ -337,7 +341,7 @@
     
     self.rowDict = [NSMutableDictionary dictionaryWithCapacity:1];
     
-    self.numRows = 4;
+    self.numRows = 3;
     
     if ([[self.savedGame allKeys] count] > 0) {
         self.gameLevel = [[self.savedGame objectForKey:@"level"] integerValue];
@@ -364,7 +368,7 @@
     [self.view addGestureRecognizer:swipeDown];
     [self.view addGestureRecognizer:swipeUp];
     
-    [self performSelector:@selector(addMarble) withObject:nil afterDelay:1.5];
+    [self performSelector:@selector(addMarble) withObject:nil afterDelay:3.0];
 }
 
 //  Determines how many marbles are above the middle row for a column.
@@ -480,10 +484,10 @@
     Marble *aMarble;
     int marbleIdx = [self getRandomMarble];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        aMarble = [[Marble alloc] initWithFrame:CGRectMake((key * 80) + 200, 500, 72, 72) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
+        aMarble = [[Marble alloc] initWithFrame:CGRectMake((key * 80) + 200, 500, 80, 80) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
     }
     else {
-        aMarble = [[Marble alloc] initWithFrame:CGRectMake((key * 40) + 60, 210, 36, 36) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
+        aMarble = [[Marble alloc] initWithFrame:CGRectMake((key * 40) + 60, 210, 40, 40) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
     }
     
     aMarble.imageIdx = marbleIdx;
@@ -928,18 +932,18 @@
     Marble *aMarble;
     if (key < 0) {
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 80) + 200, 500 - (key * -80), 72, 72) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
+            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 80) + 200, 500 - (key * -80), 80, 80) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
         }
         else {
-            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 40) + 60, 210 - (key * -40), 36, 36) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
+            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 40) + 60, 210 - (key * -40), 40, 40) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
         }
     }
     else {
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 80) + 200, 500 + (key * 80), 72, 72) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
+            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 80) + 200, 500 + (key * 80), 80, 80) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
         }
         else {
-            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 40) + 60, 210 + (key * 40), 36, 36) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
+            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 40) + 60, 210 + (key * 40), 40, 40) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
         }
     }
     aMarble.imageIdx = marbleIdx;
@@ -1241,7 +1245,7 @@
     
     NSInteger marbleCount = [self countMarbles];
     
-    if (marbleCount < 25) {
+    if (marbleCount < 20) {
         [self setAddFaster:YES];
     }
     else if (marbleCount > 35) {
@@ -1259,10 +1263,10 @@
             gameMulti = 1.5;
         }
         if (self.addFaster) {
-            [self performSelector:@selector(addMarble) withObject:nil afterDelay:2.0 - gameMulti];
+            [self performSelector:@selector(addMarble) withObject:nil afterDelay:3.0 - gameMulti];
         }
         else {
-            [self performSelector:@selector(addMarble) withObject:nil afterDelay:2.5 - gameMulti];
+            [self performSelector:@selector(addMarble) withObject:nil afterDelay:3.0 - gameMulti];
         }
     }
 }
@@ -1434,7 +1438,7 @@
     
     if (self.gridFull) {
         [self setGridFull:NO];
-        [self performSelector:@selector(addMarble) withObject:nil afterDelay:1.5];
+        [self performSelector:@selector(addMarble) withObject:nil afterDelay:3.0];
     }
     
     for (int i = idx;i < (idx + length);i++) {
@@ -1446,7 +1450,7 @@
     self.scoreTotal += length;
     self.gameCount++;
     
-    if (self.gameCount >= 49) {
+    if (self.gameCount >= 50) {
         [self setGameCount:0];
         self.gameLevel++;
         [self.marbleTimer invalidate];
@@ -1678,7 +1682,7 @@
         }
         [self.rowDict removeObjectForKey:[NSString stringWithFormat:@"%d", (rowIdx + 10)]];
     }
-    [self performSelector:@selector(checkAllMatchedMarbles) withObject:nil afterDelay:0.2];
+    [self performSelector:@selector(checkAllMatchedMarbles) withObject:nil afterDelay:0.1];
 }
 
 - (void)swipedRight:(UISwipeGestureRecognizer *) swipe
@@ -1713,7 +1717,7 @@
         }
         [self.rowDict removeObjectForKey:[NSString stringWithFormat:@"%d", (rowIdx - 10)]];
     }
-    [self performSelector:@selector(checkAllMatchedMarbles) withObject:nil afterDelay:0.2];
+    [self performSelector:@selector(checkAllMatchedMarbles) withObject:nil afterDelay:0.1];
 }
 
 - (void)swipedDown:(UISwipeGestureRecognizer *) swipe
@@ -2046,7 +2050,7 @@
             }
         }
     }
-    [self performSelector:@selector(checkAllMatchedMarbles) withObject:nil afterDelay:0.2];
+    [self performSelector:@selector(checkAllMatchedMarbles) withObject:nil afterDelay:0.1];
 }
 
 - (void)swipedUp:(UISwipeGestureRecognizer *) swipe
@@ -2344,7 +2348,7 @@
             }
         }
     }
-    [self performSelector:@selector(checkAllMatchedMarbles) withObject:nil afterDelay:0.2];
+    [self performSelector:@selector(checkAllMatchedMarbles) withObject:nil afterDelay:0.1];
 }
 
 - (IBAction)back:(id)sender
@@ -2359,7 +2363,7 @@
         [self setIsPaused:NO];
         [self.loopPlayer play];
         [self.pauseButton setTitle:@"Pause" forState:UIControlStateNormal];
-        [self performSelector:@selector(addMarble) withObject:nil afterDelay:1.5];
+        [self performSelector:@selector(addMarble) withObject:nil afterDelay:3.0];
         return;
     }
     [self setIsPaused:YES];

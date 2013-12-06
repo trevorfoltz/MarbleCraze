@@ -12,9 +12,21 @@
 
 @implementation AppDelegate
 
+@synthesize savedGame;
+
+- (void)updateSavedGame
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.savedGame = [NSMutableDictionary dictionaryWithDictionary:[defaults dictionaryForKey:@"MarbleCrazeSavedGame"]];
+}
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [TestFlight takeOff:@"15f18330-5323-4c7d-870f-db9a0de68989"];
+    [self updateSavedGame];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateHighScores) name:@"UpdateHighScoresNotification" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSavedGame) name:@"UpdateSavedGameNotification" object:nil];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
