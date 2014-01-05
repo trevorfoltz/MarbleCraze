@@ -30,6 +30,16 @@
     return self;
 }
 
+- (void)rotate:(NSInteger) multiplier
+{
+    self.transform = CGAffineTransformIdentity;
+    [UIView animateWithDuration:0.2 animations:^{
+        self.transform = CGAffineTransformMakeRotation(1.5 * multiplier);
+    } completion:^(BOOL finished){
+        
+    }];
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

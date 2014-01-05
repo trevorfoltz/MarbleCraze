@@ -14,4 +14,6 @@
 
 @property NSInteger imageIdx;
 
+- (void)rotate:(NSInteger) multiplier;
+
 @end

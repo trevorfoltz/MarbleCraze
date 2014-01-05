@@ -18,7 +18,7 @@
 
 @implementation GameController
 
-@synthesize highScores, savedGame, twinkler;
+@synthesize highScores, savedGame, twinkler, theMarble;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,6 +39,13 @@
 
 - (IBAction)aboutGame:(id)sender
 {
+//    [UIView animateWithDuration:1.5 animations:^{
+//        self.theMarble.transform = CGAffineTransformMakeRotation(-3);
+//    } completion:^(BOOL completed){
+//        self.theMarble.transform = CGAffineTransformIdentity;
+//    }];
+//    return;
+    
     AboutController *ab;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         ab = [[AboutController alloc] initWithNibName:@"AboutController_iPad" bundle:nil];
@@ -103,6 +110,14 @@
 
 - (IBAction)showHighScores:(id) sender
 {
+//    [UIView animateWithDuration:1.5 animations:^{
+//        self.theMarble.transform = CGAffineTransformMakeRotation(3);
+//    } completion:^(BOOL completed){
+//        self.theMarble.transform = CGAffineTransformIdentity;
+//    }];
+//        self.theMarble.transform = CGAffineTransformMakeRotation((M_PI / 180) * 180);
+//    }];
+//    return;
     HighScoresController *hs;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         hs = [[HighScoresController alloc] initWithNibName:@"HighScoresController_iPad" bundle:nil];
@@ -136,6 +151,8 @@
     [self updateHighScores];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateHighScores) name:@"UpdateHighScoresNotification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSavedGame) name:@"UpdateSavedGameNotification" object:nil];
+//    self.theMarble = [[Marble alloc] initWithFrame:CGRectMake(345, 450, 80, 80) andImage:[UIImage imageNamed:@"marblea1.png"]];
+//    [self.view addSubview:self.theMarble];
     // Do any additional setup after loading the view from its nib.
 }
 

@@ -56,8 +56,8 @@
 
 - (void)setupIpad
 {
-    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(240, 850, 370, 60)];
-    label3.font = [UIFont fontWithName:@"MarkerFelt-Wide" size:18];
+    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(220, 850, 390, 60)];
+    label3.font = [UIFont fontWithName:@"MarkerFelt-Wide" size:24];
     label3.backgroundColor = [UIColor clearColor];
     label3.textColor = [UIColor whiteColor];
     label3.numberOfLines = 1;
@@ -130,7 +130,7 @@
     UIView *separator2 = [[UIView alloc] initWithFrame:CGRectMake(0, 61, 320, 4)];
     separator2.backgroundColor = [UIColor darkGrayColor];
     [self.view addSubview:separator2];
-    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(50, 430, 270, 20)];
+    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(30, 430, 270, 20)];
     label3.font = [UIFont fontWithName:@"MarkerFelt-Wide" size:14];
     label3.backgroundColor = [UIColor clearColor];
     label3.textColor = [UIColor whiteColor];

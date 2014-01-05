@@ -22,7 +22,7 @@
 @synthesize score0, score1, score2, score3, scoreTotal;
 @synthesize gameOverCnt, gameTimer, gameCount;
 @synthesize firePlayer, gameOverPlayer, roundOverPlayer, loopPlayer;
-@synthesize pauseButton, twinkler;
+@synthesize pauseButton, twinkler, mRotation;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -61,12 +61,12 @@
     }
     for (int j = 1; j<count; j++) {
         int marbleIdx = [self getRandomMarble];
-        Marble *aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * cWidth) + startX, startY - (j * cWidth), mWidth, mWidth) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
+        Marble *aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * cWidth) + startX, startY - (j * cWidth), mWidth, mWidth) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
         aMarble.imageIdx = marbleIdx;
         aMarble.alpha = 0.6;
         [self.view addSubview:aMarble];
         marbleIdx = [self getRandomMarble];
-        Marble *bMarble = [[Marble alloc] initWithFrame:CGRectMake((column * cWidth) + startX, (j * cWidth) + startY, mWidth, mWidth) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
+        Marble *bMarble = [[Marble alloc] initWithFrame:CGRectMake((column * cWidth) + startX, (j * cWidth) + startY, mWidth, mWidth) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
         bMarble.imageIdx = marbleIdx;
         bMarble.alpha = 0.6;
         [self.view addSubview:bMarble];
@@ -219,7 +219,7 @@
 {
     [self.loopPlayer stop];
     [self setIsPaused:YES];
-    
+    [self saveGame];
 }
 
 - (void)populateMarbles
@@ -279,7 +279,7 @@
     
     for (int i = -3; i<8; i++) {
         int marbleIdx = [self getRandomMarble];
-        Marble *aMarble = [[Marble alloc] initWithFrame:CGRectMake((i * cWidth) + xVal, yVal, mWidth, mWidth) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
+        Marble *aMarble = [[Marble alloc] initWithFrame:CGRectMake((i * cWidth) + xVal, yVal, mWidth, mWidth) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
         aMarble.imageIdx = marbleIdx;
         aMarble.alpha = 1.0;
         [self.view addSubview:aMarble];
@@ -308,6 +308,7 @@
     [super viewDidLoad];
     self.twinkler = [StarTwinkler initWithParentView:self.view];
     
+    self.mRotation = 120.0;
     NSURL *roundOverURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"LevelComplete" ofType:@"mp3"]];
 	NSError *error;
 	self.roundOverPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:roundOverURL error:&error];
@@ -484,259 +485,16 @@
     Marble *aMarble;
     int marbleIdx = [self getRandomMarble];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        aMarble = [[Marble alloc] initWithFrame:CGRectMake((key * 80) + 200, 500, 80, 80) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
+        aMarble = [[Marble alloc] initWithFrame:CGRectMake((key * 80) + 200, 500, 80, 80) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
     }
     else {
-        aMarble = [[Marble alloc] initWithFrame:CGRectMake((key * 40) + 60, 210, 40, 40) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
+        aMarble = [[Marble alloc] initWithFrame:CGRectMake((key * 40) + 60, 210, 40, 40) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
     }
     
     aMarble.imageIdx = marbleIdx;
     return aMarble;
 }
 
-- (void)moveColumnUp:(NSInteger) column
-{
-    NSInteger hiIdx = 100;
-    Marble *aMarble;
-    switch (column) {
-        case 0:
-            hiIdx = [self highestColumnKey:self.columnDict0];
-            if ([[self.columnDict0 allKeys] containsObject:@"1"]) {
-                aMarble = (Marble *)[self.columnDict0 objectForKey:@"1"];
-                [self moveMarbleUp:aMarble];
-                aMarble.alpha = 1.0;
-                [self.columnDict0 removeObjectForKey:@"1"];
-            }
-            else {
-                aMarble = [self getRandomMarbleForRowWithKey:0];
-                [self.view addSubview:aMarble];
-            }
-            [self.rowDict setObject:aMarble forKey:@"0"];
-            
-            for (int i = 2;i < (hiIdx + 1);i++) {
-                Marble *bMarble = (Marble *)[self.columnDict0 objectForKey:[NSString stringWithFormat:@"%d", i]];
-                if (bMarble) {
-                    [self moveMarbleUp:bMarble];
-                    [self.columnDict0 setObject:bMarble forKey:[NSString stringWithFormat:@"%d", (i - 1)]];
-                    [self.columnDict0 removeObjectForKey:[NSString stringWithFormat:@"%d", i]];
-                }
-            }
-            break;
-        case 1:
-            hiIdx = [self highestColumnKey:self.columnDict1];
-            if ([[self.columnDict1 allKeys] containsObject:@"1"]) {
-                aMarble = (Marble *)[self.columnDict1 objectForKey:@"1"];
-                [self moveMarbleUp:aMarble];
-                aMarble.alpha = 1.0;
-                [self.columnDict1 removeObjectForKey:@"1"];
-            }
-            else {
-                aMarble = [self getRandomMarbleForRowWithKey:1];
-                [self.view addSubview:aMarble];
-            }
-            [self.rowDict setObject:aMarble forKey:@"1"];
-            
-            for (int i = 2;i < (hiIdx + 1);i++) {
-                Marble *bMarble = (Marble *)[self.columnDict1 objectForKey:[NSString stringWithFormat:@"%d", i]];
-                if (bMarble) {
-                    [self moveMarbleUp:bMarble];
-                    [self.columnDict1 setObject:bMarble forKey:[NSString stringWithFormat:@"%d", (i - 1)]];
-                    [self.columnDict1 removeObjectForKey:[NSString stringWithFormat:@"%d", i]];
-                }
-            }
-            break;
-        case 2:
-            hiIdx = [self highestColumnKey:self.columnDict2];
-            if ([[self.columnDict2 allKeys] containsObject:@"1"]) {
-                aMarble = (Marble *)[self.columnDict2 objectForKey:@"1"];
-                [self moveMarbleUp:aMarble];
-                aMarble.alpha = 1.0;
-                [self.columnDict2 removeObjectForKey:@"1"];
-            }
-            else {
-                aMarble = [self getRandomMarbleForRowWithKey:2];
-                [self.view addSubview:aMarble];
-            }
-            [self.rowDict setObject:aMarble forKey:@"2"];
-            
-            for (int i = 2;i < (hiIdx + 1);i++) {
-                Marble *bMarble = (Marble *)[self.columnDict2 objectForKey:[NSString stringWithFormat:@"%d", i]];
-                if (bMarble) {
-                    [self moveMarbleUp:bMarble];
-                    [self.columnDict2 setObject:bMarble forKey:[NSString stringWithFormat:@"%d", (i - 1)]];
-                    [self.columnDict2 removeObjectForKey:[NSString stringWithFormat:@"%d", i]];
-                }
-            }
-            break;
-        case 3:
-            hiIdx = [self highestColumnKey:self.columnDict3];
-            if ([[self.columnDict3 allKeys] containsObject:@"1"]) {
-                aMarble = (Marble *)[self.columnDict3 objectForKey:@"1"];
-                [self moveMarbleUp:aMarble];
-                aMarble.alpha = 1.0;
-                [self.columnDict3 removeObjectForKey:@"1"];
-            }
-            else {
-                aMarble = [self getRandomMarbleForRowWithKey:3];
-                [self.view addSubview:aMarble];
-            }
-            [self.rowDict setObject:aMarble forKey:@"3"];
-            
-            for (int i = 2;i < (hiIdx + 1);i++) {
-                Marble *bMarble = (Marble *)[self.columnDict3 objectForKey:[NSString stringWithFormat:@"%d", i]];
-                if (bMarble) {
-                    [self moveMarbleUp:bMarble];
-                    [self.columnDict3 setObject:bMarble forKey:[NSString stringWithFormat:@"%d", (i - 1)]];
-                    [self.columnDict3 removeObjectForKey:[NSString stringWithFormat:@"%d", i]];
-                }
-            }
-            break;
-        case 4:
-            hiIdx = [self highestColumnKey:self.columnDict4];
-            if ([[self.columnDict4 allKeys] containsObject:@"1"]) {
-                aMarble = (Marble *)[self.columnDict4 objectForKey:@"1"];
-                [self moveMarbleUp:aMarble];
-                aMarble.alpha = 1.0;
-                [self.columnDict4 removeObjectForKey:@"1"];
-            }
-            else {
-                aMarble = [self getRandomMarbleForRowWithKey:4];
-                [self.view addSubview:aMarble];
-            }
-            [self.rowDict setObject:aMarble forKey:@"4"];
-            
-            for (int i = 2;i < (hiIdx + 1);i++) {
-                Marble *bMarble = (Marble *)[self.columnDict4 objectForKey:[NSString stringWithFormat:@"%d", i]];
-                if (bMarble) {
-                    [self moveMarbleUp:bMarble];
-                    [self.columnDict4 setObject:bMarble forKey:[NSString stringWithFormat:@"%d", (i - 1)]];
-                    [self.columnDict4 removeObjectForKey:[NSString stringWithFormat:@"%d", i]];
-                }
-            }
-            break;
-    }
-}
-
-- (void)moveColumnDown:(NSInteger) column
-{
-    NSInteger loIdx = 100;
-    Marble *aMarble;
-    int marbleIdx;
-    
-    switch (column) {
-        case 0:
-            loIdx = [self lowestColumnKey:self.columnDict0];
-            if ([[self.columnDict0 allKeys] containsObject:@"-1"]) {
-                aMarble = (Marble *)[self.columnDict0 objectForKey:@"-1"];
-                [self moveMarbleDown:aMarble];
-                aMarble.alpha = 1.0;
-                [self.columnDict0 removeObjectForKey:@"-1"];
-            }
-            else {
-                aMarble = [self getRandomMarbleForRowWithKey:0];
-                [self.view addSubview:aMarble];
-            }
-            [self.rowDict setObject:aMarble forKey:@"0"];
-            for (int i = -2;i > (loIdx - 1);i--) {
-                Marble *bMarble = (Marble *)[self.columnDict0 objectForKey:[NSString stringWithFormat:@"%d", i]];
-                if (bMarble) {
-                    [self moveMarbleDown:bMarble];
-                    [self.columnDict0 setObject:bMarble forKey:[NSString stringWithFormat:@"%d", (i + 1)]];
-                    [self.columnDict0 removeObjectForKey:[NSString stringWithFormat:@"%d", i]];
-                }
-            }
-            break;
-        case 1:
-            loIdx = [self lowestColumnKey:self.columnDict1];
-            if ([[self.columnDict1 allKeys] containsObject:@"-1"]) {
-                aMarble = (Marble *)[self.columnDict1 objectForKey:@"-1"];
-                [self moveMarbleDown:aMarble];
-                aMarble.alpha = 1.0;
-                [self.columnDict1 removeObjectForKey:@"-1"];
-            }
-            else {
-                aMarble = [self getRandomMarbleForRowWithKey:1];
-                [self.view addSubview:aMarble];
-            }
-            [self.rowDict setObject:aMarble forKey:@"1"];
-            for (int i = -2;i > (loIdx - 1);i--) {
-                Marble *bMarble = (Marble *)[self.columnDict1 objectForKey:[NSString stringWithFormat:@"%d", i]];
-                if (bMarble) {
-                    [self moveMarbleDown:bMarble];
-                    [self.columnDict1 setObject:bMarble forKey:[NSString stringWithFormat:@"%d", (i + 1)]];
-                    [self.columnDict1 removeObjectForKey:[NSString stringWithFormat:@"%d", i]];
-                }
-            }
-            break;
-        case 2:
-            loIdx = [self lowestColumnKey:self.columnDict2];
-            if ([[self.columnDict2 allKeys] containsObject:@"-1"]) {
-                aMarble = (Marble *)[self.columnDict2 objectForKey:@"-1"];
-                [self moveMarbleDown:aMarble];
-                aMarble.alpha = 1.0;
-                [self.columnDict2 removeObjectForKey:@"-1"];
-            }
-            else {
-                aMarble = [self getRandomMarbleForRowWithKey:2];
-                [self.view addSubview:aMarble];
-            }
-            [self.rowDict setObject:aMarble forKey:@"2"];
-            for (int i = -2;i > (loIdx - 1);i--) {
-                Marble *bMarble = (Marble *)[self.columnDict2 objectForKey:[NSString stringWithFormat:@"%d", i]];
-                if (bMarble) {
-                    [self moveMarbleDown:bMarble];
-                    [self.columnDict2 setObject:bMarble forKey:[NSString stringWithFormat:@"%d", (i + 1)]];
-                    [self.columnDict2 removeObjectForKey:[NSString stringWithFormat:@"%d", i]];
-                }
-            }
-            break;
-        case 3:
-            loIdx = [self lowestColumnKey:self.columnDict3];
-            if ([[self.columnDict3 allKeys] containsObject:@"-1"]) {
-                aMarble = (Marble *)[self.columnDict3 objectForKey:@"-1"];
-                [self moveMarbleDown:aMarble];
-                aMarble.alpha = 1.0;
-                [self.columnDict3 removeObjectForKey:@"-1"];
-            }
-            else {
-                marbleIdx = [self getRandomMarble];
-                aMarble = [self getRandomMarbleForRowWithKey:3];
-                [self.view addSubview:aMarble];
-            }
-            [self.rowDict setObject:aMarble forKey:@"3"];
-            for (int i = -2;i > (loIdx - 1);i--) {
-                Marble *bMarble = (Marble *)[self.columnDict3 objectForKey:[NSString stringWithFormat:@"%d", i]];
-                if (bMarble) {
-                    [self moveMarbleDown:bMarble];
-                    [self.columnDict3 setObject:bMarble forKey:[NSString stringWithFormat:@"%d", (i + 1)]];
-                    [self.columnDict3 removeObjectForKey:[NSString stringWithFormat:@"%d", i]];
-                }
-            }
-            break;
-        case 4:
-            loIdx = [self lowestColumnKey:self.columnDict4];
-            if ([[self.columnDict4 allKeys] containsObject:@"-1"]) {
-                aMarble = (Marble *)[self.columnDict4 objectForKey:@"-1"];
-                [self moveMarbleDown:aMarble];
-                aMarble.alpha = 1.0;
-                [self.columnDict4 removeObjectForKey:@"-1"];
-            }
-            else {
-                aMarble = [self getRandomMarbleForRowWithKey:4];
-                [self.view addSubview:aMarble];
-            }
-            [self.rowDict setObject:aMarble forKey:@"4"];
-            for (int i = -2;i > (loIdx - 1);i--) {
-                Marble *bMarble = (Marble *)[self.columnDict4 objectForKey:[NSString stringWithFormat:@"%d", i]];
-                if (bMarble) {
-                    [self moveMarbleDown:bMarble];
-                    [self.columnDict4 setObject:bMarble forKey:[NSString stringWithFormat:@"%d", (i + 1)]];
-                    [self.columnDict4 removeObjectForKey:[NSString stringWithFormat:@"%d", i]];
-                }
-            }
-            break;
-    }
-}
 
 - (int)getRandomColumn
 {
@@ -932,18 +690,18 @@
     Marble *aMarble;
     if (key < 0) {
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 80) + 200, 500 - (key * -80), 80, 80) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
+            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 80) + 200, 500 - (key * -80), 80, 80) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
         }
         else {
-            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 40) + 60, 210 - (key * -40), 40, 40) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
+            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 40) + 60, 210 - (key * -40), 40, 40) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
         }
     }
     else {
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 80) + 200, 500 + (key * 80), 80, 80) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
+            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 80) + 200, 500 + (key * 80), 80, 80) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
         }
         else {
-            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 40) + 60, 210 + (key * 40), 40, 40) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marbleIdx]]];
+            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 40) + 60, 210 + (key * 40), 40, 40) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
         }
     }
     aMarble.imageIdx = marbleIdx;
@@ -1039,7 +797,7 @@
     }
 }
 
-- (void)saveGame:(NSInteger) level andScore:(NSInteger) score
+- (void)saveGame
 {
     self.savedGame = [NSMutableDictionary dictionaryWithCapacity:1];
     if (self.gridFull) {
@@ -1047,10 +805,10 @@
         [self.savedGame setObject:[NSNumber numberWithInteger:-1] forKey:@"score"];
     }
     else {
-        [self.savedGame setObject:[NSNumber numberWithInteger:level] forKey:@"level"];
-        [self.savedGame setObject:[NSNumber numberWithInteger:score] forKey:@"score"];
+        [self.savedGame setObject:[NSNumber numberWithInteger:self.gameLevel] forKey:@"level"];
+        [self.savedGame setObject:[NSNumber numberWithInteger:self.scoreTotal] forKey:@"score"];
     }
-    if (!self.gridFull) {
+    if (!self.gridFull && !self.betweenRounds) {
         if ([self.columnDict0 count] / 2 > 0) {
             [self.savedGame setObject:[NSNumber numberWithInteger:[self.columnDict0 count] / 2] forKey:@"col0"];
         }
@@ -1090,29 +848,28 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger) buttonIndex
 {
-    if (!self.gridFull) {
-        if (buttonIndex == 0) {  // Continue.
+    if (!self.gridFull) {  //  Between rounds...
+        if (buttonIndex == 0) {  // Continue....
             [self clearMarbles];
             [self setAddFaster:NO];
             [self setGameCount:0];
             [self performSelector:@selector(addMarble) withObject:nil afterDelay:3.0];
             return;
         }
-        else {  //  Save
-            [self saveGame:self.gameLevel andScore:self.scoreTotal];
-            [self dismissViewControllerAnimated:NO completion:nil];
+        else {  //  Save...
+            [self saveGame];
+            [self dismissViewControllerAnimated:YES completion:nil];
             return;
         }
     }
-    else {
-        if ([self addHighScore]) {
+    else {  //  Game is over...
+        
+        if ([self addHighScore]) {  //  Is a high score...
             [self showHighScores:self];
-            return;
         }
-        else {
-            self.gameLevel = -1;
-            self.scoreTotal = -1;
-        }
+        self.gameLevel = -1;
+        self.scoreTotal = -1;
+        [self saveGame];
     }
 }
 
@@ -1259,8 +1016,8 @@
     
     if (!self.gridFull && !self.betweenRounds && !self.isPaused) {
         float gameMulti = self.gameLevel * 0.1;
-        if (self.gameLevel > 15) {
-            gameMulti = 1.5;
+        if (self.gameLevel > 20) {
+            gameMulti = 2.0;
         }
         if (self.addFaster) {
             [self performSelector:@selector(addMarble) withObject:nil afterDelay:3.0 - gameMulti];
@@ -1332,7 +1089,7 @@
 - (void)revertMarble:(Marble *) marble
 {
     [UIView animateWithDuration:0.2 animations:^{
-        [marble setImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%d.png", marble.imageIdx]]];
+        [marble setImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marble.imageIdx]]];
     } completion:^(BOOL finished) {
         
         [marble performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:0.2];
@@ -1342,7 +1099,7 @@
 - (void)invertMarble:(Marble *) marble
 {
     [UIView animateWithDuration:0.2 animations:^{
-        [marble setImage:[UIImage imageNamed:[NSString stringWithFormat:@"marblea%di.png", marble.imageIdx]]];
+        [marble setImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%di.png", marble.imageIdx]]];
     } completion:^(BOOL finished) {
         [self performSelector:@selector(revertMarble:) withObject:marble afterDelay:0.2];
     }];
@@ -1493,20 +1250,23 @@
 
 - (void)moveMarbleLeft:(Marble *) marble
 {
-    [UIView animateWithDuration:0.1 animations:^{
+    [marble rotate:-1];  // counter-clockwise
+    [UIView animateWithDuration:0.2 animations:^{
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             marble.center = CGPointMake(marble.center.x - 80, marble.center.y);
         }
         else {
             marble.center = CGPointMake(marble.center.x - 40, marble.center.y);
         }
+     
     } completion:^(BOOL completed){
     }];
 }
 
 - (void)moveMarbleRight:(Marble *) marble
 {
-    [UIView animateWithDuration:0.1 animations:^{
+    [marble rotate:1]; // Clockwise
+    [UIView animateWithDuration:0.2 animations:^{
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             marble.center = CGPointMake(marble.center.x + 80, marble.center.y);
         }
@@ -1573,7 +1333,8 @@
 
 - (void)moveMarbleUp:(Marble *) marble
 {
-    [UIView animateWithDuration:0.1 animations:^{
+    [marble rotate:-1];  // counter-clockwise
+    [UIView animateWithDuration:0.2 animations:^{
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             marble.center = CGPointMake(marble.center.x, marble.center.y - 80);
         }
@@ -1586,7 +1347,8 @@
 
 - (void)moveMarbleDown:(Marble *) marble
 {
-    [UIView animateWithDuration:0.1 animations:^{
+    [marble rotate:1];  // Clockwise
+    [UIView animateWithDuration:0.2 animations:^{
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             marble.center = CGPointMake(marble.center.x, marble.center.y + 80);
         }
@@ -1649,6 +1411,251 @@
         }
     } completion:^(BOOL completed){
     }];
+}
+
+- (void)moveColumnUp:(NSInteger) column
+{
+    NSInteger hiIdx = 100;
+    Marble *aMarble;
+    switch (column) {
+        case 0:
+            hiIdx = [self highestColumnKey:self.columnDict0];
+            if ([[self.columnDict0 allKeys] containsObject:@"1"]) {
+                aMarble = (Marble *)[self.columnDict0 objectForKey:@"1"];
+                [self moveMarbleUp:aMarble];
+                aMarble.alpha = 1.0;
+                [self.columnDict0 removeObjectForKey:@"1"];
+            }
+            else {
+                aMarble = [self getRandomMarbleForRowWithKey:0];
+                [self.view addSubview:aMarble];
+            }
+            [self.rowDict setObject:aMarble forKey:@"0"];
+            
+            for (int i = 2;i < (hiIdx + 1);i++) {
+                Marble *bMarble = (Marble *)[self.columnDict0 objectForKey:[NSString stringWithFormat:@"%d", i]];
+                if (bMarble) {
+                    [self moveMarbleUp:bMarble];
+                    [self.columnDict0 setObject:bMarble forKey:[NSString stringWithFormat:@"%d", (i - 1)]];
+                    [self.columnDict0 removeObjectForKey:[NSString stringWithFormat:@"%d", i]];
+                }
+            }
+            break;
+        case 1:
+            hiIdx = [self highestColumnKey:self.columnDict1];
+            if ([[self.columnDict1 allKeys] containsObject:@"1"]) {
+                aMarble = (Marble *)[self.columnDict1 objectForKey:@"1"];
+                [self moveMarbleUp:aMarble];
+                aMarble.alpha = 1.0;
+                [self.columnDict1 removeObjectForKey:@"1"];
+            }
+            else {
+                aMarble = [self getRandomMarbleForRowWithKey:1];
+                [self.view addSubview:aMarble];
+            }
+            [self.rowDict setObject:aMarble forKey:@"1"];
+            
+            for (int i = 2;i < (hiIdx + 1);i++) {
+                Marble *bMarble = (Marble *)[self.columnDict1 objectForKey:[NSString stringWithFormat:@"%d", i]];
+                if (bMarble) {
+                    [self moveMarbleUp:bMarble];
+                    [self.columnDict1 setObject:bMarble forKey:[NSString stringWithFormat:@"%d", (i - 1)]];
+                    [self.columnDict1 removeObjectForKey:[NSString stringWithFormat:@"%d", i]];
+                }
+            }
+            break;
+        case 2:
+            hiIdx = [self highestColumnKey:self.columnDict2];
+            if ([[self.columnDict2 allKeys] containsObject:@"1"]) {
+                aMarble = (Marble *)[self.columnDict2 objectForKey:@"1"];
+                [self moveMarbleUp:aMarble];
+                aMarble.alpha = 1.0;
+                [self.columnDict2 removeObjectForKey:@"1"];
+            }
+            else {
+                aMarble = [self getRandomMarbleForRowWithKey:2];
+                [self.view addSubview:aMarble];
+            }
+            [self.rowDict setObject:aMarble forKey:@"2"];
+            
+            for (int i = 2;i < (hiIdx + 1);i++) {
+                Marble *bMarble = (Marble *)[self.columnDict2 objectForKey:[NSString stringWithFormat:@"%d", i]];
+                if (bMarble) {
+                    [self moveMarbleUp:bMarble];
+                    [self.columnDict2 setObject:bMarble forKey:[NSString stringWithFormat:@"%d", (i - 1)]];
+                    [self.columnDict2 removeObjectForKey:[NSString stringWithFormat:@"%d", i]];
+                }
+            }
+            break;
+        case 3:
+            hiIdx = [self highestColumnKey:self.columnDict3];
+            if ([[self.columnDict3 allKeys] containsObject:@"1"]) {
+                aMarble = (Marble *)[self.columnDict3 objectForKey:@"1"];
+                [self moveMarbleUp:aMarble];
+                aMarble.alpha = 1.0;
+                [self.columnDict3 removeObjectForKey:@"1"];
+            }
+            else {
+                aMarble = [self getRandomMarbleForRowWithKey:3];
+                [self.view addSubview:aMarble];
+            }
+            [self.rowDict setObject:aMarble forKey:@"3"];
+            
+            for (int i = 2;i < (hiIdx + 1);i++) {
+                Marble *bMarble = (Marble *)[self.columnDict3 objectForKey:[NSString stringWithFormat:@"%d", i]];
+                if (bMarble) {
+                    [self moveMarbleUp:bMarble];
+                    [self.columnDict3 setObject:bMarble forKey:[NSString stringWithFormat:@"%d", (i - 1)]];
+                    [self.columnDict3 removeObjectForKey:[NSString stringWithFormat:@"%d", i]];
+                }
+            }
+            break;
+        case 4:
+            hiIdx = [self highestColumnKey:self.columnDict4];
+            if ([[self.columnDict4 allKeys] containsObject:@"1"]) {
+                aMarble = (Marble *)[self.columnDict4 objectForKey:@"1"];
+                [self moveMarbleUp:aMarble];
+                aMarble.alpha = 1.0;
+                [self.columnDict4 removeObjectForKey:@"1"];
+            }
+            else {
+                aMarble = [self getRandomMarbleForRowWithKey:4];
+                [self.view addSubview:aMarble];
+            }
+            [self.rowDict setObject:aMarble forKey:@"4"];
+            
+            for (int i = 2;i < (hiIdx + 1);i++) {
+                Marble *bMarble = (Marble *)[self.columnDict4 objectForKey:[NSString stringWithFormat:@"%d", i]];
+                if (bMarble) {
+                    [self moveMarbleUp:bMarble];
+                    [self.columnDict4 setObject:bMarble forKey:[NSString stringWithFormat:@"%d", (i - 1)]];
+                    [self.columnDict4 removeObjectForKey:[NSString stringWithFormat:@"%d", i]];
+                }
+            }
+            break;
+    }
+}
+
+- (void)moveColumnDown:(NSInteger) column
+{
+    NSInteger loIdx = 100;
+    Marble *aMarble;
+    int marbleIdx;
+    
+    switch (column)
+    {
+        case 0:
+            loIdx = [self lowestColumnKey:self.columnDict0];
+            if ([[self.columnDict0 allKeys] containsObject:@"-1"]) {
+                aMarble = (Marble *)[self.columnDict0 objectForKey:@"-1"];
+                [self moveMarbleDown:aMarble];
+                aMarble.alpha = 1.0;
+                [self.columnDict0 removeObjectForKey:@"-1"];
+            }
+            else {
+                aMarble = [self getRandomMarbleForRowWithKey:0];
+                [self.view addSubview:aMarble];
+            }
+            [self.rowDict setObject:aMarble forKey:@"0"];
+            for (int i = -2;i > (loIdx - 1);i--) {
+                Marble *bMarble = (Marble *)[self.columnDict0 objectForKey:[NSString stringWithFormat:@"%d", i]];
+                if (bMarble) {
+                    [self moveMarbleDown:bMarble];
+                    [self.columnDict0 setObject:bMarble forKey:[NSString stringWithFormat:@"%d", (i + 1)]];
+                    [self.columnDict0 removeObjectForKey:[NSString stringWithFormat:@"%d", i]];
+                }
+            }
+            break;
+        case 1:
+            loIdx = [self lowestColumnKey:self.columnDict1];
+            if ([[self.columnDict1 allKeys] containsObject:@"-1"]) {
+                aMarble = (Marble *)[self.columnDict1 objectForKey:@"-1"];
+                [self moveMarbleDown:aMarble];
+                aMarble.alpha = 1.0;
+                [self.columnDict1 removeObjectForKey:@"-1"];
+            }
+            else {
+                aMarble = [self getRandomMarbleForRowWithKey:1];
+                [self.view addSubview:aMarble];
+            }
+            [self.rowDict setObject:aMarble forKey:@"1"];
+            for (int i = -2;i > (loIdx - 1);i--) {
+                Marble *bMarble = (Marble *)[self.columnDict1 objectForKey:[NSString stringWithFormat:@"%d", i]];
+                if (bMarble) {
+                    [self moveMarbleDown:bMarble];
+                    [self.columnDict1 setObject:bMarble forKey:[NSString stringWithFormat:@"%d", (i + 1)]];
+                    [self.columnDict1 removeObjectForKey:[NSString stringWithFormat:@"%d", i]];
+                }
+            }
+            break;
+        case 2:
+            loIdx = [self lowestColumnKey:self.columnDict2];
+            if ([[self.columnDict2 allKeys] containsObject:@"-1"]) {
+                aMarble = (Marble *)[self.columnDict2 objectForKey:@"-1"];
+                [self moveMarbleDown:aMarble];
+                aMarble.alpha = 1.0;
+                [self.columnDict2 removeObjectForKey:@"-1"];
+            }
+            else {
+                aMarble = [self getRandomMarbleForRowWithKey:2];
+                [self.view addSubview:aMarble];
+            }
+            [self.rowDict setObject:aMarble forKey:@"2"];
+            for (int i = -2;i > (loIdx - 1);i--) {
+                Marble *bMarble = (Marble *)[self.columnDict2 objectForKey:[NSString stringWithFormat:@"%d", i]];
+                if (bMarble) {
+                    [self moveMarbleDown:bMarble];
+                    [self.columnDict2 setObject:bMarble forKey:[NSString stringWithFormat:@"%d", (i + 1)]];
+                    [self.columnDict2 removeObjectForKey:[NSString stringWithFormat:@"%d", i]];
+                }
+            }
+            break;
+        case 3:
+            loIdx = [self lowestColumnKey:self.columnDict3];
+            if ([[self.columnDict3 allKeys] containsObject:@"-1"]) {
+                aMarble = (Marble *)[self.columnDict3 objectForKey:@"-1"];
+                [self moveMarbleDown:aMarble];
+                aMarble.alpha = 1.0;
+                [self.columnDict3 removeObjectForKey:@"-1"];
+            }
+            else {
+                marbleIdx = [self getRandomMarble];
+                aMarble = [self getRandomMarbleForRowWithKey:3];
+                [self.view addSubview:aMarble];
+            }
+            [self.rowDict setObject:aMarble forKey:@"3"];
+            for (int i = -2;i > (loIdx - 1);i--) {
+                Marble *bMarble = (Marble *)[self.columnDict3 objectForKey:[NSString stringWithFormat:@"%d", i]];
+                if (bMarble) {
+                    [self moveMarbleDown:bMarble];
+                    [self.columnDict3 setObject:bMarble forKey:[NSString stringWithFormat:@"%d", (i + 1)]];
+                    [self.columnDict3 removeObjectForKey:[NSString stringWithFormat:@"%d", i]];
+                }
+            }
+            break;
+        case 4:
+            loIdx = [self lowestColumnKey:self.columnDict4];
+            if ([[self.columnDict4 allKeys] containsObject:@"-1"]) {
+                aMarble = (Marble *)[self.columnDict4 objectForKey:@"-1"];
+                [self moveMarbleDown:aMarble];
+                aMarble.alpha = 1.0;
+                [self.columnDict4 removeObjectForKey:@"-1"];
+            }
+            else {
+                aMarble = [self getRandomMarbleForRowWithKey:4];
+                [self.view addSubview:aMarble];
+            }
+            [self.rowDict setObject:aMarble forKey:@"4"];
+            for (int i = -2;i > (loIdx - 1);i--) {
+                Marble *bMarble = (Marble *)[self.columnDict4 objectForKey:[NSString stringWithFormat:@"%d", i]];
+                if (bMarble) {
+                    [self moveMarbleDown:bMarble];
+                    [self.columnDict4 setObject:bMarble forKey:[NSString stringWithFormat:@"%d", (i + 1)]];
+                    [self.columnDict4 removeObjectForKey:[NSString stringWithFormat:@"%d", i]];
+                }
+            }
+            break;
+    }
 }
 
 - (void)swipedLeft:(UISwipeGestureRecognizer *) swipe
@@ -2353,8 +2360,7 @@
 
 - (IBAction)back:(id)sender
 {
-    [self saveGame:self.gameLevel andScore:self.scoreTotal];
-    [self dismissViewControllerAnimated:NO completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)pause:(id)sender
