@@ -24,6 +24,7 @@
 @synthesize firePlayer, gameOverPlayer, roundOverPlayer, loopPlayer;
 @synthesize pauseButton, twinkler, mRotation;
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -49,7 +50,7 @@
 - (void)populateColumn:(NSInteger) column withMarbles:(NSInteger) count
 {
     CGFloat cWidth = 40;
-    CGFloat mWidth = 40;
+    CGFloat mWidth = 42;
     CGFloat startY = 210;
     CGFloat startX = 60;
     
@@ -120,28 +121,28 @@
     [self.view addSubview:dView];
     
     //  Middle row
-    UIView *aView = [[UIView alloc] initWithFrame:CGRectMake(0, 210, 320, 40)];
+    UIView *aView = [[UIView alloc] initWithFrame:CGRectMake(0, 211, 320, 40)];
     aView.backgroundColor = [UIColor redColor];
     aView.alpha = 0.3;
     [self.view addSubview:aView];
     
-    UIView *fView = [[UIView alloc] initWithFrame:CGRectMake(0, 209, 320, 1)];
+    UIView *fView = [[UIView alloc] initWithFrame:CGRectMake(0, 210, 320, 1)];
     fView.backgroundColor = [UIColor whiteColor];
     fView.alpha = 0.8;
     [self.view addSubview:fView];
     
-    UIView *gView = [[UIView alloc] initWithFrame:CGRectMake(0, 251, 320, 1)];
+    UIView *gView = [[UIView alloc] initWithFrame:CGRectMake(0, 252, 320, 1)];
     gView.backgroundColor = [UIColor whiteColor];
     gView.alpha = 0.8;
     [self.view addSubview:gView];
     
     //  Bottom border
-    UIView *cView = [[UIView alloc] initWithFrame:CGRectMake(0, 452, 320, 5)];
+    UIView *cView = [[UIView alloc] initWithFrame:CGRectMake(0, 454, 320, 2)];
     cView.backgroundColor = [UIColor redColor];
     cView.alpha = 0.8;
     [self.view addSubview:cView];
     
-    UIView *eView = [[UIView alloc] initWithFrame:CGRectMake(0, 451, 320, 1)];
+    UIView *eView = [[UIView alloc] initWithFrame:CGRectMake(0, 453, 320, 1)];
     eView.backgroundColor = [UIColor whiteColor];
     eView.alpha = 0.8;
     [self.view addSubview:eView];
@@ -225,7 +226,7 @@
 - (void)populateMarbles
 {
     CGFloat cWidth = 40;
-    CGFloat mWidth = 40;
+    CGFloat mWidth = 42;
     CGFloat xVal = 60;
     CGFloat yVal = 210;
     
@@ -418,50 +419,6 @@
     return retVal;
 }
 
-- (NSInteger)getHighestColumn
-{
-    NSInteger retVal1 = [self highestColumnKey:self.columnDict0];
-    NSInteger retVal2 = [self highestColumnKey:self.columnDict1];
-    if (retVal2 > retVal1) {
-        retVal1 = retVal2;
-    }
-    retVal2 = [self highestColumnKey:self.columnDict2];
-    if (retVal2 > retVal1) {
-        retVal1 = retVal2;
-    }
-    retVal2 = [self highestColumnKey:self.columnDict3];
-    if (retVal2 > retVal1) {
-        retVal1 = retVal2;
-    }
-    retVal2 = [self highestColumnKey:self.columnDict4];
-    if (retVal2 > retVal1) {
-        retVal1 = retVal2;
-    }
-    return retVal1;
-}
-
-- (NSInteger)getLowestColumn
-{
-    NSInteger retVal1 = [self lowestColumnKey:self.columnDict0];
-    NSInteger retVal2 = [self lowestColumnKey:self.columnDict1];
-    if (retVal2 < retVal1) {
-        retVal1 = retVal2;
-    }
-    retVal2 = [self lowestColumnKey:self.columnDict2];
-    if (retVal2 < retVal1) {
-        retVal1 = retVal2;
-    }
-    retVal2 = [self lowestColumnKey:self.columnDict3];
-    if (retVal2 < retVal1) {
-        retVal1 = retVal2;
-    }
-    retVal2 = [self lowestColumnKey:self.columnDict4];
-    if (retVal2 < retVal1) {
-        retVal1 = retVal2;
-    }
-    return retVal1;
-}
-
 - (NSInteger)getImageIndexForMarble:(NSInteger) marbleIdx
 {
     Marble *aMarble = (Marble *)[self.rowDict objectForKey:[NSString stringWithFormat:@"%d", marbleIdx]];
@@ -488,13 +445,12 @@
         aMarble = [[Marble alloc] initWithFrame:CGRectMake((key * 80) + 200, 500, 80, 80) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
     }
     else {
-        aMarble = [[Marble alloc] initWithFrame:CGRectMake((key * 40) + 60, 210, 40, 40) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
+        aMarble = [[Marble alloc] initWithFrame:CGRectMake((key * 40) + 60, 210, 42, 42) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
     }
     
     aMarble.imageIdx = marbleIdx;
     return aMarble;
 }
-
 
 - (int)getRandomColumn
 {
@@ -693,7 +649,7 @@
             aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 80) + 200, 500 - (key * -80), 80, 80) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
         }
         else {
-            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 40) + 60, 210 - (key * -40), 40, 40) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
+            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 40) + 60, 210 - (key * -40), 42, 42) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
         }
     }
     else {
@@ -701,7 +657,7 @@
             aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 80) + 200, 500 + (key * 80), 80, 80) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
         }
         else {
-            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 40) + 60, 210 + (key * 40), 40, 40) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
+            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 40) + 60, 210 + (key * 40), 42, 42) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
         }
     }
     aMarble.imageIdx = marbleIdx;
@@ -853,7 +809,7 @@
             [self clearMarbles];
             [self setAddFaster:NO];
             [self setGameCount:0];
-            [self performSelector:@selector(addMarble) withObject:nil afterDelay:3.0];
+            [self performSelector:@selector(addMarble) withObject:nil afterDelay:3.5];
             return;
         }
         else {  //  Save...
@@ -1139,54 +1095,85 @@
     }    
 }
 
-- (void)moveMarbleToCenter:(Marble *) marble
+- (int)getRandomX
 {
-    [UIView animateWithDuration:2.0 animations:^{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        return (arc4random() %(700) + 20);
+    }
+	return (arc4random() %(300) + 10);
+}
+
+- (int)getRandomY
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        return (arc4random() %(900) + 100);
+    }
+	return (arc4random() %(340) + 40);
+}
+
+- (void)shrinkMarbleThenRemove:(Marble *) marble
+{
+    [UIView animateWithDuration:0.3 animations:^{
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            marble.center = CGPointMake(400, 540);
+            marble.frame = CGRectMake(marble.frame.origin.x + 40, marble.frame.origin.y + 40, 20, 20);
         }
         else {
-            marble.center = CGPointMake(160, 230);
+            marble.frame = CGRectMake(marble.frame.origin.x + 21, marble.frame.origin.y + 21, 5, 5);
         }
     } completion:^(BOOL completed){
         [marble removeFromSuperview];
     }];
 }
 
+- (void)moveMarbleToRandom:(Marble *) marble
+{
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        marble.center = CGPointMake((CGFloat)[self getRandomX], (CGFloat)[self getRandomY]);
+    } completion:^(BOOL completed){
+        [self shrinkMarbleThenRemove:marble];
+    }];
+}
+
 - (void)clearMarbles
 {
-    for (NSString *key0 in [self.columnDict0 allKeys]) {
-        Marble *aMarble = (Marble *)[self.columnDict0 objectForKey:key0];
-        [self moveMarbleToCenter:aMarble];
+    for (NSString *key1 in self.rowDict.allKeys) {
+        Marble *aMarble = (Marble *)[self.rowDict objectForKey:key1];
+        [self moveMarbleToRandom:aMarble];
+        [self.rowDict removeObjectForKey:key1];
     }
-    for (NSString *key1 in [self.columnDict1 allKeys]) {
-        Marble *bMarble = (Marble *)[self.columnDict1 objectForKey:key1];
-        [self moveMarbleToCenter:bMarble];
+    
+    for (NSString *key2 in self.columnDict0.allKeys) {
+        Marble *bMarble = (Marble *)[self.columnDict0 objectForKey:key2];
+        [self moveMarbleToRandom:bMarble];
+        [self.columnDict0 removeObjectForKey:key2];
     }
-    for (NSString *key2 in [self.columnDict2 allKeys]) {
-        Marble *cMarble = (Marble *)[self.columnDict2 objectForKey:key2];
-        [self moveMarbleToCenter:cMarble];
-
+    
+    for (NSString *key3 in self.columnDict1.allKeys) {
+        Marble *cMarble = (Marble *)[self.columnDict1 objectForKey:key3];
+        [self moveMarbleToRandom:cMarble];
+        [self.columnDict1 removeObjectForKey:key3];
     }
-    for (NSString *key3 in [self.columnDict3 allKeys]) {
-        Marble *dMarble = (Marble *)[self.columnDict3 objectForKey:key3];
-        [self moveMarbleToCenter:dMarble];
+    
+    for (NSString *key4 in self.columnDict2.allKeys) {
+        Marble *dMarble = (Marble *)[self.columnDict2 objectForKey:key4];
+        [self moveMarbleToRandom:dMarble];
+        [self.columnDict2 removeObjectForKey:key4];
     }
-    for (NSString *key4 in [self.columnDict4 allKeys]) {
-        Marble *eMarble = (Marble *)[self.columnDict4 objectForKey:key4];
-        [self moveMarbleToCenter:eMarble];
+    
+    for (NSString *key5 in self.columnDict3.allKeys) {
+        Marble *eMarble = (Marble *)[self.columnDict3 objectForKey:key5];
+        [self moveMarbleToRandom:eMarble];
+        [self.columnDict3 removeObjectForKey:key5];
     }
-    for (NSString *rowKey in [self.rowDict allKeys]) {
-        Marble *rowMarble = (Marble *)[self.rowDict objectForKey:rowKey];
-        [self moveMarbleToCenter:rowMarble];
+    
+    for (NSString *key6 in self.columnDict4.allKeys) {
+        Marble *fMarble = (Marble *)[self.columnDict4 objectForKey:key6];
+        [self moveMarbleToRandom:fMarble];
+        [self.columnDict4 removeObjectForKey:key6];
     }
-    [self.columnDict0 performSelector:@selector(removeAllObjects) withObject:nil afterDelay:2.4];
-    [self.columnDict1 performSelector:@selector(removeAllObjects) withObject:nil afterDelay:2.4];
-    [self.columnDict2 performSelector:@selector(removeAllObjects) withObject:nil afterDelay:2.4];
-    [self.columnDict3 performSelector:@selector(removeAllObjects) withObject:nil afterDelay:2.4];
-    [self.columnDict4 performSelector:@selector(removeAllObjects) withObject:nil afterDelay:2.4];
-    [self.rowDict performSelector:@selector(removeAllObjects) withObject:nil afterDelay:2.4];
-    [self performSelector:@selector(populateMarbles) withObject:nil afterDelay:2.5];
+    
+    [self performSelector:@selector(populateMarbles) withObject:nil afterDelay:2.0];
 }
 
 - (void)removeMarblesFromStart:(NSInteger) idx ofLength:(NSInteger) length
@@ -1207,7 +1194,7 @@
     self.scoreTotal += length;
     self.gameCount++;
     
-    if (self.gameCount >= 50) {
+    if (self.gameCount >= 10) {
         [self setGameCount:0];
         self.gameLevel++;
         [self.marbleTimer invalidate];
@@ -1705,7 +1692,7 @@
     CGPoint touchPt = [swipe locationInView:self.view];
     if (touchPt.y > 100 && touchPt.y < 760) {
         NSInteger rowIdx = [self highestRowKey];
-        if (rowIdx == 10) {
+        if (rowIdx == 10) {  //  Is as far right as allowed...
             for (int i = rowIdx;i > (rowIdx - 11);i--) {
                 Marble *aMarble = (Marble *)[self.rowDict objectForKey:[NSString stringWithFormat:@"%d", i]];
                 if (aMarble) {
