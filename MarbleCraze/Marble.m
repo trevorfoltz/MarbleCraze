@@ -9,7 +9,7 @@
 #import "Marble.h"
 
 @implementation Marble
-@synthesize imageIdx;
+@synthesize imageIdx, currentRotation;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -32,11 +32,11 @@
 
 - (void)rotate:(NSInteger) multiplier
 {
-    self.transform = CGAffineTransformIdentity;
+    self.currentRotation += (2.0 * multiplier);
+    
     [UIView animateWithDuration:0.2 animations:^{
-        self.transform = CGAffineTransformMakeRotation(1.5 * multiplier);
+        self.transform = CGAffineTransformMakeRotation(self.currentRotation);
     } completion:^(BOOL finished){
-        
     }];
 }
 

@@ -12,7 +12,8 @@
 
 - (id)initWithFrame:(CGRect)frame andImage:(UIImage *) image;
 
-@property NSInteger imageIdx;
+@property (nonatomic, assign) NSInteger imageIdx;
+@property (nonatomic, assign) CGFloat currentRotation;
 
 - (void)rotate:(NSInteger) multiplier;
 

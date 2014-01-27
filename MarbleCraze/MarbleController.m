@@ -49,10 +49,10 @@
 
 - (void)populateColumn:(NSInteger) column withMarbles:(NSInteger) count
 {
-    CGFloat cWidth = 40;
+    CGFloat cWidth = 42;
     CGFloat mWidth = 42;
-    CGFloat startY = 210;
-    CGFloat startX = 60;
+    CGFloat startY = 208;
+    CGFloat startX = 56;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         cWidth = 80;
@@ -99,52 +99,52 @@
 - (void)setupIphone
 {
     // Left and right borders
-    UIView *hView = [[UIView alloc] initWithFrame:CGRectMake(60, 6, 1, 444)];
+    UIView *hView = [[UIView alloc] initWithFrame:CGRectMake(56, 3, 1, 454)];
     hView.backgroundColor = [UIColor redColor];
     hView.alpha = 0.5;
     [self.view addSubview:hView];
     
-    UIView *iView = [[UIView alloc] initWithFrame:CGRectMake(260, 6, 1, 443)];
+    UIView *iView = [[UIView alloc] initWithFrame:CGRectMake(266, 3, 1, 454)];
     iView.backgroundColor = [UIColor redColor];
     iView.alpha = 0.5;
     [self.view addSubview:iView];
     
     //  Top border
-    UIView *bView = [[UIView alloc] initWithFrame:CGRectMake(0, 2, 320, 5)];
+    UIView *bView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
     bView.backgroundColor = [UIColor redColor];
-    bView.alpha = 0.8;
+    bView.alpha = 0.5;
     [self.view addSubview:bView];
     
-    UIView *dView = [[UIView alloc] initWithFrame:CGRectMake(0, 7, 320, 1)];
+    UIView *dView = [[UIView alloc] initWithFrame:CGRectMake(0, 2, 320, 1)];
     dView.backgroundColor = [UIColor whiteColor];
-    dView.alpha = 0.8;
+    dView.alpha = 0.7;
     [self.view addSubview:dView];
     
     //  Middle row
-    UIView *aView = [[UIView alloc] initWithFrame:CGRectMake(0, 211, 320, 40)];
+    UIView *aView = [[UIView alloc] initWithFrame:CGRectMake(0, 208, 320, 42)];
     aView.backgroundColor = [UIColor redColor];
     aView.alpha = 0.3;
     [self.view addSubview:aView];
     
-    UIView *fView = [[UIView alloc] initWithFrame:CGRectMake(0, 210, 320, 1)];
+    UIView *fView = [[UIView alloc] initWithFrame:CGRectMake(0, 207, 320, 1)];
     fView.backgroundColor = [UIColor whiteColor];
-    fView.alpha = 0.8;
+    fView.alpha = 0.7;
     [self.view addSubview:fView];
     
-    UIView *gView = [[UIView alloc] initWithFrame:CGRectMake(0, 252, 320, 1)];
+    UIView *gView = [[UIView alloc] initWithFrame:CGRectMake(0, 251, 320, 1)];
     gView.backgroundColor = [UIColor whiteColor];
-    gView.alpha = 0.8;
+    gView.alpha = 0.7;
     [self.view addSubview:gView];
     
     //  Bottom border
-    UIView *cView = [[UIView alloc] initWithFrame:CGRectMake(0, 454, 320, 2)];
+    UIView *cView = [[UIView alloc] initWithFrame:CGRectMake(0, 459, 320, 1)];
     cView.backgroundColor = [UIColor redColor];
-    cView.alpha = 0.8;
+    cView.alpha = 0.5;
     [self.view addSubview:cView];
     
-    UIView *eView = [[UIView alloc] initWithFrame:CGRectMake(0, 453, 320, 1)];
+    UIView *eView = [[UIView alloc] initWithFrame:CGRectMake(0, 458, 320, 1)];
     eView.backgroundColor = [UIColor whiteColor];
-    eView.alpha = 0.8;
+    eView.alpha = 0.7;
     [self.view addSubview:eView];
 }
 
@@ -225,10 +225,10 @@
 
 - (void)populateMarbles
 {
-    CGFloat cWidth = 40;
+    CGFloat cWidth = 42;
     CGFloat mWidth = 42;
-    CGFloat xVal = 60;
-    CGFloat yVal = 210;
+    CGFloat xVal = 56;
+    CGFloat yVal = 208;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         [self setupIpad];
@@ -445,7 +445,7 @@
         aMarble = [[Marble alloc] initWithFrame:CGRectMake((key * 80) + 200, 500, 80, 80) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
     }
     else {
-        aMarble = [[Marble alloc] initWithFrame:CGRectMake((key * 40) + 60, 210, 42, 42) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
+        aMarble = [[Marble alloc] initWithFrame:CGRectMake((key * 42) + 56, 208, 42, 42) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
     }
     
     aMarble.imageIdx = marbleIdx;
@@ -649,7 +649,7 @@
             aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 80) + 200, 500 - (key * -80), 80, 80) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
         }
         else {
-            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 40) + 60, 210 - (key * -40), 42, 42) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
+            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 42) + 56, 208 - (key * -42), 42, 42) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
         }
     }
     else {
@@ -657,7 +657,7 @@
             aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 80) + 200, 500 + (key * 80), 80, 80) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
         }
         else {
-            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 40) + 60, 210 + (key * 40), 42, 42) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
+            aMarble = [[Marble alloc] initWithFrame:CGRectMake((column * 42) + 56, 208 + (key * 42), 42, 42) andImage:[UIImage imageNamed:[NSString stringWithFormat:@"marble%d.png", marbleIdx]]];
         }
     }
     aMarble.imageIdx = marbleIdx;
@@ -1194,7 +1194,7 @@
     self.scoreTotal += length;
     self.gameCount++;
     
-    if (self.gameCount >= 10) {
+    if (self.gameCount >= 50) {
         [self setGameCount:0];
         self.gameLevel++;
         [self.marbleTimer invalidate];
@@ -1243,7 +1243,7 @@
             marble.center = CGPointMake(marble.center.x - 80, marble.center.y);
         }
         else {
-            marble.center = CGPointMake(marble.center.x - 40, marble.center.y);
+            marble.center = CGPointMake(marble.center.x - 42, marble.center.y);
         }
      
     } completion:^(BOOL completed){
@@ -1258,7 +1258,7 @@
             marble.center = CGPointMake(marble.center.x + 80, marble.center.y);
         }
         else {
-            marble.center = CGPointMake(marble.center.x + 40, marble.center.y);
+            marble.center = CGPointMake(marble.center.x + 42, marble.center.y);
         }
     } completion:^(BOOL completed){
     }];
@@ -1326,7 +1326,7 @@
             marble.center = CGPointMake(marble.center.x, marble.center.y - 80);
         }
         else {
-            marble.center = CGPointMake(marble.center.x, marble.center.y - 40);
+            marble.center = CGPointMake(marble.center.x, marble.center.y - 42);
         }
     } completion:^(BOOL completed){
     }];
@@ -1340,7 +1340,7 @@
             marble.center = CGPointMake(marble.center.x, marble.center.y + 80);
         }
         else {
-            marble.center = CGPointMake(marble.center.x, marble.center.y + 40);
+            marble.center = CGPointMake(marble.center.x, marble.center.y + 42);
         }
     } completion:^(BOOL completed){
     }];

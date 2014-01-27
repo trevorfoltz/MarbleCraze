@@ -95,7 +95,7 @@
     if ([[self.savedGame allKeys] count] > 0) {
         NSInteger level = [[self.savedGame objectForKey:@"level"] integerValue];
         if (level >= 0) {
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Play Marble Craze" message:@"Continue saved game or start a new game?" delegate:self cancelButtonTitle:@"Continue" otherButtonTitles:@"New Game", nil];
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Play Marble Craze" message:[NSString stringWithFormat:@"Continue saved game on level %d, or start a new game?", level] delegate:self cancelButtonTitle:@"Continue" otherButtonTitles:@"New Game", nil];
             [av show];
             return;
         }
