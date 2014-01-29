@@ -233,7 +233,12 @@
     [textField removeFromSuperview];
     [self becomeFirstResponder];
     if (self.score2Edit > 5) {
-        self.shiftView.center = CGPointMake(self.shiftView.center.x, self.shiftView.center.y + 280);
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            self.shiftView.center = CGPointMake(self.shiftView.center.x, self.shiftView.center.y + 280);
+        }
+        else {
+            self.shiftView.center = CGPointMake(self.shiftView.center.x, self.shiftView.center.y + 140);
+        }
     }
 }
 

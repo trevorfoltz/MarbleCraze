@@ -99,50 +99,40 @@
 - (void)setupIphone
 {
     // Left and right borders
-    UIView *hView = [[UIView alloc] initWithFrame:CGRectMake(56, 3, 1, 454)];
+    UIView *hView = [[UIView alloc] initWithFrame:CGRectMake(56, 1, 1, 458)];
     hView.backgroundColor = [UIColor redColor];
     hView.alpha = 0.5;
     [self.view addSubview:hView];
     
-    UIView *iView = [[UIView alloc] initWithFrame:CGRectMake(266, 3, 1, 454)];
+    UIView *iView = [[UIView alloc] initWithFrame:CGRectMake(266, 1, 1, 458)];
     iView.backgroundColor = [UIColor redColor];
     iView.alpha = 0.5;
     [self.view addSubview:iView];
     
     //  Top border
-    UIView *bView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
-    bView.backgroundColor = [UIColor redColor];
-    bView.alpha = 0.5;
-    [self.view addSubview:bView];
-    
-    UIView *dView = [[UIView alloc] initWithFrame:CGRectMake(0, 2, 320, 1)];
+    UIView *dView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
     dView.backgroundColor = [UIColor whiteColor];
     dView.alpha = 0.7;
     [self.view addSubview:dView];
     
     //  Middle row
-    UIView *aView = [[UIView alloc] initWithFrame:CGRectMake(0, 208, 320, 42)];
+    UIView *aView = [[UIView alloc] initWithFrame:CGRectMake(0, 209, 320, 42)];
     aView.backgroundColor = [UIColor redColor];
     aView.alpha = 0.3;
     [self.view addSubview:aView];
     
-    UIView *fView = [[UIView alloc] initWithFrame:CGRectMake(0, 207, 320, 1)];
+    UIView *fView = [[UIView alloc] initWithFrame:CGRectMake(0, 208, 320, 1)];
     fView.backgroundColor = [UIColor whiteColor];
     fView.alpha = 0.7;
     [self.view addSubview:fView];
     
-    UIView *gView = [[UIView alloc] initWithFrame:CGRectMake(0, 251, 320, 1)];
+    UIView *gView = [[UIView alloc] initWithFrame:CGRectMake(0, 250, 320, 1)];
     gView.backgroundColor = [UIColor whiteColor];
     gView.alpha = 0.7;
     [self.view addSubview:gView];
     
     //  Bottom border
-    UIView *cView = [[UIView alloc] initWithFrame:CGRectMake(0, 459, 320, 1)];
-    cView.backgroundColor = [UIColor redColor];
-    cView.alpha = 0.5;
-    [self.view addSubview:cView];
-    
-    UIView *eView = [[UIView alloc] initWithFrame:CGRectMake(0, 458, 320, 1)];
+    UIView *eView = [[UIView alloc] initWithFrame:CGRectMake(0, 459, 320, 1)];
     eView.backgroundColor = [UIColor whiteColor];
     eView.alpha = 0.7;
     [self.view addSubview:eView];

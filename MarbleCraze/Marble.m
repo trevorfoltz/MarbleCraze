@@ -32,7 +32,7 @@
 
 - (void)rotate:(NSInteger) multiplier
 {
-    self.currentRotation += (2.0 * multiplier);
+    self.currentRotation += (2.5 * multiplier);
     
     [UIView animateWithDuration:0.2 animations:^{
         self.transform = CGAffineTransformMakeRotation(self.currentRotation);
