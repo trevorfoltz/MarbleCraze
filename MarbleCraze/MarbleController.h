@@ -16,7 +16,7 @@
 @property (nonatomic, assign) int numRows;
 
 @property (nonatomic, assign) BOOL hasSwiped, addFaster, gridFull, betweenRounds, isPaused;
-@property (nonatomic, assign) NSInteger scoreTotal, gameOverCnt, gameCount, gameLevel;
+@property (nonatomic, assign) NSInteger scoreTotal, gameOverCnt, gameCount, gameLevel, gameInterval;
 @property (nonatomic, retain) NSTimer *marbleTimer, *gameTimer;
 
 @property (nonatomic, retain) IBOutlet UILabel *score0, *score1, *score2, *score3;

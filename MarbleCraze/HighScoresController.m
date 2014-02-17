@@ -56,12 +56,12 @@
 
 - (void)setupIpad
 {
-    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(220, 850, 390, 60)];
+    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(180, 850, 500, 60)];
     label3.font = [UIFont fontWithName:@"MarkerFelt-Wide" size:24];
     label3.backgroundColor = [UIColor clearColor];
     label3.textColor = [UIColor whiteColor];
     label3.numberOfLines = 1;
-    label3.text = @"Tap anywhere to return to the game.";
+    label3.text = @"Tap anywhere to return to the previous screen.";
     [self.view addSubview:label3];
     
     if (self.highScores == nil || [[self.highScores allKeys] count] == 0) {
@@ -135,7 +135,7 @@
     label3.backgroundColor = [UIColor clearColor];
     label3.textColor = [UIColor whiteColor];
     label3.numberOfLines = 1;
-    label3.text = @"Tap anywhere to return to the game.";
+    label3.text = @"Tap anywhere to return to the previous scree n.";
     [self.view addSubview:label3];
     
     if (self.highScores == nil || [[self.highScores allKeys] count] == 0) {
@@ -207,6 +207,7 @@
     else {
         [self setupIphone];
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowAdBanner" object:self userInfo:nil];
     // Do any additional setup after loading the view from its nib.
 }
 

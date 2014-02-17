@@ -59,6 +59,7 @@
 
 - (void)showMarbleController
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HideAdBanner" object:nil];
     MarbleController *mb;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         mb = [[MarbleController alloc] initWithNibName:@"MarbleController_iPad" bundle:nil];
@@ -151,8 +152,7 @@
     [self updateHighScores];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateHighScores) name:@"UpdateHighScoresNotification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSavedGame) name:@"UpdateSavedGameNotification" object:nil];
-//    self.theMarble = [[Marble alloc] initWithFrame:CGRectMake(345, 450, 80, 80) andImage:[UIImage imageNamed:@"marblea1.png"]];
-//    [self.view addSubview:self.theMarble];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowAdBanner" object:self userInfo:nil];
     // Do any additional setup after loading the view from its nib.
 }
 

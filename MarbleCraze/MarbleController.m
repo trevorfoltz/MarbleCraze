@@ -22,7 +22,7 @@
 @synthesize score0, score1, score2, score3, scoreTotal;
 @synthesize gameOverCnt, gameTimer, gameCount;
 @synthesize firePlayer, gameOverPlayer, roundOverPlayer, loopPlayer;
-@synthesize pauseButton, twinkler, mRotation;
+@synthesize pauseButton, twinkler, mRotation, gameInterval;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -164,17 +164,17 @@
     //  Middle row
     UIView *aView = [[UIView alloc] initWithFrame:CGRectMake(0, 500, 768, 80)];
     aView.backgroundColor = [UIColor redColor];
-    aView.alpha = 0.3;
+    aView.alpha = 0.2;
     [self.view addSubview:aView];
     
     UIView *fView = [[UIView alloc] initWithFrame:CGRectMake(0, 498, 768, 2)];
     fView.backgroundColor = [UIColor whiteColor];
-    fView.alpha = 0.8;
+    fView.alpha = 0.7;
     [self.view addSubview:fView];
     
     UIView *gView = [[UIView alloc] initWithFrame:CGRectMake(0, 580, 768, 2)];
     gView.backgroundColor = [UIColor whiteColor];
-    gView.alpha = 0.8;
+    gView.alpha = 0.7;
     [self.view addSubview:gView];
     
     
@@ -203,7 +203,7 @@
         [self.loopPlayer play];
     }
     [self setIsPaused:NO];
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HideAdBanner" object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -221,14 +221,10 @@
     CGFloat yVal = 208;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        [self setupIpad];
         cWidth = 80;
         mWidth = 80;
         xVal = 200;
         yVal = 500;
-    }
-    else {
-        [self setupIphone];
     }
     //  Populate columnDicts...
     if (self.gameLevel >= 0 && !self.betweenRounds && [[self.savedGame allKeys] containsObject:@"col0"]) {
@@ -300,6 +296,7 @@
     self.twinkler = [StarTwinkler initWithParentView:self.view];
     
     self.mRotation = 120.0;
+    self.gameInterval = 50;
     NSURL *roundOverURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"LevelComplete" ofType:@"mp3"]];
 	NSError *error;
 	self.roundOverPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:roundOverURL error:&error];
@@ -340,7 +337,12 @@
         self.scoreTotal = [[self.savedGame objectForKey:@"score"] integerValue];
     }
     [self updateScoreLabel];
-    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self setupIpad];
+    }
+    else {
+        [self setupIphone];
+    }
     [self populateMarbles];
     
     UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedLeft:)];
@@ -1104,11 +1106,12 @@
 - (void)shrinkMarbleThenRemove:(Marble *) marble
 {
     [UIView animateWithDuration:0.3 animations:^{
+        CGRect screen = [[UIScreen mainScreen] bounds];
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            marble.frame = CGRectMake(marble.frame.origin.x + 40, marble.frame.origin.y + 40, 20, 20);
+            marble.frame = CGRectMake((screen.size.width / 2) - 20, 520, 20, 20);
         }
         else {
-            marble.frame = CGRectMake(marble.frame.origin.x + 21, marble.frame.origin.y + 21, 5, 5);
+            marble.frame = CGRectMake((screen.size.width / 2) - 10, (screen.size.height / 2) - 10, 5, 5);
         }
     } completion:^(BOOL completed){
         [marble removeFromSuperview];
@@ -1166,6 +1169,8 @@
     [self performSelector:@selector(populateMarbles) withObject:nil afterDelay:2.0];
 }
 
+
+//  This method contains the level check and interval...
 - (void)removeMarblesFromStart:(NSInteger) idx ofLength:(NSInteger) length
 {
     [self.firePlayer play];
@@ -1184,7 +1189,7 @@
     self.scoreTotal += length;
     self.gameCount++;
     
-    if (self.gameCount >= 50) {
+    if (self.gameCount >= self.gameInterval) {
         [self setGameCount:0];
         self.gameLevel++;
         [self.marbleTimer invalidate];

@@ -60,6 +60,7 @@
 		D0A6F7B5181D77E300C77FD3 /* HighScoresController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F7B3181D77E200C77FD3 /* HighScoresController_iPad.xib */; };
 		D0A6F7BA181D780C00C77FD3 /* AboutController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F7B8181D780B00C77FD3 /* AboutController_iPhone.xib */; };
 		D0A6F7BF181D783100C77FD3 /* HighScoresController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F7BD181D783000C77FD3 /* HighScoresController_iPhone.xib */; };
+		D0CC558A189F18260020227C /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0CC5589189F18260020227C /* iAd.framework */; };
 		D0D0909F18542A050034F54C /* MarbleBanner_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D0909E18542A050034F54C /* MarbleBanner_iPad.png */; };
 		D0F263471898B40100C46E35 /* MC_Icon57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F263461898B40100C46E35 /* MC_Icon57x57.png */; };
 		D0F263491898B41600C46E35 /* MC_Icon114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F263481898B41600C46E35 /* MC_Icon114x114.png */; };
@@ -138,6 +139,7 @@
 		D0A6F7B3181D77E200C77FD3 /* HighScoresController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HighScoresController_iPad.xib; sourceTree = "<group>"; };
 		D0A6F7B8181D780B00C77FD3 /* AboutController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutController_iPhone.xib; sourceTree = "<group>"; };
 		D0A6F7BD181D783000C77FD3 /* HighScoresController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HighScoresController_iPhone.xib; sourceTree = "<group>"; };
+		D0CC5589189F18260020227C /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		D0D0909E18542A050034F54C /* MarbleBanner_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MarbleBanner_iPad.png; sourceTree = "<group>"; };
 		D0F263461898B40100C46E35 /* MC_Icon57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MC_Icon57x57.png; sourceTree = "<group>"; };
 		D0F263481898B41600C46E35 /* MC_Icon114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MC_Icon114x114.png; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0CC558A189F18260020227C /* iAd.framework in Frameworks */,
 				D0121714182EBA99004E4769 /* AVFoundation.framework in Frameworks */,
 				D0A6F74F181D022800C77FD3 /* libz.dylib in Frameworks */,
 				D0A6F71B181D009A00C77FD3 /* UIKit.framework in Frameworks */,
@@ -172,13 +175,13 @@
 			children = (
 				D0F263561898B98600C46E35 /* Default-Portrait@2x~ipad.png */,
 				D0F263541898B96900C46E35 /* Default-Portrait~ipad.png */,
-				D0F263521898B50700C46E35 /* MC_Icon144x144.png */,
-				D0F263501898B4F600C46E35 /* MC_Icon72x72.png */,
 				D0F2634E1898B46000C46E35 /* Default-568h@2x.png */,
 				D0F2634C1898B44A00C46E35 /* Default@2x.png */,
 				D0F2634A1898B42E00C46E35 /* Default.png */,
-				D0F263481898B41600C46E35 /* MC_Icon114x114.png */,
 				D0F263461898B40100C46E35 /* MC_Icon57x57.png */,
+				D0F263501898B4F600C46E35 /* MC_Icon72x72.png */,
+				D0F263481898B41600C46E35 /* MC_Icon114x114.png */,
+				D0F263521898B50700C46E35 /* MC_Icon144x144.png */,
 				D0A6F740181D00E900C77FD3 /* Testflight */,
 				D0A6F720181D009A00C77FD3 /* MarbleCraze */,
 				D0A6F719181D009A00C77FD3 /* Frameworks */,
@@ -197,6 +200,7 @@
 		D0A6F719181D009A00C77FD3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0CC5589189F18260020227C /* iAd.framework */,
 				D0A6F74E181D022800C77FD3 /* libz.dylib */,
 				D0121713182EBA99004E4769 /* AVFoundation.framework */,
 				D0A6F71A181D009A00C77FD3 /* UIKit.framework */,
@@ -233,9 +237,9 @@
 				D0A6F733181D009A00C77FD3 /* ViewController.m */,
 				D0A6F735181D009A00C77FD3 /* ViewController_iPhone.xib */,
 				D0A6F738181D009A00C77FD3 /* ViewController_iPad.xib */,
-				D0A6F721181D009A00C77FD3 /* Supporting Files */,
 				D007B8861825A47900B37631 /* StarTwinkler.h */,
 				D007B8871825A47900B37631 /* StarTwinkler.m */,
+				D0A6F721181D009A00C77FD3 /* Supporting Files */,
 			);
 			path = MarbleCraze;
 			sourceTree = "<group>";

@@ -12,7 +12,7 @@
 
 @implementation AppDelegate
 
-@synthesize savedGame;
+@synthesize savedGame, bannerView, bannerHidden;
 
 - (void)updateSavedGame
 {
@@ -29,14 +29,58 @@
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSavedGame) name:@"UpdateSavedGameNotification" object:nil];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    CGRect screen = [[UIScreen mainScreen] bounds];
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil];
+        self.bannerView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, screen.size.height - 50, 320, 50)];
+        
     } else {
         self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPad" bundle:nil];
+        self.bannerView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, screen.size.height - 66, 768, 66)];
     }
+    self.bannerView.alpha = 0.0;
+    self.bannerView.delegate = self;
+    [self.window.rootViewController.view addSubview:self.bannerView];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideAdBanner:) name:@"HideAdBannerNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAdBanner:) name:@"ShowAdBannerNotification" object:nil];
     return YES;
+}
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    [UIView animateWithDuration:1.0 animations:^{
+        self.bannerView.alpha = 0.0;
+        
+        //        CGRect screen = [[UIScreen mainScreen] bounds];
+        //        self.bannerView.center = CGPointMake(screen.size.width / 2, screen.size.height);
+    }];
+    
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    if (!self.bannerHidden) {
+        [UIView animateWithDuration:1.5 animations:^{
+            self.bannerView.alpha = 1.0;
+        }];
+    }
+}
+
+
+- (void)hideAdBanner:(NSNotification *) notice
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.bannerView.alpha = 0.0;
+    }];
+    [self setBannerHidden:YES];
+}
+
+- (void)showAdBanner:(NSNotification *) notice
+{
+    [self setBannerHidden:NO];
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
