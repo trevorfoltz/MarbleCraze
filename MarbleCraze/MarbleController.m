@@ -17,12 +17,11 @@
 @implementation MarbleController
 
 @synthesize columnDict0, columnDict1, columnDict2, columnDict3, columnDict4;
-@synthesize gridFull, gameLevel, betweenRounds, savedGame, isPaused;
-@synthesize numRows, hasSwiped, marbleTimer, rowDict;
-@synthesize score0, score1, score2, score3, scoreTotal;
-@synthesize gameOverCnt, gameTimer, gameCount;
+@synthesize rowDict, savedGame, marbleTimer, gameTimer, pauseButton, twinkler;
+@synthesize numRows, gameLevel, gameOverCnt, gameCount, scoreTotal, gameInterval;
 @synthesize firePlayer, gameOverPlayer, roundOverPlayer, loopPlayer;
-@synthesize pauseButton, twinkler, mRotation, gameInterval;
+@synthesize gridFull, betweenRounds, isPaused, hasSwiped;
+@synthesize score0, score1, score2, score3;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -95,6 +94,8 @@
         }
     }
 }
+
+#pragma mark  Setup methods
 
 - (void)setupIphone
 {
@@ -195,24 +196,6 @@
     self.gameCount++;
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    self.gameCount = 0;
-    if (self.loopPlayer != nil) {
-        [self.loopPlayer prepareToPlay];
-        [self.loopPlayer play];
-    }
-    [self setIsPaused:NO];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"HideAdBanner" object:nil];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [self.loopPlayer stop];
-    [self setIsPaused:YES];
-    [self saveGame];
-}
-
 - (void)populateMarbles
 {
     CGFloat cWidth = 42;
@@ -290,12 +273,29 @@
     }
 }
 
+#pragma mark  View Methods
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.gameCount = 0;
+    if (self.loopPlayer != nil) {
+        [self.loopPlayer prepareToPlay];
+        [self.loopPlayer play];
+    }
+    [self setIsPaused:NO];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.loopPlayer stop];
+    [self setIsPaused:YES];
+    [self saveGame];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.twinkler = [StarTwinkler initWithParentView:self.view];
     
-    self.mRotation = 120.0;
     self.gameInterval = 50;
     NSURL *roundOverURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"LevelComplete" ofType:@"mp3"]];
 	NSError *error;
@@ -365,6 +365,8 @@
     [self performSelector:@selector(addMarble) withObject:nil afterDelay:3.0];
 }
 
+
+#pragma mark  Utility methods
 //  Determines how many marbles are above the middle row for a column.
 - (NSInteger)lowestColumnKey:(NSDictionary *) columnDict
 {
@@ -674,6 +676,8 @@
     }
 }
 
+#pragma mark  End of game methods
+
 - (NSInteger)countMarbles
 {
     NSInteger retVal = [[self.columnDict0 allKeys] count];
@@ -820,6 +824,8 @@
         [self saveGame];
     }
 }
+
+#pragma mark  Add Marble methods
 
 - (void)addMarbles
 {
@@ -1087,12 +1093,13 @@
     }    
 }
 
+#pragma mark  End of Round methods
 - (int)getRandomX
 {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        return (arc4random() %(700) + 20);
+        return (arc4random() %(640)) + 120;
     }
-	return (arc4random() %(300) + 10);
+	return (arc4random() %(280)) + 30;
 }
 
 - (int)getRandomY
@@ -1105,13 +1112,13 @@
 
 - (void)shrinkMarbleThenRemove:(Marble *) marble
 {
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.7 animations:^{
         CGRect screen = [[UIScreen mainScreen] bounds];
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            marble.frame = CGRectMake((screen.size.width / 2) - 20, 520, 20, 20);
+            marble.frame = CGRectMake((screen.size.width / 2) - 10, 530, 20, 20);
         }
         else {
-            marble.frame = CGRectMake((screen.size.width / 2) - 10, (screen.size.height / 2) - 10, 5, 5);
+            marble.frame = CGRectMake((screen.size.width / 2) - 5, (screen.size.height / 2) - 10, 5, 5);
         }
     } completion:^(BOOL completed){
         [marble removeFromSuperview];
@@ -1121,7 +1128,7 @@
 - (void)moveMarbleToRandom:(Marble *) marble
 {
     
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.8 animations:^{
         marble.center = CGPointMake((CGFloat)[self getRandomX], (CGFloat)[self getRandomY]);
     } completion:^(BOOL completed){
         [self shrinkMarbleThenRemove:marble];
@@ -1166,9 +1173,12 @@
         [self.columnDict4 removeObjectForKey:key6];
     }
     
+    if (self.gameLevel > 30) {
+        self.numRows = 4;
+    }
+    
     [self performSelector:@selector(populateMarbles) withObject:nil afterDelay:2.0];
 }
-
 
 //  This method contains the level check and interval...
 - (void)removeMarblesFromStart:(NSInteger) idx ofLength:(NSInteger) length
@@ -1230,6 +1240,7 @@
     }
 }
 
+#pragma mark  Move Marble methods
 - (void)moveMarbleLeft:(Marble *) marble
 {
     [marble rotate:-1];  // counter-clockwise
@@ -1639,6 +1650,8 @@
             break;
     }
 }
+
+#pragma mark  Swipe Gestures
 
 - (void)swipedLeft:(UISwipeGestureRecognizer *) swipe
 {
@@ -2339,6 +2352,8 @@
     }
     [self performSelector:@selector(checkAllMatchedMarbles) withObject:nil afterDelay:0.1];
 }
+
+#pragma mark  IBActions
 
 - (IBAction)back:(id)sender
 {

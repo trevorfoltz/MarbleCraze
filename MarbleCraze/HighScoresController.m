@@ -130,12 +130,12 @@
     UIView *separator2 = [[UIView alloc] initWithFrame:CGRectMake(0, 61, 320, 4)];
     separator2.backgroundColor = [UIColor darkGrayColor];
     [self.view addSubview:separator2];
-    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(30, 430, 270, 20)];
+    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(25, 430, 280, 20)];
     label3.font = [UIFont fontWithName:@"MarkerFelt-Wide" size:14];
     label3.backgroundColor = [UIColor clearColor];
     label3.textColor = [UIColor whiteColor];
     label3.numberOfLines = 1;
-    label3.text = @"Tap anywhere to return to the previous scree n.";
+    label3.text = @"Tap anywhere to return to the previous screen";
     [self.view addSubview:label3];
     
     if (self.highScores == nil || [[self.highScores allKeys] count] == 0) {
@@ -207,7 +207,6 @@
     else {
         [self setupIphone];
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowAdBanner" object:self userInfo:nil];
     // Do any additional setup after loading the view from its nib.
 }
 

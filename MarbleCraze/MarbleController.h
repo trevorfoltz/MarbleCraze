@@ -26,7 +26,6 @@
 @property (nonatomic, retain) StarTwinkler *twinkler;
 
 @property (nonatomic, retain) IBOutlet UIButton *pauseButton;
-@property (nonatomic, assign) CGFloat mRotation;
 
 - (IBAction)back:(id)sender;
 - (IBAction)pause:(id)sender;

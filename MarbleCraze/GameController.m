@@ -59,7 +59,6 @@
 
 - (void)showMarbleController
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"HideAdBanner" object:nil];
     MarbleController *mb;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         mb = [[MarbleController alloc] initWithNibName:@"MarbleController_iPad" bundle:nil];
@@ -96,7 +95,7 @@
     if ([[self.savedGame allKeys] count] > 0) {
         NSInteger level = [[self.savedGame objectForKey:@"level"] integerValue];
         if (level >= 0) {
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Play Marble Craze" message:[NSString stringWithFormat:@"Continue saved game on level %d, or start a new game?", level] delegate:self cancelButtonTitle:@"Continue" otherButtonTitles:@"New Game", nil];
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Play Marble Craze" message:[NSString stringWithFormat:@"Continue saved game on level %d, or start a new game?", (level + 1)] delegate:self cancelButtonTitle:@"Continue" otherButtonTitles:@"New Game", nil];
             [av show];
             return;
         }
@@ -152,7 +151,6 @@
     [self updateHighScores];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateHighScores) name:@"UpdateHighScoresNotification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSavedGame) name:@"UpdateSavedGameNotification" object:nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowAdBanner" object:self userInfo:nil];
     // Do any additional setup after loading the view from its nib.
 }
 

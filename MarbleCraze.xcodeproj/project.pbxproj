@@ -41,7 +41,6 @@
 		D0A6F734181D009A00C77FD3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6F733181D009A00C77FD3 /* ViewController.m */; };
 		D0A6F737181D009A00C77FD3 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F735181D009A00C77FD3 /* ViewController_iPhone.xib */; };
 		D0A6F73A181D009A00C77FD3 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F738181D009A00C77FD3 /* ViewController_iPad.xib */; };
-		D0A6F743181D012E00C77FD3 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6F741181D012E00C77FD3 /* libTestFlight.a */; };
 		D0A6F74F181D022800C77FD3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6F74E181D022800C77FD3 /* libz.dylib */; };
 		D0A6F753181D039A00C77FD3 /* GameController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6F751181D039A00C77FD3 /* GameController.m */; };
 		D0A6F754181D039A00C77FD3 /* GameController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F752181D039A00C77FD3 /* GameController_iPad.xib */; };
@@ -60,6 +59,7 @@
 		D0A6F7B5181D77E300C77FD3 /* HighScoresController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F7B3181D77E200C77FD3 /* HighScoresController_iPad.xib */; };
 		D0A6F7BA181D780C00C77FD3 /* AboutController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F7B8181D780B00C77FD3 /* AboutController_iPhone.xib */; };
 		D0A6F7BF181D783100C77FD3 /* HighScoresController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A6F7BD181D783000C77FD3 /* HighScoresController_iPhone.xib */; };
+		D0BDB8DD18C932610002FE7A /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BDB8D918C932610002FE7A /* libTestFlight.a */; };
 		D0CC558A189F18260020227C /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0CC5589189F18260020227C /* iAd.framework */; };
 		D0D0909F18542A050034F54C /* MarbleBanner_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D0909E18542A050034F54C /* MarbleBanner_iPad.png */; };
 		D0F263471898B40100C46E35 /* MC_Icon57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F263461898B40100C46E35 /* MC_Icon57x57.png */; };
@@ -114,8 +114,6 @@
 		D0A6F733181D009A00C77FD3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D0A6F736181D009A00C77FD3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
 		D0A6F739181D009A00C77FD3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
-		D0A6F741181D012E00C77FD3 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		D0A6F742181D012E00C77FD3 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		D0A6F74E181D022800C77FD3 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D0A6F750181D039A00C77FD3 /* GameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameController.h; sourceTree = "<group>"; };
 		D0A6F751181D039A00C77FD3 /* GameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameController.m; sourceTree = "<group>"; };
@@ -139,6 +137,10 @@
 		D0A6F7B3181D77E200C77FD3 /* HighScoresController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HighScoresController_iPad.xib; sourceTree = "<group>"; };
 		D0A6F7B8181D780B00C77FD3 /* AboutController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutController_iPhone.xib; sourceTree = "<group>"; };
 		D0A6F7BD181D783000C77FD3 /* HighScoresController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HighScoresController_iPhone.xib; sourceTree = "<group>"; };
+		D0BDB8D918C932610002FE7A /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		D0BDB8DA18C932610002FE7A /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		D0BDB8DB18C932610002FE7A /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
+		D0BDB8DC18C932610002FE7A /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
 		D0CC5589189F18260020227C /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		D0D0909E18542A050034F54C /* MarbleBanner_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MarbleBanner_iPad.png; sourceTree = "<group>"; };
 		D0F263461898B40100C46E35 /* MC_Icon57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MC_Icon57x57.png; sourceTree = "<group>"; };
@@ -158,12 +160,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0CC558A189F18260020227C /* iAd.framework in Frameworks */,
+				D0BDB8DD18C932610002FE7A /* libTestFlight.a in Frameworks */,
 				D0121714182EBA99004E4769 /* AVFoundation.framework in Frameworks */,
 				D0A6F74F181D022800C77FD3 /* libz.dylib in Frameworks */,
 				D0A6F71B181D009A00C77FD3 /* UIKit.framework in Frameworks */,
 				D0A6F71D181D009A00C77FD3 /* Foundation.framework in Frameworks */,
 				D0A6F71F181D009A00C77FD3 /* CoreGraphics.framework in Frameworks */,
-				D0A6F743181D012E00C77FD3 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,8 +262,10 @@
 		D0A6F740181D00E900C77FD3 /* Testflight */ = {
 			isa = PBXGroup;
 			children = (
-				D0A6F741181D012E00C77FD3 /* libTestFlight.a */,
-				D0A6F742181D012E00C77FD3 /* TestFlight.h */,
+				D0BDB8D918C932610002FE7A /* libTestFlight.a */,
+				D0BDB8DA18C932610002FE7A /* TestFlight.h */,
+				D0BDB8DB18C932610002FE7A /* TestFlight+AsyncLogging.h */,
+				D0BDB8DC18C932610002FE7A /* TestFlight+ManualSessions.h */,
 			);
 			name = Testflight;
 			sourceTree = "<group>";
@@ -534,7 +538,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					/Users/account/Documents/Projects/MarbleCraze,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "1B575C6B-BB36-44C3-B16B-E865DCFBA319";
@@ -554,7 +559,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					/Users/account/Documents/Projects/MarbleCraze,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "1B575C6B-BB36-44C3-B16B-E865DCFBA319";
@@ -603,7 +609,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					/Users/account/Documents/Projects/MarbleCraze,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "1B575C6B-BB36-44C3-B16B-E865DCFBA319";

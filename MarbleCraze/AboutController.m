@@ -40,7 +40,6 @@
     singleTap.numberOfTouchesRequired = 1;
     [self.view addGestureRecognizer:singleTap];
     self.twinkler = [StarTwinkler initWithParentView:self.view];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowAdBanner" object:self userInfo:nil];
     // Do any additional setup after loading the view from its nib.
 }
 
